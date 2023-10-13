@@ -15,6 +15,13 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -51,6 +58,7 @@
       <updated>1697200002124</updated>
       <workItem from="1697200006028" duration="59000" />
       <workItem from="1697200200970" duration="9000" />
+      <workItem from="1697200225079" duration="248000" />
     </task>
     <servers />
   </component>
