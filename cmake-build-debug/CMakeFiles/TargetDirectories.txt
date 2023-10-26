@@ -1,0 +1,2 @@
+C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
