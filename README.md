@@ -1,5 +1,5 @@
 # P1 Projekt
- Dette er vores første kode-projekt.
+ Dette er vores P1 projekt.
  
  Gruppemedlemmer:
  - Tobias
