@@ -5,6 +5,7 @@ int main() {
     sqlite3 *db;
 
     int rc = sqlite3_open("FMK.db", &db);
+
     if (rc != SQLITE_OK) {
         fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(db));
         return 1;

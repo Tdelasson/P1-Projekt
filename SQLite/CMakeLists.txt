@@ -1,11 +1,6 @@
-add_library(sqlite3c sqlite3.c)
-add_library(sqlite3ext sqlite3ext.h)
-add_library(sqlite3h sqlite3.h)
+cmake_minimum_required(VERSION 3.17)
+project(P1-Projekt)
 
+# Add the source file for Database_interaction.c
 add_executable(Database Database_interaction.c)
-add_executable(shell shell.c)
-add_executable(sqlite3c shell.c)
 
-
-link_directories(/path/to/sqlite/library)
-target_link_libraries(Database sqlite3c)
