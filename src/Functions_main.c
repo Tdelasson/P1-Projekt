@@ -1,6 +1,4 @@
 
-
-
 void check_search_function(){
     // Checks which search funtion is most optimal to use
     // Can be binary search, linear search, etc..
