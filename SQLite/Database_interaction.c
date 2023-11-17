@@ -3,6 +3,7 @@
 
 int main() {
     sqlite3 *db;
+    
     int rc = sqlite3_open("FMK.db", &db);
 
     if (rc != SQLITE_OK) {
