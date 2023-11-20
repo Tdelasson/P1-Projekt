@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: P1-projekt
+# Project: Project
 # Configurations: Debug
 # =============================================================================
 
@@ -40,17 +40,69 @@ include CMakeFiles/rules.ninja
 # Logical path to working directory; prefix for absolute paths.
 
 cmake_ninja_workdir = C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/cmake-build-debug/
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target sqlite3
+
 
 #############################################
-# Utility command for test
+# Order-only phony target for sqlite3
 
-build CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\ctest.exe" --force-new-ctest-process "
-  DESC = Running tests...
-  pool = console
-  restat = 1
+build cmake_object_order_depends_target_sqlite3: phony || CMakeFiles/sqlite3.dir
 
-build test: phony CMakeFiles/test.util
+build CMakeFiles/sqlite3.dir/sqlite3.obj: C_COMPILER__sqlite3_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/sqlite3.c || cmake_object_order_depends_target_sqlite3
+  DEP_FILE = CMakeFiles\sqlite3.dir\sqlite3.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\sqlite3.dir
+  OBJECT_FILE_DIR = CMakeFiles\sqlite3.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target sqlite3
+
+
+#############################################
+# Link the static library libsqlite3.a
+
+build libsqlite3.a: C_STATIC_LIBRARY_LINKER__sqlite3_Debug CMakeFiles/sqlite3.dir/sqlite3.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles\sqlite3.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = libsqlite3.a
+  TARGET_PDB = sqlite3.a.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target Database_interaction
+
+
+#############################################
+# Order-only phony target for Database_interaction
+
+build cmake_object_order_depends_target_Database_interaction: phony || cmake_object_order_depends_target_sqlite3
+
+build CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj: C_COMPILER__Database_interaction_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/Database/Database_interaction.c || cmake_object_order_depends_target_Database_interaction
+  DEP_FILE = CMakeFiles\Database_interaction.dir\Database\Database_interaction.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Database_interaction.dir
+  OBJECT_FILE_DIR = CMakeFiles\Database_interaction.dir\Database
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Database_interaction
+
+
+#############################################
+# Link the executable Database_interaction.exe
+
+build Database_interaction.exe: C_EXECUTABLE_LINKER__Database_interaction_Debug CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj | libsqlite3.a || libsqlite3.a
+  FLAGS = -g
+  LINK_LIBRARIES = libsqlite3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\Database_interaction.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = Database_interaction.exe
+  TARGET_IMPLIB = libDatabase_interaction.dll.a
+  TARGET_PDB = Database_interaction.exe.dbg
 
 
 #############################################
@@ -80,192 +132,35 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # C:/Users/tobpu/Desktop/Github P1/P1-Projekt/CMakeLists.txt
 # =============================================================================
 
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target Functions_main
-
-
-#############################################
-# Order-only phony target for Functions_main
-
-build cmake_object_order_depends_target_Functions_main: phony || src/CMakeFiles/Functions_main.dir
-
-build src/CMakeFiles/Functions_main.dir/Functions_main.c.obj: C_COMPILER__Functions_main_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/src/Functions_main.c || cmake_object_order_depends_target_Functions_main
-  DEP_FILE = src\CMakeFiles\Functions_main.dir\Functions_main.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = src\CMakeFiles\Functions_main.dir
-  OBJECT_FILE_DIR = src\CMakeFiles\Functions_main.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target Functions_main
-
-
-#############################################
-# Link the static library src\libFunctions_main.a
-
-build src/libFunctions_main.a: C_STATIC_LIBRARY_LINKER__Functions_main_Debug src/CMakeFiles/Functions_main.dir/Functions_main.c.obj
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = src\CMakeFiles\Functions_main.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = src\libFunctions_main.a
-  TARGET_PDB = Functions_main.a.dbg
-
-# =============================================================================
-# Object build statements for EXECUTABLE target Main
-
-
-#############################################
-# Order-only phony target for Main
-
-build cmake_object_order_depends_target_Main: phony || cmake_object_order_depends_target_Functions_main
-
-build src/CMakeFiles/Main.dir/Main.c.obj: C_COMPILER__Main_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/src/Main.c || cmake_object_order_depends_target_Main
-  DEP_FILE = src\CMakeFiles\Main.dir\Main.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = src\CMakeFiles\Main.dir
-  OBJECT_FILE_DIR = src\CMakeFiles\Main.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target Main
-
-
-#############################################
-# Link the executable src\Main.exe
-
-build src/Main.exe: C_EXECUTABLE_LINKER__Main_Debug src/CMakeFiles/Main.dir/Main.c.obj | src/libFunctions_main.a || src/libFunctions_main.a
-  FLAGS = -g
-  LINK_LIBRARIES = src/libFunctions_main.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = src\CMakeFiles\Main.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = src\Main.exe
-  TARGET_IMPLIB = src\libMain.dll.a
-  TARGET_PDB = Main.exe.dbg
-
-
-#############################################
-# Utility command for test
-
-build src/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\src" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\ctest.exe" --force-new-ctest-process "
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build src/test: phony src/CMakeFiles/test.util
-
 
 #############################################
 # Utility command for edit_cache
 
-build src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\src" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+build Database/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\Database" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build src/edit_cache: phony src/CMakeFiles/edit_cache.util
+build Database/edit_cache: phony Database/CMakeFiles/edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\src" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\tobpu\Desktop\Github P1\P1-Projekt" -B"C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug""
+build Database/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\Database" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\tobpu\Desktop\Github P1\P1-Projekt" -B"C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build src/rebuild_cache: phony src/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# C:/Users/tobpu/Desktop/Github P1/P1-Projekt/CMakeLists.txt
-# =============================================================================
-
-# =============================================================================
-# Object build statements for EXECUTABLE target Test
-
-
-#############################################
-# Order-only phony target for Test
-
-build cmake_object_order_depends_target_Test: phony || test/CMakeFiles/Test.dir
-
-build test/CMakeFiles/Test.dir/Test.c.obj: C_COMPILER__Test_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/test/Test.c || cmake_object_order_depends_target_Test
-  DEP_FILE = test\CMakeFiles\Test.dir\Test.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
-  OBJECT_DIR = test\CMakeFiles\Test.dir
-  OBJECT_FILE_DIR = test\CMakeFiles\Test.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target Test
-
-
-#############################################
-# Link the executable test\Test.exe
-
-build test/Test.exe: C_EXECUTABLE_LINKER__Test_Debug test/CMakeFiles/Test.dir/Test.c.obj
-  FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = test\CMakeFiles\Test.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = test\Test.exe
-  TARGET_IMPLIB = test\libTest.dll.a
-  TARGET_PDB = Test.exe.dbg
-
-
-#############################################
-# Utility command for test
-
-build test/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\test" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\ctest.exe" --force-new-ctest-process "
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build test/test: phony test/CMakeFiles/test.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build test/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\test" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
-  DESC = No interactive CMake dialog available...
-  restat = 1
-
-build test/edit_cache: phony test/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build test/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\test" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\tobpu\Desktop\Github P1\P1-Projekt" -B"C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug""
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build test/rebuild_cache: phony test/CMakeFiles/rebuild_cache.util
+build Database/rebuild_cache: phony Database/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
 # Target aliases.
 
-build Functions_main: phony src/libFunctions_main.a
+build Database_interaction: phony Database_interaction.exe
 
-build Main: phony src/Main.exe
-
-build Main.exe: phony src/Main.exe
-
-build Test: phony test/Test.exe
-
-build Test.exe: phony test/Test.exe
-
-build libFunctions_main.a: phony src/libFunctions_main.a
+build sqlite3: phony libsqlite3.a
 
 # =============================================================================
 # Folder targets.
@@ -275,21 +170,14 @@ build libFunctions_main.a: phony src/libFunctions_main.a
 #############################################
 # Folder: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug
 
-build all: phony src/all test/all
+build all: phony libsqlite3.a Database_interaction.exe Database/all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/src
+# Folder: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/Database
 
-build src/all: phony src/libFunctions_main.a src/Main.exe
-
-# =============================================================================
-
-#############################################
-# Folder: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/test
-
-build test/all: phony test/Test.exe
+build Database/all: phony
 
 # =============================================================================
 # Unknown Build Time Dependencies.
@@ -303,14 +191,14 @@ build test/all: phony test/Test.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/CMakeLists.txt C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/src/CMakeLists.txt C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/test/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/CMakeLists.txt C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/src/CMakeLists.txt C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/test/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2023.2.1/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################

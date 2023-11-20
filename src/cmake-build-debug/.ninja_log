@@ -1,0 +1,6 @@
+# ninja log v5
+7	131	7221863607023280	src/CMakeFiles/Functions_main.dir/Functions_main.obj	363fc431f1648c28
+1	139	7221863607033284	src/CMakeFiles/Main.dir/Main.obj	632f5132a414b14d
+1	301	7221872432548124	build.ninja	956264d821579608
+132	221	7221863607933716	src/libFunctions_main.a	ebf479f79f918bb5
+222	326	7221863608919979	src/Main.exe	2a1627f5df2cb711

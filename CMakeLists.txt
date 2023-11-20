@@ -1,8 +1,5 @@
-cmake_minimum_required(VERSION 3.1)
-project (P1-projekt)
+add_library(sqlite3 sqlite3.c sqlite3.h)
+add_executable(Database_interaction Database/Database_interaction.c)
+target_link_libraries(Database_interaction sqlite3)
 
-set(CMAKE_C_STANDARD 11)
-
-add_subdirectory(src)
-enable_testing()
-add_subdirectory(test)
+add_subdirectory(Database)
