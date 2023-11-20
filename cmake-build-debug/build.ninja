@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Project
+# Project: P1-Projekt
 # Configurations: Debug
 # =============================================================================
 
@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/cmake-build-
 
 build cmake_object_order_depends_target_sqlite3: phony || CMakeFiles/sqlite3.dir
 
-build CMakeFiles/sqlite3.dir/sqlite3.obj: C_COMPILER__sqlite3_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/sqlite3.c || cmake_object_order_depends_target_sqlite3
-  DEP_FILE = CMakeFiles\sqlite3.dir\sqlite3.obj.d
+build CMakeFiles/sqlite3.dir/sqlite3.c.obj: C_COMPILER__sqlite3_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/sqlite3.c || cmake_object_order_depends_target_sqlite3
+  DEP_FILE = CMakeFiles\sqlite3.dir\sqlite3.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\sqlite3.dir
   OBJECT_FILE_DIR = CMakeFiles\sqlite3.dir
@@ -63,7 +63,7 @@ build CMakeFiles/sqlite3.dir/sqlite3.obj: C_COMPILER__sqlite3_unscanned_Debug C$
 #############################################
 # Link the static library libsqlite3.a
 
-build libsqlite3.a: C_STATIC_LIBRARY_LINKER__sqlite3_Debug CMakeFiles/sqlite3.dir/sqlite3.obj
+build libsqlite3.a: C_STATIC_LIBRARY_LINKER__sqlite3_Debug CMakeFiles/sqlite3.dir/sqlite3.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\sqlite3.dir
   POST_BUILD = cd .
@@ -80,11 +80,11 @@ build libsqlite3.a: C_STATIC_LIBRARY_LINKER__sqlite3_Debug CMakeFiles/sqlite3.di
 
 build cmake_object_order_depends_target_Database_interaction: phony || cmake_object_order_depends_target_sqlite3
 
-build CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj: C_COMPILER__Database_interaction_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/Database/Database_interaction.c || cmake_object_order_depends_target_Database_interaction
-  DEP_FILE = CMakeFiles\Database_interaction.dir\Database\Database_interaction.obj.d
+build CMakeFiles/Database_interaction.dir/Database_interaction.c.obj: C_COMPILER__Database_interaction_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/Database_interaction.c || cmake_object_order_depends_target_Database_interaction
+  DEP_FILE = CMakeFiles\Database_interaction.dir\Database_interaction.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Database_interaction.dir
-  OBJECT_FILE_DIR = CMakeFiles\Database_interaction.dir\Database
+  OBJECT_FILE_DIR = CMakeFiles\Database_interaction.dir
 
 
 # =============================================================================
@@ -94,7 +94,7 @@ build CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj: C_C
 #############################################
 # Link the executable Database_interaction.exe
 
-build Database_interaction.exe: C_EXECUTABLE_LINKER__Database_interaction_Debug CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj | libsqlite3.a || libsqlite3.a
+build Database_interaction.exe: C_EXECUTABLE_LINKER__Database_interaction_Debug CMakeFiles/Database_interaction.dir/Database_interaction.c.obj | libsqlite3.a || libsqlite3.a
   FLAGS = -g
   LINK_LIBRARIES = libsqlite3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Database_interaction.dir
@@ -128,34 +128,6 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
-# Write statements declared in CMakeLists.txt:
-# C:/Users/tobpu/Desktop/Github P1/P1-Projekt/CMakeLists.txt
-# =============================================================================
-
-
-#############################################
-# Utility command for edit_cache
-
-build Database/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\Database" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
-  DESC = No interactive CMake dialog available...
-  restat = 1
-
-build Database/edit_cache: phony Database/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build Database/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug\Database" && "C:\Program Files\JetBrains\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S"C:\Users\tobpu\Desktop\Github P1\P1-Projekt" -B"C:\Users\tobpu\Desktop\Github P1\P1-Projekt\cmake-build-debug""
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build Database/rebuild_cache: phony Database/CMakeFiles/rebuild_cache.util
-
-# =============================================================================
 # Target aliases.
 
 build Database_interaction: phony Database_interaction.exe
@@ -170,19 +142,7 @@ build sqlite3: phony libsqlite3.a
 #############################################
 # Folder: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug
 
-build all: phony libsqlite3.a Database_interaction.exe Database/all
-
-# =============================================================================
-
-#############################################
-# Folder: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/Database
-
-build Database/all: phony
-
-# =============================================================================
-# Unknown Build Time Dependencies.
-# Tell Ninja that they may appear as side effects of build rules
-# otherwise ordered by order-only dependencies.
+build all: phony libsqlite3.a Database_interaction.exe
 
 # =============================================================================
 # Built-in targets

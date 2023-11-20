@@ -1,11 +1,11 @@
 # ninja log v5
-7	191	7221884781195032	CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj	55dba04e58d08f6c
-9	115	7221882260398842	CMakeFiles/Database_interaction.dir/Database_interaction.obj	165c45d9ff6ac09f
-2	154	7221885093873869	Database_interaction.exe	5f5bda80066ebd3d
-1	6611	7221884845253976	CMakeFiles/sqlite3.dir/sqlite3.obj	7309fb6b99148d6d
-6613	6743	7221884846716151	libsqlite3.a	ddaf1c75baaa6163
-1	180	7221887368793875	build.ninja	956264d821579608
-6	84	7221888352515595	CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj	55dba04e58d08f6c
-1	5814	7221888409635978	CMakeFiles/sqlite3.dir/sqlite3.obj	7309fb6b99148d6d
-5814	5919	7221888410849846	libsqlite3.a	ddaf1c75baaa6163
-5919	6059	7221888412214717	Database_interaction.exe	5f5bda80066ebd3d
+6	111	7221893390384679	CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj	55dba04e58d08f6c
+2	80	7221895026389263	CMakeFiles/Database_interaction.dir/Database_interaction.obj	165c45d9ff6ac09f
+81	224	7221895027785995	Database_interaction.exe	fb8204ca2ecb0485
+0	6786	7221893457010031	CMakeFiles/sqlite3.dir/sqlite3.obj	7309fb6b99148d6d
+6787	6901	7221893458298704	libsqlite3.a	ddaf1c75baaa6163
+1	245	7221896871242644	build.ninja	956264d821579608
+8	87	7221896899012225	CMakeFiles/Database_interaction.dir/Database_interaction.c.obj	d406a86feba65c44
+1	5864	7221896956665901	CMakeFiles/sqlite3.dir/sqlite3.c.obj	4c2ed6e5005c3807
+5867	5983	7221896957958636	libsqlite3.a	fb00f3967231eaa1
+5983	6128	7221896959386870	Database_interaction.exe	245bffbfca8f31f4

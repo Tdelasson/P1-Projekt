@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="database" uuid="eb96ecee-bf56-427a-b851-d52c654855b3">
+    <data-source source="LOCAL" name="database [2]" uuid="ace679b7-0397-4900-9c55-499f859b1bfd">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\tobpu\Desktop\Github P1\P1-Projekt\SQLite\database.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\tobpu\Desktop\Github P1\P1-Projekt\src\database.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.43.0/org/xerial/sqlite-jdbc/3.43.0.0/sqlite-jdbc-3.43.0.0.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

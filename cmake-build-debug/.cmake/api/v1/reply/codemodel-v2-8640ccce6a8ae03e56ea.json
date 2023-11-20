@@ -6,11 +6,11 @@
 			[
 				{
 					"build" : ".",
-					"childIndexes" : 
-					[
-						1
-					],
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
 					"projectIndex" : 0,
 					"source" : ".",
 					"targetIndexes" : 
@@ -18,13 +18,6 @@
 						0,
 						1
 					]
-				},
-				{
-					"build" : "Database",
-					"jsonFile" : "directory-Database-Debug-3b7ca4349ccd924e5f58.json",
-					"parentIndex" : 0,
-					"projectIndex" : 0,
-					"source" : "Database"
 				}
 			],
 			"name" : "Debug",
@@ -33,10 +26,9 @@
 				{
 					"directoryIndexes" : 
 					[
-						0,
-						1
+						0
 					],
-					"name" : "Project",
+					"name" : "P1-Projekt",
 					"targetIndexes" : 
 					[
 						0,
@@ -49,14 +41,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Database_interaction::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Database_interaction-Debug-1ceca3ca9a2442778caf.json",
+					"jsonFile" : "target-Database_interaction-Debug-ad1baa03305a0720b9ab.json",
 					"name" : "Database_interaction",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "sqlite3::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-sqlite3-Debug-a2f8ecd0d6605762420b.json",
+					"jsonFile" : "target-sqlite3-Debug-db30cc9e2038a6377205.json",
 					"name" : "sqlite3",
 					"projectIndex" : 0
 				}

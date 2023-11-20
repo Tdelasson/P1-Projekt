@@ -807,7 +807,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "2"
+			"value" : "1"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -887,7 +887,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Project"
+			"value" : "P1-Projekt"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1288,6 +1288,42 @@
 			],
 			"type" : "PATH",
 			"value" : ""
+		},
+		{
+			"name" : "P1-Projekt_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug"
+		},
+		{
+			"name" : "P1-Projekt_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "P1-Projekt_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/tobpu/Desktop/Github P1/P1-Projekt"
 		},
 		{
 			"name" : "Project_BINARY_DIR",

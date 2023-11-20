@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "../sqlite3.h"
+#include "sqlite3.h"
 
 int main() {
     sqlite3* db;
-    int rc;
+    int rc = 0;
     rc = sqlite3_open("database.db",&db);
 
     if(rc != SQLITE_OK){
