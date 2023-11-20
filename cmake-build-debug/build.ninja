@@ -41,6 +41,39 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/cmake-build-debug/
 # =============================================================================
+# Object build statements for EXECUTABLE target database_interaction
+
+
+#############################################
+# Order-only phony target for database_interaction
+
+build cmake_object_order_depends_target_database_interaction: phony || cmake_object_order_depends_target_sqlite3
+
+build CMakeFiles/database_interaction.dir/database_interaction.c.obj: C_COMPILER__database_interaction_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/database_interaction.c || cmake_object_order_depends_target_database_interaction
+  DEP_FILE = CMakeFiles\database_interaction.dir\database_interaction.c.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\database_interaction.dir
+  OBJECT_FILE_DIR = CMakeFiles\database_interaction.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target database_interaction
+
+
+#############################################
+# Link the executable database_interaction.exe
+
+build database_interaction.exe: C_EXECUTABLE_LINKER__database_interaction_Debug CMakeFiles/database_interaction.dir/database_interaction.c.obj | libsqlite3.a || libsqlite3.a
+  FLAGS = -g
+  LINK_LIBRARIES = libsqlite3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\database_interaction.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = database_interaction.exe
+  TARGET_IMPLIB = libdatabase_interaction.dll.a
+  TARGET_PDB = database_interaction.exe.dbg
+
+# =============================================================================
 # Object build statements for STATIC_LIBRARY target sqlite3
 
 
@@ -71,39 +104,6 @@ build libsqlite3.a: C_STATIC_LIBRARY_LINKER__sqlite3_Debug CMakeFiles/sqlite3.di
   TARGET_FILE = libsqlite3.a
   TARGET_PDB = sqlite3.a.dbg
 
-# =============================================================================
-# Object build statements for EXECUTABLE target Database_interaction
-
-
-#############################################
-# Order-only phony target for Database_interaction
-
-build cmake_object_order_depends_target_Database_interaction: phony || cmake_object_order_depends_target_sqlite3
-
-build CMakeFiles/Database_interaction.dir/Database_interaction.c.obj: C_COMPILER__Database_interaction_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/Database_interaction.c || cmake_object_order_depends_target_Database_interaction
-  DEP_FILE = CMakeFiles\Database_interaction.dir\Database_interaction.c.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Database_interaction.dir
-  OBJECT_FILE_DIR = CMakeFiles\Database_interaction.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target Database_interaction
-
-
-#############################################
-# Link the executable Database_interaction.exe
-
-build Database_interaction.exe: C_EXECUTABLE_LINKER__Database_interaction_Debug CMakeFiles/Database_interaction.dir/Database_interaction.c.obj | libsqlite3.a || libsqlite3.a
-  FLAGS = -g
-  LINK_LIBRARIES = libsqlite3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\Database_interaction.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = Database_interaction.exe
-  TARGET_IMPLIB = libDatabase_interaction.dll.a
-  TARGET_PDB = Database_interaction.exe.dbg
-
 
 #############################################
 # Utility command for edit_cache
@@ -130,7 +130,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build Database_interaction: phony Database_interaction.exe
+build database_interaction: phony database_interaction.exe
 
 build sqlite3: phony libsqlite3.a
 
@@ -142,7 +142,7 @@ build sqlite3: phony libsqlite3.a
 #############################################
 # Folder: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug
 
-build all: phony libsqlite3.a Database_interaction.exe
+build all: phony database_interaction.exe libsqlite3.a
 
 # =============================================================================
 # Built-in targets
