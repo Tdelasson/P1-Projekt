@@ -2,5 +2,3 @@ C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/CMakeFiles/sqlite3
 C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/CMakeFiles/Database_interaction.dir
 C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/Database/CMakeFiles/edit_cache.dir
-C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug/Database/CMakeFiles/rebuild_cache.dir
