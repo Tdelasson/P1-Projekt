@@ -1,6 +1,0 @@
-# ninja log v5
-3	242	7221861088157359	build.ninja	2d9ebf29c705e6fb
-10	138	7221861712901427	CMakeFiles/Database_interaction.dir/Database_interaction.c.obj	ce76f9ecac6bd20c
-2	6915	7221861780575500	CMakeFiles/sqlite3.dir/sqlite3.c.obj	ae065c5d1a912f3f
-6917	7080	7221861782347323	libsqlite3.a	fb00f3967231eaa1
-7080	7302	7221861784507510	Database_interaction.exe	245bffbfca8f31f4
