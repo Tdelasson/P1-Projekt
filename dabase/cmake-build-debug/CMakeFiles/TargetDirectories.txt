@@ -1,0 +1,4 @@
+C:/Users/tobpu/Documents/AAU/Semester 1/P1/dabase/cmake-build-debug/CMakeFiles/sqlite3.dir
+C:/Users/tobpu/Documents/AAU/Semester 1/P1/dabase/cmake-build-debug/CMakeFiles/Database_interaction.dir
+C:/Users/tobpu/Documents/AAU/Semester 1/P1/dabase/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tobpu/Documents/AAU/Semester 1/P1/dabase/cmake-build-debug/CMakeFiles/rebuild_cache.dir
