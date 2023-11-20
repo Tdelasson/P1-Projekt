@@ -9,7 +9,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3381e2b-1840-4ebc-aebd-67e24571d9e2" name="Changes" comment="Opdateret SQL databasen" />
+    <list default="true" id="d3381e2b-1840-4ebc-aebd-67e24571d9e2" name="Changes" comment="Opdateret SQL databasen">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ac72a438-db26-4589-9d29-b80d162957d7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ac72a438-db26-4589-9d29-b80d162957d7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +32,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -39,23 +46,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Database",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Subversion.Network&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JacobLenovo\Documents\GitHub\P1-Projekt\Database" />
+      <recent name="C:\Users\JacobLenovo\Documents\GitHub\P1-Projekt" />
+    </key>
+  </component>
+  <component name="RunManager" selected="C/C++ File.Database_interaction.c (1)">
+    <configuration name="Database_interaction.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="P1-Projekt" TARGET_NAME="Database_interaction.c">
+      <option name="sourceFile" value="Database_interaction.c" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Database_interaction.c" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="P1-Projekt" TARGET_NAME="Database_interaction.c" CONFIG_NAME="Database_interaction.c">
+      <option name="sourceFile" value="Database\Database_interaction.c" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="C/C++ File.Database_interaction.c (1)" />
+        <item itemvalue="C/C++ File.Database_interaction.c" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\JacobLenovo\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d3381e2b-1840-4ebc-aebd-67e24571d9e2" name="Changes" comment="" />
@@ -69,6 +106,11 @@
       <workItem from="1697534979304" duration="5000" />
       <workItem from="1700473585371" duration="34000" />
       <workItem from="1700473684403" duration="5836000" />
+      <workItem from="1700485894499" duration="91000" />
+      <workItem from="1700486001995" duration="33000" />
+      <workItem from="1700486053486" duration="16000" />
+      <workItem from="1700486081045" duration="539000" />
+      <workItem from="1700486681741" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="Opdateret SQL databasen">
       <option name="closed" value="true" />
