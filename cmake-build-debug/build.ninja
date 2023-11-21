@@ -49,11 +49,11 @@ cmake_ninja_workdir = C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/cmake-build-
 
 build cmake_object_order_depends_target_database_interaction: phony || cmake_object_order_depends_target_sqlite3
 
-build CMakeFiles/database_interaction.dir/database_interaction.c.obj: C_COMPILER__database_interaction_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/database_interaction.c || cmake_object_order_depends_target_database_interaction
-  DEP_FILE = CMakeFiles\database_interaction.dir\database_interaction.c.obj.d
+build CMakeFiles/database_interaction.dir/src/database_interaction.c.obj: C_COMPILER__database_interaction_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/src/database_interaction.c || cmake_object_order_depends_target_database_interaction
+  DEP_FILE = CMakeFiles\database_interaction.dir\src\database_interaction.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\database_interaction.dir
-  OBJECT_FILE_DIR = CMakeFiles\database_interaction.dir
+  OBJECT_FILE_DIR = CMakeFiles\database_interaction.dir\src
 
 
 # =============================================================================
@@ -63,7 +63,7 @@ build CMakeFiles/database_interaction.dir/database_interaction.c.obj: C_COMPILER
 #############################################
 # Link the executable database_interaction.exe
 
-build database_interaction.exe: C_EXECUTABLE_LINKER__database_interaction_Debug CMakeFiles/database_interaction.dir/database_interaction.c.obj | libsqlite3.a || libsqlite3.a
+build database_interaction.exe: C_EXECUTABLE_LINKER__database_interaction_Debug CMakeFiles/database_interaction.dir/src/database_interaction.c.obj | libsqlite3.a || libsqlite3.a
   FLAGS = -g
   LINK_LIBRARIES = libsqlite3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\database_interaction.dir
@@ -82,11 +82,11 @@ build database_interaction.exe: C_EXECUTABLE_LINKER__database_interaction_Debug 
 
 build cmake_object_order_depends_target_sqlite3: phony || CMakeFiles/sqlite3.dir
 
-build CMakeFiles/sqlite3.dir/sqlite3.c.obj: C_COMPILER__sqlite3_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/sqlite3.c || cmake_object_order_depends_target_sqlite3
-  DEP_FILE = CMakeFiles\sqlite3.dir\sqlite3.c.obj.d
+build CMakeFiles/sqlite3.dir/src/sqlite3.c.obj: C_COMPILER__sqlite3_unscanned_Debug C$:/Users/tobpu/Desktop/Github$ P1/P1-Projekt/src/sqlite3.c || cmake_object_order_depends_target_sqlite3
+  DEP_FILE = CMakeFiles\sqlite3.dir\src\sqlite3.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\sqlite3.dir
-  OBJECT_FILE_DIR = CMakeFiles\sqlite3.dir
+  OBJECT_FILE_DIR = CMakeFiles\sqlite3.dir\src
 
 
 # =============================================================================
@@ -96,7 +96,7 @@ build CMakeFiles/sqlite3.dir/sqlite3.c.obj: C_COMPILER__sqlite3_unscanned_Debug 
 #############################################
 # Link the static library libsqlite3.a
 
-build libsqlite3.a: C_STATIC_LIBRARY_LINKER__sqlite3_Debug CMakeFiles/sqlite3.dir/sqlite3.c.obj
+build libsqlite3.a: C_STATIC_LIBRARY_LINKER__sqlite3_Debug CMakeFiles/sqlite3.dir/src/sqlite3.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\sqlite3.dir
   POST_BUILD = cd .
