@@ -62,13 +62,6 @@
 			[
 				0
 			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				1
-			]
 		}
 	],
 	"sources" : 
@@ -78,11 +71,6 @@
 			"compileGroupIndex" : 0,
 			"path" : "sqlite3.c",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "sqlite3.h",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "STATIC_LIBRARY"

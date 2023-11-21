@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.26)
 
 add_subdirectory(test)
 add_subdirectory(main)
-add_subdirectory(dabase)
+
 
 add_library(Functions_main Main/Functions_main.c)
 

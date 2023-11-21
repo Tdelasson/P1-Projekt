@@ -48,7 +48,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "sqlite3::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-sqlite3-Debug-db30cc9e2038a6377205.json",
+					"jsonFile" : "target-sqlite3-Debug-ab43e17b366a03eb6a87.json",
 					"name" : "sqlite3",
 					"projectIndex" : 0
 				}
@@ -58,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/tobpu/Desktop/Github P1/P1-Projekt/cmake-build-debug",
-		"source" : "C:/Users/tobpu/Desktop/Github P1/P1-Projekt"
+		"build" : "C:/Users/JacobLenovo/Documents/GitHub/P1-Projekt/cmake-build-debug",
+		"source" : "C:/Users/JacobLenovo/Documents/GitHub/P1-Projekt"
 	},
 	"version" : 
 	{
