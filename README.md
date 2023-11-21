@@ -1,7 +1,7 @@
 # P1 Projekt
- Dette er vores P1 projekt.
+ This is our P1 Project
  
- Gruppemedlemmer:
+ Group members:
  - Tobias
  - Jacob
  - Zafir
@@ -10,4 +10,4 @@
  - Tilde
 
 You need to change your idea.max.intellisense.filesize=10000 
-Is done by going (in clion) to help -> edit custom properties -> insert: idea.max.intellisense.filesize=10000 
+Is done by (in clion) going to help -> edit custom properties -> paste: idea.max.intellisense.filesize=10000 
