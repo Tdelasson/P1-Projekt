@@ -1,4 +1,0 @@
-C:/Users/JacobLenovo/Documents/GitHub/P1-Projekt/cmake-build-debug/CMakeFiles/sqlite3.dir
-C:/Users/JacobLenovo/Documents/GitHub/P1-Projekt/cmake-build-debug/CMakeFiles/Database_interaction.dir
-C:/Users/JacobLenovo/Documents/GitHub/P1-Projekt/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/JacobLenovo/Documents/GitHub/P1-Projekt/cmake-build-debug/CMakeFiles/rebuild_cache.dir

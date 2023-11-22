@@ -1,2 +1,0 @@
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ar.exe qc libsqlite3.a CMakeFiles/sqlite3.dir/sqlite3.c.obj
-C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\ranlib.exe libsqlite3.a
