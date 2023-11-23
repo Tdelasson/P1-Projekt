@@ -1,0 +1,35 @@
+Format: ID Key, patient_medicine_name, patient_medicine_strength,
+Conflicting medicine 1, Conflicting medicine 2, etc. *
+
+123456789012,Aspirin,500 mg,Ibuprofen
+234567890123,Levothyroxine,100 mcg,Furosemide,Warfarin
+345678901234,Citalopram,20 mg,Amphetamine,Loratadine,Levothyroxine,Fluoxetine
+456789012345,Amlodipine,5 mg,Levothyroxine
+567890123456,Metformin,500 mg,Celecoxib
+678901234567,Omeprazole,20 mg,Lansoprazole
+789012345678,Warfarin,5 mg,Lisinopril
+890123456789,Diazepam,10 mg,Alprazolam
+901234567890,Furosemide,40 mg,Loratadine
+123456789012,Ranitidine,150 mg,Citalopram,Fluoxetine,Lansoprazole
+234567890123,Hydrochlorothiazide,25 mg,Lisinopril
+345678901234,Sertraline,50 mg,Citalopram,Escitalopram
+456789012345,Amlodipine,5 mg,Atorvastatin
+567890123456,Carvedilol,25 mg,Amlodipine
+678901234567,Clonazepam,1 mg,Alprazolam,Loratadine
+789012345678,Fluoxetine,20 mg,Citalopram,Escitalopram
+890123456789,Amphetamine,10 mg,Methylphenidate,Citalopram
+901234567890,Clopidogrel,75 mg,Warfarin,Diazepam,Aspirin
+123456789012,Rosuvastatin,10 mg,Simvastatin,Atorvastatin
+234567890123,Bupropion,150 mg,Escitalopram,Fluoxetine,Sertraline
+345678901234,Lisinopril,10 mg,Amlodipine
+456789012345,Amoxicillin,250 mg,Ibuprofen,Aspirin
+567890123456,Trazodone,50 mg,Fluoxetine,Escitalopram
+678901234567,Celecoxib,200 mg,Ibuprofen,Aspirin
+789012345678,Methylphenidate,20 mg,Amphetamine,Citalopram
+890123456789,Metoprolol,25 mg,Amlodipine,Carvedilol
+901234567890,Levothyroxine,100 mcg,Warfarin,Hydrochlorothiazide
+123456789012,Prednisone,10 mg,Ibuprofen,Aspirin
+234567890123,Doxycycline,100 mg,Ciprofloxacin,Amoxicillin
+345678901234,Esomeprazole,40 mg,Omeprazole,Lansoprazole
+456789012345,Fluticasone,50 mcg,Loratadine,Levothyroxine,Warfarin
+567890123456,Alprazolam,0.5 mg,Diazepam,Clonazepam

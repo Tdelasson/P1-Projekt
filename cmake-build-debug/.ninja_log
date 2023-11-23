@@ -1,18 +1,13 @@
 # ninja log v5
-8	87	7221896899012225	CMakeFiles/Database_interaction.dir/Database_interaction.c.obj	d406a86feba65c44
 6067	6260	7221927457078215	Database_interaction.exe	fb8204ca2ecb0485
-1	96	7221927395482131	CMakeFiles/Database_interaction.dir/Database_interaction.obj	165c45d9ff6ac09f
-6	111	7221893390384679	CMakeFiles/Database_interaction.dir/Database/Database_interaction.obj	55dba04e58d08f6c
-7	5939	7221927453763508	CMakeFiles/sqlite3.dir/sqlite3.obj	7309fb6b99148d6d
-15447	15629	7222573986383251	libsqlite3.a	6d638e307017b561
-3	580	7223637415345805	build.ninja	956264d821579608
-6	5624	7221932946149854	CMakeFiles/sqlite3.dir/sqlite3.c.obj	4c2ed6e5005c3807
-0	80	7221932890841171	CMakeFiles/database_interaction.dir/database_interaction.c.obj	fcfb777e57bd6c17
-15629	16148	7222573991513502	database_interaction.exe	31858b24ebedaa0f
-1	253	7222573832622043	CMakeFiles/database_interaction.dir/src/database_interaction.c.obj	8a2ce33a9c1bbefc
-9	15446	7222573984350014	CMakeFiles/sqlite3.dir/src/sqlite3.c.obj	bac94b8f994c822d
-3	375	7223637415345805	build.ninja	956264d821579608
-9	159	7223637417672169	CMakeFiles/database_interaction.dir/src/database_interaction.c.obj	8a2ce33a9c1bbefc
-1	12205	7223637537877598	CMakeFiles/sqlite3.dir/src/sqlite3.c.obj	bac94b8f994c822d
 12205	12373	7223637539812942	libsqlite3.a	6d638e307017b561
+2	125	7224445703105232	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
+1	216	7224448304886235	build.ninja	956264d821579608
 12373	12659	7223637542615237	database_interaction.exe	31858b24ebedaa0f
+126	326	7224445705079916	src/database/database_interaction.exe	a76c88f82f012a29
+1	12205	7223637537877598	CMakeFiles/sqlite3.dir/src/sqlite3.c.obj	bac94b8f994c822d
+9	159	7223637417672169	CMakeFiles/database_interaction.dir/src/database_interaction.c.obj	8a2ce33a9c1bbefc
+1	69	7224445925828482	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+1	66	7224446507028288	src/main/CMakeFiles/functions_main.dir/functions_main.c.obj	2bd6ff6eaa3c218b
+66	164	7224446508006731	src/main/libfunctions_main.a	db9d42c7c554d5a9
+165	252	7224446508856998	src/main/main.exe	72aa7e2c7461db4

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/test
+# Install script for directory: C:/Users/tobpu/Desktop/Github P1/P1-Projekt/test_main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
