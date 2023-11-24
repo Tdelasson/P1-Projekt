@@ -1,0 +1,3 @@
+Format: ID_key, patient_name, medication_name_1, medication_strength_1,
+medication_name_2, medication_strength_2 *
+
