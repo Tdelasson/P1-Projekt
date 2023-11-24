@@ -19,6 +19,8 @@ typedef struct {
     char surname[MAX_NAME_LGT];
     int age;
     char gender [MAX_GENDER_LGT];
+    int weight;
+    char weight_unit [30];
     int social_security_number;
 
 }patient_journal;

@@ -25,9 +25,10 @@ int get_patient_journal()
 
     // Display the patient information retrieved from the file
     for (int i = 0; i < MAX_PATIENTS; i++) {
-        printf(" %d, %s, %s, %d, %s, %d\n",
-               patients[i].id_key, patients[i].first_name, patients[i].surname, patients[i].age,
-               patients[i].gender, patients[i].social_security_number);
+        printf(" Information on resident no. %d: \n Name: %s %s\n Age: %d\n "
+               "Gender: %s\n Weight: %d %s\n Social Security Number: %d\n\n", i+1,
+               patients[i].first_name, patients[i].surname, patients[i].age,
+               patients[i].gender,patients[i].weight, patients[i].weight_unit, patients[i].social_security_number);
     }
 
     // Return the number of patients read from the file
