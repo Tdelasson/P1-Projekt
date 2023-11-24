@@ -1,4 +1,0 @@
-add_executable(database_interaction database_interaction.c)
-add_library(database_interaction_library database_interaction_library.c)
-
-target_link_libraries(database_interaction database_interaction_library)
