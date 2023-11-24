@@ -2,53 +2,34 @@
 #include <stdlib.h>
 #include "database_interaction.h"
 
-
-#define MAX_NAME_LGT 50
-typedef struct {
-    char fornavn[MAX_NAME_LGT];
-    char efternavn[MAX_NAME_LGT];
-}patient;
-
-int read_all_patients_from_file(FILE* input_file, patient patients[], int max_patients);
-
-int main(void)
+// Function to retrieve patient information from a file and display it
+int get_patient_journal()
 {
-    FILE* patient_journal_medicine= fopen("patient_journal_medicine.txt","r");
-    if(patient_journal_medicine == NULL){
+    // Open the patient journal file in read mode
+    FILE* patient_journal_file = fopen("patient_journal.txt", "r");
+
+    // Check if the file was successfully opened
+    if (patient_journal_file == NULL) {
         printf("Could not open file \n");
         exit(EXIT_FAILURE);
     }
 
-    patient patients [50];
-    int number_of_patients_read = read_all_patients_from_file(patient_journal_medicine, patients, 50);
-    fclose(patient_journal_medicine);
+    // Create an array to store patient records
+    patient_journal patients[50];
 
-    printf("%s %s",patients[1].fornavn,patients[1].efternavn);
+    // Read patient information from the file into the array
+    int number_of_patients_read = read_all_patients_from_file(patient_journal_file, patients);
+
+    // Close the file as it is no longer needed
+    fclose(patient_journal_file);
+
+    // Display the patient information retrieved from the file
+    for (int i = 0; i < MAX_PATIENTS; i++) {
+        printf(" %d, %s, %s, %d, %s, %d\n",
+               patients[i].id_key, patients[i].first_name, patients[i].surname, patients[i].age,
+               patients[i].gender, patients[i].social_security_number);
+    }
+
+    // Return the number of patients read from the file
     return number_of_patients_read;
-
-
-
-    /*printf("Car read from file: \n");
-    for (int i = 0; i < number_of_cars_read; i++) {
-        print_car(input_cars[i]);
-    }
-    //car_t my_car = read_car_from_file(input_file);
-
-    fclose(file);
-    return 0;*/
-}
-
-int read_all_patients_from_file(FILE* input_file, patient patients[], int max_patients){
-    int i;
-    for (i = 0; i < max_patients; i++){
-        patient new_patient;
-
-        int result = fscanf(input_file," %[A-Za-z] %[A-Za-z],",
-                            new_patient.fornavn,new_patient.efternavn);
-        if (result != 6){
-            break;
-        }
-        patients[i] = new_patient;
-    }
-    return i;
 }
