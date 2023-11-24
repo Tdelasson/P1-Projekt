@@ -1,3 +1,38 @@
 Format: ID_key, patient_name, medication_name_1, medication_strength_1,
 medication_name_2, medication_strength_2 *
 
+Adam Johnson, Ciprofloxacin, Pill, 250 mg
+Benjamin Smith, Simvastatin, Pill, 40 mg
+Christopher Brown, Acetaminophen, Pill, 500 mg
+David White, Atorvastatin, Pill, 20 mg
+Edward Martin, Levothyroxine, Pill, 100 mcg
+Frank Taylor, Naproxen, Pill, 220 mg
+George Wilson, Loratadine, Pill, 10 mg
+Henry Anderson, Ciprofloxacin, Pill, 250 mg
+Isaac Clark, Metformin, Pill, 500 mg
+Jack Turner, Warfarin, Pill, 5 mg
+Kevin Baker, Warfarin, Pill, 5 mg
+Liam Murphy, Ibuprofen, Pill, 200 mg
+Michael Rogers, Metformin, Pill, 500 mg
+Nathan Parker, Naproxen, Pill, 220 mg
+Oliver Hayes, Carvedilol, Pill, 25 mg
+Patricia Evans, Metformin, Pill, 1000 mg
+Quin Bennett, Diazepam, Pill, 10 mg
+Rachel Turner, Diazepam, Pill, 10 mg
+Sophia Lewis, Warfarin, Pill, 5 mg, Lisinopril, 10 mg
+Tessa Thompson, Losartan, Pill, 50 mg
+Ursula Harris, Levothyroxine, Pill, 100 mcg
+Vanessa Allen, Ibuprofen, Pill, 200 mg
+Wendy Foster, Aspirin, Pill, 500 mg
+Xena Scott, Celecoxib, Pill, 200 mg
+Yolanda Reed, Naproxen, Pill, 220 mg
+Zara Miller, Warfarin, Pill, 5 mg
+Alice Anderson, Levothyroxine, Pill, 100 mcg
+Betty Hayes, Aspirin, Pill, 500 mg
+Clara Roberts, Naproxen, Pill, 220 mg
+Daisy Bennett, Fluticasone, Pill, 50 mcg
+Ethan Johnson, Alprazolam, Pill, 0.5 mg
+Emma Smith, Levothyroxine, Pill, 100 mcg
+Sophia Parker, Diazepam, Pill, 10 mg
+Aiden Hayes, Warfarin, Pill, 5 mg
+Chloe Evans, Ibuprofen, Pill, 200 mg
