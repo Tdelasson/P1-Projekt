@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "database_interaction.h"
+#include "..\main\main.h"
+
 
 // Function to retrieve patient information from a file and display it
-int get_patient_journal()
+patient_journal* get_patient_journal(patient_journal patients[])
 {
     // Open the patient journal file in read mode
     FILE* patient_journal_file = fopen("patient_journal.txt", "r");
@@ -15,7 +16,6 @@ int get_patient_journal()
     }
 
     // Create an array to store patient records
-    patient_journal patients[50];
     int i=0;
 
     // Loop through the array of patient_journal structures
@@ -50,5 +50,5 @@ int get_patient_journal()
     }
 
     // Return the number of patients read from the file
-    return i;
+    return patients;
 }
