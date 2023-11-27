@@ -4,7 +4,7 @@
 // Defining constants used in functions
 #define MAX_PATIENTS 50
 #define MAX_NAME_LGT 50
-#define MAX_MEDICATIONS 5 // TODO: Dynamic allocation
+#define MAX_MEDICATIONS 15 // TODO: Dynamic allocation
 #define MAX_MEDICATION_NAME_LGT 50
 #define MAX_MEDICATION_TYPE_NAME_LGT 20
 #define MAX_MEDICATION_UNIT_NAME_LGT 4
@@ -20,7 +20,7 @@ typedef struct {
     int age;
     char gender [MAX_GENDER_LGT];
     int weight;
-    char weight_unit [30];
+    char weight_unit [5];
     int social_security_number;
 
 }patient_journal;
@@ -36,6 +36,4 @@ typedef struct {
     char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_UNIT_NAME_LGT];
 
 }patient_medications;
-
-int read_all_patients_from_file(FILE* input_file, patient_journal patients[]);
 

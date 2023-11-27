@@ -1,1 +1,0 @@
-add_executable(test_database test_database.c)

@@ -2,5 +2,6 @@
 
 int main (void){
     get_patient_journal();
-    return 5;
+    int number_of_patients_read = get_patient_journal();
+    return number_of_patients_read;
 }
