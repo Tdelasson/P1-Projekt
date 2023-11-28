@@ -1,7 +1,7 @@
 Format: ID Key, patient_medicine_name, patient_medicine_strength,
 Conflicting medicine 1, Conflicting medicine 2, etc. *
 
-123456789012,Aspirin,500 mg,Ibuprofen 2000
+123456789012,Aspirin,500 mg,Ibuprofen
 234567890123,Levothyroxine,100 mcg,Furosemide,Warfarin
 345678901234,Citalopram,20 mg,Amphetamine,Loratadine,Levothyroxine,Fluoxetine
 456789012345,Amlodipine,5 mg,Levothyroxine

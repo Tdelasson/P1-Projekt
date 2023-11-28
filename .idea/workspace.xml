@@ -9,7 +9,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3381e2b-1840-4ebc-aebd-67e24571d9e2" name="Changes" comment="Opdateret SQL databasen" />
+    <list default="true" id="d3381e2b-1840-4ebc-aebd-67e24571d9e2" name="Changes" comment="Opdateret SQL databasen">
+      <change afterPath="$PROJECT_DIR$/src/database_interaction/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database_interaction/database_interaction.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database_interaction/database_interaction.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database_interaction/database_interaction_library.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database_textfiles/medicine_conflicts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database_textfiles/medicine_conflicts.txt" afterDir="false" />
+    </list>
+    <list id="aa5bd11c-c49f-481d-8653-3f370669b668" name="Changes by JacobLenovo" comment="">
+      <change beforePath="$PROJECT_DIR$/database_textfiles/patient_journal_medicine.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database_textfiles/patient_journal_medicine.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +35,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Tdelasson"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="452a4743-0cd9-456a-bf32-462159a78cd2" />
+        <option name="url" value="https://github.com/Tdelasson/P1-Projekt.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
@@ -50,12 +78,14 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "Database__v2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "vcs.Subversion.Network",
+    "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -66,7 +96,7 @@
     </key>
   </component>
   <component name="RunManager" selected="C/C++ File.Database_interaction.c (1)">
-    <configuration name="Database_interaction.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="P1-Projekt" TARGET_NAME="Database_interaction.c">
+    <configuration name="Database_interaction.c (1)" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="P1-Projekt" TARGET_NAME="Database_interaction.c" CONFIG_NAME="Database_interaction.c (1)">
       <option name="sourceFile" value="Database_interaction.c" />
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
@@ -78,8 +108,14 @@
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="C/C++ File.Database_interaction.c" />
+      <item itemvalue="C/C++ File.Database_interaction.c (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="C/C++ File.Database_interaction.c (1)" />
+        <item itemvalue="C/C++ File.Database_interaction.c" />
         <item itemvalue="C/C++ File.Database_interaction.c (1)" />
         <item itemvalue="C/C++ File.Database_interaction.c" />
       </list>
@@ -87,7 +123,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration>C:\Users\JacobLenovo\AppData\Roaming\Subversion</configuration>
+    <configuration>C:\Users\tobpu\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -108,7 +144,7 @@
       <workItem from="1700486081045" duration="539000" />
       <workItem from="1700486681741" duration="8000" />
       <workItem from="1700553174255" duration="6000" />
-      <workItem from="1700813174092" duration="367000" />
+      <workItem from="1700813561847" duration="870000" />
     </task>
     <task id="LOCAL-00001" summary="Opdateret SQL databasen">
       <option name="closed" value="true" />
