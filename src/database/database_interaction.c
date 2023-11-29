@@ -3,30 +3,30 @@
 #include "..\main\main.h"
 
 
-// Function to retrieve patient information from a file and display it
-patient_journal* get_patient_journal(patient_journal patients[])
+// Function to retrieve resident information from a file and display it
+resident_journal* get_resident_journal(resident_journal residents[])
 {
-    // Open the patient journal file in read mode
-    FILE* patient_journal_file = fopen("patient_record.txt", "r");
+    // Open the resident journal file in read mode
+    FILE* resident_journal_file = fopen("resident_record.txt", "r");
 
     // Check if the file was successfully opened
-    if (patient_journal_file == NULL) {
+    if (resident_journal_file == NULL) {
         printf("Could not open file \n");
         exit(EXIT_FAILURE);
     }
 
-    // Create an array to store patient records
+    // Create an array to store resident records
     int i=0;
 
-    // Loop through the array of patient_journal structures
+    // Loop through the array of resident_journal structures
     for (i; i < MAX_PATIENTS; i++) {
 
         // Read data from the file using the corrected format specifier
-        int result = fscanf(patient_journal_file, ": %d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
-                            &patients[i].id_key, patients[i].first_name,
-                            patients[i].surname, &patients[i].apartment_number, &patients[i].age,
-                            patients[i].gender, &patients[i].weight,
-                            patients[i].weight_unit, &patients[i].social_security_number);
+        int result = fscanf(resident_journal_file, ": %d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
+                            &residents[i].id_key, residents[i].first_name,
+                            residents[i].surname, &residents[i].apartment_number, &residents[i].age,
+                            residents[i].gender, &residents[i].weight,
+                            residents[i].weight_unit, &residents[i].social_security_number);
 
         // Check if the expected number of fields (9) were successfully read
         if (result != 9) {
@@ -34,26 +34,26 @@ patient_journal* get_patient_journal(patient_journal patients[])
             break;
         }
 
-        // Store the read patient information in the array
-        int number_of_patients_read = i;
+        // Store the read resident information in the array
+        int number_of_residents_read = i;
     }
 
     // Close the file as it is no longer needed
-    fclose(patient_journal_file);
+    fclose(resident_journal_file);
 
-    // Display the patient information retrieved from the file
+    // Display the resident information retrieved from the file
     for (int j = 0; j < MAX_PATIENTS; j++) {
         printf(" Information on resident no. %d: \n Name: %s %s\n Apartment number: %.2lf \n Age: %d\n "
                "Gender: %s\n Weight: %d %s\n Social Security Number: %d\n\n", j+1,
-               patients[j].first_name, patients[j].surname, patients[j].apartment_number, patients[j].age,
-               patients[j].gender,patients[j].weight, patients[j].weight_unit, patients[j].social_security_number);
+               residents[j].first_name, residents[j].surname, residents[j].apartment_number, residents[j].age,
+               residents[j].gender,residents[j].weight, residents[j].weight_unit, residents[j].social_security_number);
     }
 
-    // Return the number of patients read from the file
-    return patients;
+    // Return the number of residents read from the file
+    return residents;
 }
 
-patient_medications* get_patient_journal_medicine(patient_medications patients[]){
+resident_medications* get_resident_journal_medicine(resident_medications residents[]){
 
 }
 

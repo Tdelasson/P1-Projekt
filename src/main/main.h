@@ -12,7 +12,7 @@
 #define MAX_GENDER_LGT 6
 #define MAX_SOCIAL_SECURITY_NUMBER_LGT 10
 
-// Making a struct type for patient journal data
+// Making a struct type for resident journal data
 typedef struct {
     int id_key;
     char first_name[MAX_NAME_LGT];
@@ -24,46 +24,39 @@ typedef struct {
     char weight_unit [5];
     int social_security_number;
 
-}patient_journal;
+}resident_journal;
 
-// Making a struct type for patient medication data
+// Making a struct type for resident medication data
 typedef struct {
     int id_key;
     char first_name[MAX_NAME_LGT];
     char surname[MAX_NAME_LGT];
-    // Making space for patients to take multiple medications
+    // Making space for residents to take multiple medications
     char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
     char medication_type[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
     char medication_strength[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
     char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_UNIT_NAME_LGT];
 
-}patient_medications;
+}resident_medications;
 
 typedef struct {
     int id_key;
-    char first_name[MAX_NAME_LGT];
-    char surname[MAX_NAME_LGT];
-    // Making space for patients to take multiple medications
-    char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
-    char medication_type[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
-    char medication_strength[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
-    char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_UNIT_NAME_LGT];
+    char name[50];
+    char type[10];
+    double strength;
+    char unit_of_strength[10];
 
-}medicine_data;
+}medicine_database;
 
 typedef struct {
     int id_key;
-    char first_name[MAX_NAME_LGT];
-    char surname[MAX_NAME_LGT];
-    // Making space for patients to take multiple medications
-    char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
-    char medication_type[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
-    char medication_strength[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
-    char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_UNIT_NAME_LGT];
+    char resident_medication[50];
+    double strength;
+    char unit[10];
 
 }medicine_conflicts;
 
 
 
-patient_journal* get_patient_journal(patient_journal patients[]);
-patient_medications* patient_journal_medicine(patient_medications patients[]);
+resident_journal* get_resident_journal(resident_journal residents[]);
+resident_medications* resident_journal_medicine(resident_medications residents[]);
