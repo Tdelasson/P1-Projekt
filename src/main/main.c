@@ -8,5 +8,4 @@ int main (void){
     //printf("\n\n%s",residents[0].first_name);
     //resident_record * resident = get_resident_record();
     //return number_of_residents_read;
-
 }
