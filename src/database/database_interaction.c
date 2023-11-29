@@ -4,13 +4,13 @@
 
 
 // Function to retrieve resident information from a file and display it
-resident_journal* get_resident_journal(resident_journal residents[])
+resident_record* get_resident_record(resident_record residents[])
 {
-    // Open the resident journal file in read mode
-    FILE* resident_journal_file = fopen("resident_record.txt", "r");
+    // Open the resident record file in read mode
+    FILE* resident_record_file = fopen("resident_record.txt", "r");
 
     // Check if the file was successfully opened
-    if (resident_journal_file == NULL) {
+    if (resident_record_file == NULL) {
         printf("Could not open file \n");
         exit(EXIT_FAILURE);
     }
@@ -18,11 +18,11 @@ resident_journal* get_resident_journal(resident_journal residents[])
     // Create an array to store resident records
     int i=0;
 
-    // Loop through the array of resident_journal structures
+    // Loop through the array of resident_record structures
     for (i; i < MAX_PATIENTS; i++) {
 
         // Read data from the file using the corrected format specifier
-        int result = fscanf(resident_journal_file, ": %d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
+        int result = fscanf(resident_record_file, ": %d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
                             &residents[i].id_key, residents[i].first_name,
                             residents[i].surname, &residents[i].apartment_number, &residents[i].age,
                             residents[i].gender, &residents[i].weight,
@@ -39,7 +39,7 @@ resident_journal* get_resident_journal(resident_journal residents[])
     }
 
     // Close the file as it is no longer needed
-    fclose(resident_journal_file);
+    fclose(resident_record_file);
 
     // Display the resident information retrieved from the file
     for (int j = 0; j < MAX_PATIENTS; j++) {
@@ -53,7 +53,10 @@ resident_journal* get_resident_journal(resident_journal residents[])
     return residents;
 }
 
-resident_medications* get_resident_journal_medicine(resident_medications residents[]){
+resident_medications* get_resident_record_medicine(resident_medications residents[]){
 
 }
 
+medicine_database* get_resident_medicine_data(medicine_database residents[]);
+
+medicine_conflicts* get_medicine_conflicts(medicine_conflicts residents[]);

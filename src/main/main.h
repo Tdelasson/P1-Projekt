@@ -12,7 +12,7 @@
 #define MAX_GENDER_LGT 6
 #define MAX_SOCIAL_SECURITY_NUMBER_LGT 10
 
-// Making a struct type for resident journal data
+// Making a struct type for resident record data
 typedef struct {
     int id_key;
     char first_name[MAX_NAME_LGT];
@@ -24,7 +24,7 @@ typedef struct {
     char weight_unit [5];
     int social_security_number;
 
-}resident_journal;
+}resident_record;
 
 // Making a struct type for resident medication data
 typedef struct {
@@ -58,5 +58,5 @@ typedef struct {
 
 
 
-resident_journal* get_resident_journal(resident_journal residents[]);
-resident_medications* resident_journal_medicine(resident_medications residents[]);
+resident_record* get_resident_record(resident_record residents[]);
+resident_medications* resident_record_medicine(resident_medications residents[]);
