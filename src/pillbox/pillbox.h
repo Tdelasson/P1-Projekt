@@ -1,3 +1,4 @@
+#include "..\main\main.h"
 #ifndef PILLBOX_PILL_BOX_H
 #define PILLBOX_PILL_BOX_H
 
@@ -10,7 +11,8 @@ typedef enum box_place {none, monday, tuesday, wednesday, thursday, friday, satu
     morning, noon, evening,
     empty, one, two, three, four, five} box_place;
 
-void dispensing(void);
+//void dispensing(patient_journal *patients[]);
+void check_patient(patient_journal *patient[]);
 void print_box_place(box_place c);
 void print_box(box_place pill_box[][COLUMNS]);
 int update_box_1 (box_place pill_box[][COLUMNS]);
