@@ -7,7 +7,7 @@
 patient_journal* get_patient_journal(patient_journal patients[])
 {
     // Open the patient journal file in read mode
-    FILE* patient_journal_file = fopen("patient_journal.txt", "r");
+    FILE* patient_journal_file = fopen("patient_record.txt", "r");
 
     // Check if the file was successfully opened
     if (patient_journal_file == NULL) {
@@ -28,7 +28,7 @@ patient_journal* get_patient_journal(patient_journal patients[])
                             patients[i].gender, &patients[i].weight,
                             patients[i].weight_unit, &patients[i].social_security_number);
 
-        // Check if the expected number of fields (8) were successfully read
+        // Check if the expected number of fields (9) were successfully read
         if (result != 9) {
             // If not, break out of the loop indicating the end of file or a read error
             break;
@@ -52,3 +52,8 @@ patient_journal* get_patient_journal(patient_journal patients[])
     // Return the number of patients read from the file
     return patients;
 }
+
+patient_medications* get_patient_journal_medicine(patient_medications patients[]){
+
+}
+

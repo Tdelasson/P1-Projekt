@@ -75,3 +75,7 @@
 6	172	7229548753057173	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
 174	285	7229548754189906	src/database/libdatabase_interaction.a	bdbd97f550a665b1
 285	451	7229548755769171	src/main/main.exe	4820bb8735f8b678
+15	175	7229557139935158	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+7	187	7229557140058270	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
+187	349	7229557141673789	src/database/libdatabase_interaction.a	bdbd97f550a665b1
+349	534	7229557143462034	src/main/main.exe	4820bb8735f8b678

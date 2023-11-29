@@ -28,6 +28,7 @@ typedef struct {
 
 // Making a struct type for patient medication data
 typedef struct {
+    int id_key;
     char first_name[MAX_NAME_LGT];
     char surname[MAX_NAME_LGT];
     // Making space for patients to take multiple medications
@@ -38,4 +39,31 @@ typedef struct {
 
 }patient_medications;
 
-patient_journal* get_patient_journal();
+typedef struct {
+    int id_key;
+    char first_name[MAX_NAME_LGT];
+    char surname[MAX_NAME_LGT];
+    // Making space for patients to take multiple medications
+    char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
+    char medication_type[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
+    char medication_strength[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
+    char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_UNIT_NAME_LGT];
+
+}medicine_data;
+
+typedef struct {
+    int id_key;
+    char first_name[MAX_NAME_LGT];
+    char surname[MAX_NAME_LGT];
+    // Making space for patients to take multiple medications
+    char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
+    char medication_type[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
+    char medication_strength[MAX_MEDICATIONS][MAX_MEDICATION_TYPE_NAME_LGT];
+    char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_UNIT_NAME_LGT];
+
+}medicine_conflicts;
+
+
+
+patient_journal* get_patient_journal(patient_journal patients[]);
+patient_medications* patient_journal_medicine(patient_medications patients[]);

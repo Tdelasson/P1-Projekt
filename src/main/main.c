@@ -6,4 +6,7 @@ int main (void){
     printf("\n\n%s",patients[0].first_name);
     //patient_journal * patient = get_patient_journal();
     //return number_of_patients_read;
+
+
+    // Counter for
 }
