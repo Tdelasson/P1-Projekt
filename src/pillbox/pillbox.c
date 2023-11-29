@@ -2,12 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void dispensing(void) {
+void dispensing(patient_journal *patients[]) {
     box_place pill_box[ROWS][COLUMNS] = {{none,   monday, tuesday, wednesday, thursday, friday, saturday, sunday},
                                          {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
     int ny;
+
+
+    check_patient(patients);
+
     update_box_1(pill_box);
 
     print_box(pill_box);
@@ -21,6 +25,34 @@ void dispensing(void) {
 
     print_box(pill_box);
 }
+
+void check_patient(patient_journal *patients[]){
+
+    int patient_number;
+
+    int run = 1;
+    while(run == 1) {
+        //scan patient
+        printf("Type the patients number\n>");
+        scanf("%d", &patient_number);
+
+        for (int i = 0; i < MAX_PATIENTS; i++) {
+            int actually_ID_key = patients[i]->id_key;
+
+            if (patient_number == actually_ID_key) {
+                printf("Patient registered\n");
+                run = 0;
+            }
+            printf("Wrong number on patient\n");
+        }
+        //print medicine for patient
+    }
+}
+
+void check_medicine () {
+    printf("Type the ");
+}
+
 
 void print_box_place(box_place c){
     switch (c) {
