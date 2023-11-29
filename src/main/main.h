@@ -38,3 +38,6 @@ typedef struct {
 }patient_medications;
 
 patient_journal* get_patient_journal();
+
+
+void dispensing(void);
