@@ -4,13 +4,15 @@
 
 
 void dispensing() {
+
     box_place pill_box[ROWS][COLUMNS] = {{none,   monday, tuesday, wednesday, thursday, friday, saturday, sunday},
                                          {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
     int ny;
 
-    check_patient();
+    check_patient(patients);
+
 
     update_box_1(pill_box);
 
@@ -27,6 +29,7 @@ void dispensing() {
 
     print_box(pill_box);
 }
+
 
 void check_patient(){
     patient_journal patients[MAX_PATIENTS];
