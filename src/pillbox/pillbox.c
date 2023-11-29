@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 void dispensing() {
     box_place pill_box[ROWS][COLUMNS] = {{none,   monday, tuesday, wednesday, thursday, friday, saturday, sunday},
                                          {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
@@ -18,7 +19,9 @@ void dispensing() {
     clear_pill_box(pill_box);
 
     printf("\n>");
+
     scanf("%d", &ny);
+
 
     update_box_2(pill_box);
 
