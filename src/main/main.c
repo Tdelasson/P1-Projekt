@@ -7,6 +7,4 @@ int main (void){
     //resident_journal * resident = get_resident_journal();
     //return number_of_residents_read;
 
-
-    // Counter for
 }
