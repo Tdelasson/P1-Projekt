@@ -22,14 +22,14 @@ patient_journal* get_patient_journal(patient_journal patients[])
     for (i; i < MAX_PATIENTS; i++) {
 
         // Read data from the file using the corrected format specifier
-        int result = fscanf(patient_journal_file, ".%d, %[^,], %[^,], %d, %[^,], %d, %[^,], %d",
+        int result = fscanf(patient_journal_file, ": %d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
                             &patients[i].id_key, patients[i].first_name,
-                            patients[i].surname, &patients[i].age,
+                            patients[i].surname, &patients[i].apartment_number, &patients[i].age,
                             patients[i].gender, &patients[i].weight,
                             patients[i].weight_unit, &patients[i].social_security_number);
 
         // Check if the expected number of fields (8) were successfully read
-        if (result != 8) {
+        if (result != 9) {
             // If not, break out of the loop indicating the end of file or a read error
             break;
         }
@@ -43,9 +43,9 @@ patient_journal* get_patient_journal(patient_journal patients[])
 
     // Display the patient information retrieved from the file
     for (int j = 0; j < MAX_PATIENTS; j++) {
-        printf(" Information on resident no. %d: \n Name: %s %s\n Age: %d\n "
+        printf(" Information on resident no. %d: \n Name: %s %s\n Apartment number: %.2lf \n Age: %d\n "
                "Gender: %s\n Weight: %d %s\n Social Security Number: %d\n\n", j+1,
-               patients[j].first_name, patients[j].surname, patients[j].age,
+               patients[j].first_name, patients[j].surname, patients[j].apartment_number, patients[j].age,
                patients[j].gender,patients[j].weight, patients[j].weight_unit, patients[j].social_security_number);
     }
 

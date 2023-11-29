@@ -17,6 +17,7 @@ typedef struct {
     int id_key;
     char first_name[MAX_NAME_LGT];
     char surname[MAX_NAME_LGT];
+    double apartment_number;
     int age;
     char gender [MAX_GENDER_LGT];
     int weight;
