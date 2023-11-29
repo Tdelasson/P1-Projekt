@@ -7,6 +7,4 @@ int main (void){
     //patient_journal * patient = get_patient_journal();
     //return number_of_patients_read;
 
-
-    // Counter for
 }
