@@ -57,7 +57,6 @@ int LinSearch(patient_journal patients[], int patient_number){
         }
     }
     return -1;
-
 }
 
 void check_medicine () {
