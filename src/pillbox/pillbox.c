@@ -2,15 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void dispensing(patient_journal *patients[]) {
+void dispensing() {
     box_place pill_box[ROWS][COLUMNS] = {{none,   monday, tuesday, wednesday, thursday, friday, saturday, sunday},
                                          {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
     int ny;
 
-
-    check_patient(patients);
+    check_patient();
 
     update_box_1(pill_box);
 
@@ -19,34 +18,36 @@ void dispensing(patient_journal *patients[]) {
     clear_pill_box(pill_box);
 
     printf("\n>");
-    scanf("%d", ny);
+    scanf("%d", &ny);
 
     update_box_2(pill_box);
 
     print_box(pill_box);
 }
 
-void check_patient(patient_journal *patients[]){
-
+void check_patient() {
+    patient_journal patients[MAX_PATIENTS];
+    get_patient_journal(patients);
     int patient_number;
 
     int run = 1;
-    while(run == 1) {
-        //scan patient
+    while (run == 1){
+        // Ask for patient number
         printf("Type the patients number\n>");
         scanf("%d", &patient_number);
-
+        // Compare patient number to id_key from patient_journal.txt
         for (int i = 0; i < MAX_PATIENTS; i++) {
-            int actually_ID_key = patients[i]->id_key;
-
-            if (patient_number == actually_ID_key) {
+            if (patient_number == patients[i].id_key) {
                 printf("Patient registered\n");
                 run = 0;
+                i = MAX_PATIENTS;
             }
-            printf("Wrong number on patient\n");
         }
-        //print medicine for patient
+        if (run == 1) {
+            printf("Patient not registered\n");
+        }
     }
+
 }
 
 void check_medicine () {
