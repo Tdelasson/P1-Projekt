@@ -78,7 +78,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 void get_resident_medication_conflict(resident_medications medications[], int number_of_medications);
 // check_resident_medications
 
-void dispensing(patient_journal *patients[]);
+void dispensing();
 
 
 //(Program kan scanne patient id key og sammenligne det med et inputtet id key fra user)

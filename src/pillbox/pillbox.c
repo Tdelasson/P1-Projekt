@@ -9,8 +9,7 @@ void dispensing() {
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
     int ny;
 
-    check_patient(patients);
-
+    check_patient();
 
     update_box_1(pill_box);
 
@@ -19,8 +18,6 @@ void dispensing() {
     clear_pill_box(pill_box);
 
     printf("\n>");
-
-
     scanf("%d", &ny);
 
     update_box_2(pill_box);
@@ -28,41 +25,39 @@ void dispensing() {
     print_box(pill_box);
 }
 
-
 void check_patient(){
+    resident_record residents[MAX_PATIENTS];
+    get_resident_record(residents);
 
-    patient_journal patients[MAX_PATIENTS];
-    get_patient_journal(patients);
-    int patient_number;
+    int resident_number;
+    int run = 1;
 
-    printf("Type the patients number\n>");
-    char input[100];
-    fgets(input, 100, stdin);
-    sscanf(input, "%d", &patient_number);
-    int result = LinSearch(patients, patient_number);
+    while (run == 1) {
+        printf("Type the patients number\n>");
+        char input[100];
+        fgets(input, 100, stdin);
+        sscanf(input, "%d", &resident_number);
 
-    if (result == -1){
-        printf("Patient not registered\n");
-    }
-    else {
-        printf("Patient registered\n");
-        printf("%s %s\n", patients[result].first_name, patients[result].surname);
+        int result = LinSearch(residents, resident_number);
+
+        if (result == -1) {
+            printf("Patient not registered\n");
+        } else {
+            printf("Patient registered\n");
+            printf("%s %s\n", residents[result].first_name, residents[result].surname);
+            run = 0;
+        }
     }
 }
 
-int LinSearch(patient_journal patients[], int patient_number){
+int LinSearch(resident_record residents[], int resident_number){
     for (int i = 0; i < MAX_PATIENTS;i++){
-        if (patients[i].id_key == patient_number) {
+        if (residents[i].id_key == resident_number) {
             return i;
         }
     }
     return -1;
 }
-
-void check_medicine () {
-    printf("Type the ");
-}
-
 
 void print_box_place(box_place c){
     switch (c) {
