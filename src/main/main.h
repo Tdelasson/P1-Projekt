@@ -34,6 +34,7 @@ typedef struct {
 // Making a struct type for resident medication data
 typedef struct {
     // Making space for residents to take multiple medications
+
     int medication;
     double total_weekly_dose;
     char medication_unit[MAX_MEDICATION_NAME_LGT];
