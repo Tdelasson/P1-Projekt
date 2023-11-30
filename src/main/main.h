@@ -47,7 +47,7 @@ typedef struct {
     int morning_dose[MAX_MEDICATIONS];
     int noon_dose[MAX_MEDICATIONS];
     int evening_dose[MAX_MEDICATIONS];
-
+    
 }resident_medications;
 
 typedef struct {
