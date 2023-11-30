@@ -1,10 +1,12 @@
 #include "main.h"
 
 int main (void){
-    resident_journal residents[50];
-    get_resident_journal(residents);
+    //staff_record staffs[10];
+    resident_record residents[50];
+    get_resident_record(residents);
+    get_resident_record_medicine(residents[0].id_key);
     //printf("\n\n%s",residents[0].first_name);
-    //resident_journal * resident = get_resident_journal();
+    //resident_record * resident = get_resident_record();
     //return number_of_residents_read;
 
 }
