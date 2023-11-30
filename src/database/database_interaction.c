@@ -2,6 +2,28 @@
 #include <stdlib.h>
 #include "..\main\main.h"
 
+Nursing_Home_personnel* get_staff_record(staff_record staffs[]) {
+    // Open the resident record file in read mode
+    FILE *Nursing_Home_file = fopen("Nursing_Home_personnel.txt", "r");
+
+    // Check if the file was successfully opened
+    if (Nursing_Home_file == NULL) {
+        printf("Could not open file \n");
+        exit(EXIT_FAILURE);
+    }
+    int i=0;
+
+    for (i; i < MAX_STAFF; i++) {
+
+        int staff_result = fscanf(Nursing_Home_file, ": %d, %[^,], %[^,],");
+
+        if (staff_result !=3){
+            break;
+        }
+    }
+
+
+}
 
 // Function to retrieve resident information from a file and display it
 resident_record* get_resident_record(resident_record residents[])
@@ -54,7 +76,7 @@ resident_record* get_resident_record(resident_record residents[])
 }
 
 resident_medications* get_resident_record_medicine(resident_medications residents[]){
-
+    
 }
 
 medicine_database* get_resident_medicine_data(medicine_database residents[]);

@@ -11,6 +11,14 @@
 #define MAX_AGE_LGT 3
 #define MAX_GENDER_LGT 6
 #define MAX_SOCIAL_SECURITY_NUMBER_LGT 10
+#define MAX_STAFF 10
+
+//Making a struct type for Nursing home staff personnel
+typedef struct{
+    int id_key;
+    char first_name;
+    char surname;
+}nursing_home_personnel;
 
 // Making a struct type for resident record data
 typedef struct {
@@ -56,7 +64,6 @@ typedef struct {
 
 }medicine_conflicts;
 
-
-
+Nursing_Home_personnel* get_staff_record(staff_record staffs[]);
 resident_record* get_resident_record(resident_record residents[]);
 resident_medications* resident_record_medicine(resident_medications residents[]);
