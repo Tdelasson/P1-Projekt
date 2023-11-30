@@ -26,38 +26,38 @@ void dispensing() {
 }
 
 void check_patient(){
-    patient_journal patients[MAX_PATIENTS];
-    get_patient_journal(patients);
-    int patient_number;
+    resident_record residents[MAX_PATIENTS];
+    get_resident_record(residents);
 
-    printf("Type the patients number\n>");
-    char input[100];
-    fgets(input, 100, stdin);
-    sscanf(input, "%d", &patient_number);
-    int result = LinSearch(patients, patient_number);
+    int resident_number;
+    int run = 1;
 
-    if (result == -1){
-        printf("Patient not registered\n");
-    }
-    else {
-        printf("Patient registered\n");
-        printf("%s %s\n", patients[result].first_name, patients[result].surname);
+    while (run == 1) {
+        printf("Type the patients number\n>");
+        char input[100];
+        fgets(input, 100, stdin);
+        sscanf(input, "%d", &resident_number);
+
+        int result = LinSearch(residents, resident_number);
+
+        if (result == -1) {
+            printf("Patient not registered\n");
+        } else {
+            printf("Patient registered\n");
+            printf("%s %s\n", residents[result].first_name, residents[result].surname);
+            run = 0;
+        }
     }
 }
 
-int LinSearch(patient_journal patients[], int patient_number){
+int LinSearch(resident_record residents[], int resident_number){
     for (int i = 0; i < MAX_PATIENTS;i++){
-        if (patients[i].id_key == patient_number) {
+        if (residents[i].id_key == resident_number) {
             return i;
         }
     }
     return -1;
 }
-
-void check_medicine () {
-    printf("Type the ");
-}
-
 
 void print_box_place(box_place c){
     switch (c) {

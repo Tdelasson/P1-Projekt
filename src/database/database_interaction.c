@@ -39,7 +39,7 @@ resident_record* get_resident_record(resident_record residents[])
 
     // Close the file as it is no longer needed
     fclose(resident_record_file);
-
+/*
     // Display the resident information retrieved from the file
     for (int j = 0; j < MAX_PATIENTS; j++) {
         printf(" Information on resident no. %d: \n Name: %s %s\n Apartment number: %.2lf \n Age: %d\n "
@@ -47,18 +47,18 @@ resident_record* get_resident_record(resident_record residents[])
                residents[j].first_name, residents[j].surname, residents[j].apartment_number, residents[j].age,
                residents[j].gender,residents[j].weight, residents[j].weight_unit, residents[j].social_security_number);
     }
-
+*/
     // Return the number of residents read from the file
     return residents;
 }
 
-resident_medications * get_resident_record_medicine(int resident_id_key){
+resident_medications* get_resident_record_medicine(resident_medications medications[]) {
 // Open the resident record file in read mode
 
-    FILE* resident_record_medicine_file = fopen("resident_record_medicine.txt", "r");
+    FILE *resident_record_medicine_file = fopen("resident_record_medicine.txt", "r");
 
     //search for the resident in the medication database
-    resident_medications medications[50];
+    //resident_medications medications[50];
 
     // Check if the file was successfully opened
     if (resident_record_medicine_file == NULL) {
@@ -66,27 +66,24 @@ resident_medications * get_resident_record_medicine(int resident_id_key){
         exit(EXIT_FAILURE);
     }
 
-
-
-
     // Create an array to store resident records
-    int i=0;
+    int i = 0;
 
     // Loop through the array of resident_record structures
     for (i; i < MAX_PATIENTS; i++) {
         // Read data from the file using the corrected format specifier
         int result_patient = fscanf(resident_record_medicine_file, ": %d, %d",
-                            &medications[i].id_key, &medications[i].patient_id_key);
+                                    &medications[i].id_key, &medications[i].patient_id_key);
 
-        for (int j = 0; i < MAX_MEDICATIONS; j++){
+        for (int j = 0; i < MAX_MEDICATIONS; j++) {
 
 
             int result_medicine = fscanf(resident_record_medicine_file, "%[^,], %[^,], %d, %d, %d, %d,",
-                medications[i].medication[j], medications[i].medication_unit[j],
-                &medications[i].total_daily_dose[j],&medications[i].morning_dose[j],
-                &medications[i].noon_dose[j],&medications[i].evening_dose[j]);
+                                         medications[i].medication[j], medications[i].medication_unit[j],
+                                         &medications[i].total_daily_dose[j], &medications[i].morning_dose[j],
+                                         &medications[i].noon_dose[j], &medications[i].evening_dose[j]);
 
-            if (result_medicine != 6){
+            if (result_medicine != 6) {
                 break;
             }
         }
@@ -101,12 +98,11 @@ resident_medications * get_resident_record_medicine(int resident_id_key){
         int number_of_residents_read = i;
     }
 
-
-
-
     // Close the file as it is no longer needed
     fclose(resident_record_medicine_file);
-
+    return medications;
+}
+/*
     // Display the resident information retrieved from the file
     for (int g = 0; g < MAX_PATIENTS; g++) {
         printf(" Medication information on resident no. %d: \n Name: %s %s\n", g+1,
@@ -162,7 +158,7 @@ medicine_conflicts * get_resident_medication_conflict(int resident_id_key) {
         }
     }
 }
-
+*/
 medicine_database* get_resident_medicine_data(medicine_database residents[]);
 
 medicine_conflicts* get_medicine_conflicts(medicine_conflicts residents[]);
