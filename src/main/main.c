@@ -1,6 +1,7 @@
 #include "main.h"
 
 
+
 int main(void) {
     // Get the resident's personal information and print it
     resident_record resident;
@@ -22,6 +23,8 @@ int main(void) {
     }
 
     dispensing((patient_journal **) patients);
+
+ //(Program kan scanne patient id key og sammenligne det med et inputtet id key fra user)
 
     get_resident_medication_conflict(medications, number_of_medications);
 

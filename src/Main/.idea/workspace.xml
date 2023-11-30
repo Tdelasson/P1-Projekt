@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
@@ -7,14 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0cc2316-f283-44df-844f-e83625822abf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../pillbox/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pillbox/pillbox.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../pillbox/pillbox.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pillbox/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../pillbox/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pillbox/pillbox.c" beforeDir="false" afterPath="$PROJECT_DIR$/../pillbox/pillbox.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pillbox/pillbox.h" beforeDir="false" afterPath="$PROJECT_DIR$/../pillbox/pillbox.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +51,10 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "Rebasing Calculator",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,6 +68,7 @@
       <updated>1700553218735</updated>
       <workItem from="1700553220392" duration="7000" />
       <workItem from="1701863106352" duration="73000" />
+      <workItem from="1701863282642" duration="351000" />
     </task>
     <servers />
   </component>
