@@ -39,4 +39,4 @@ typedef struct {
 
 patient_journal* get_patient_journal();
 
-void dispensing(patient_journal *patients[]);
+void dispensing();
