@@ -2,9 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 void dispensing() {
-
     box_place pill_box[ROWS][COLUMNS] = {{none,   monday, tuesday, wednesday, thursday, friday, saturday, sunday},
                                          {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
@@ -22,8 +20,8 @@ void dispensing() {
 
     printf("\n>");
 
-    scanf("%d", &ny);
 
+    scanf("%d", &ny);
 
     update_box_2(pill_box);
 
@@ -32,6 +30,7 @@ void dispensing() {
 
 
 void check_patient(){
+
     patient_journal patients[MAX_PATIENTS];
     get_patient_journal(patients);
     int patient_number;
@@ -58,6 +57,7 @@ int LinSearch(patient_journal patients[], int patient_number){
         }
     }
     return -1;
+
 }
 
 void check_medicine () {
