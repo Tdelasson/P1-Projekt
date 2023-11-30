@@ -1,5 +1,5 @@
 :
-3210, 0001, Ciprofloxacin, mg, 250, 125, 62.5, 62.5, Ibuprofen, mg, 200, 100, 0:
+3210, 1001, Ciprofloxacin, mg, 250, 125, 62.5, 62.5, Ibuprofen, mg, 200, 100, 0:
 6813, 0002, Simvastatin, mg, 40, 0, 0, 40, Naproxen, mg, 220, 0, 110, 110, Diazepam, mg, 10, 5, 0, 5:
 6428, 0003, Acetaminophen, mg, 500, 250, 250, 0, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250:
 9753, 0004, Atorvastatin, mg, 20, 0, 10, 10, Carvedilol, mg, 25, 12.5, 0, 12.5, Warfarin, mg, 5, 2.5, 0, 2.5:

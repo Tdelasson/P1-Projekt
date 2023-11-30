@@ -70,4 +70,4 @@ typedef struct {
 //Nursing_Home_personnel* get_staff_record(staff_record staffs[]);
 resident_record* get_resident_record(resident_record residents[]);
 resident_medications * get_resident_record_medicine(int resident_id_key);
-resident_medications_conflicts* get_resident_medication_conflict(int medication_id_key);
+//resident_medications_conflicts* get_resident_medication_conflict(int medication_id_key);
