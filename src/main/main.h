@@ -51,6 +51,7 @@ typedef struct {
     double strength;
     char unit_of_strength[10];
 
+
 }medicine_database;
 
 typedef struct {

@@ -24,7 +24,7 @@ resident_record get_resident_record(void) {
         resident.id_key = scan_resident_number();
         record_found = scan_resident_database(resident_record_file,&resident,resident.id_key);
     }
-    
+
     // Return the resident information
     fclose(resident_record_file);
     return resident;
