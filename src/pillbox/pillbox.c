@@ -25,29 +25,33 @@ void dispensing() {
     print_box(pill_box);
 }
 
-void check_patient() {
+void check_patient(){
     patient_journal patients[MAX_PATIENTS];
     get_patient_journal(patients);
     int patient_number;
 
-    int run = 1;
-    while (run == 1){
-        // Ask for patient number
-        printf("Type the patients number\n>");
-        scanf("%d", &patient_number);
-        // Compare patient number to id_key from patient_journal.txt
-        for (int i = 0; i < MAX_PATIENTS; i++) {
-            if (patient_number == patients[i].id_key) {
-                printf("Patient registered\n");
-                run = 0;
-                i = MAX_PATIENTS;
-            }
-        }
-        if (run == 1) {
-            printf("Patient not registered\n");
+    printf("Type the patients number\n>");
+    char input[100];
+    fgets(input, 100, stdin);
+    sscanf(input, "%d", &patient_number);
+    int result = LinSearch(patients, patient_number);
+
+    if (result == -1){
+        printf("Patient not registered\n");
+    }
+    else {
+        printf("Patient registered\n");
+        printf("%s %s\n", patients[result].first_name, patients[result].surname);
+    }
+}
+
+int LinSearch(patient_journal patients[], int patient_number){
+    for (int i = 0; i < MAX_PATIENTS;i++){
+        if (patients[i].id_key == patient_number) {
+            return i;
         }
     }
-
+    return -1;
 }
 
 void check_medicine () {

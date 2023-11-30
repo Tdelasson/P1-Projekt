@@ -22,7 +22,7 @@ patient_journal* get_patient_journal(patient_journal patients[])
     for (i; i < MAX_PATIENTS; i++) {
 
         // Read data from the file using the corrected format specifier
-        int result = fscanf(patient_journal_file, ".%d, %[^,], %[^,], %d, %[^,], %d, %[^,], %d",
+        int result = fscanf(patient_journal_file, ".\n%d, %[^,], %[^,], %d, %[^,], %d, %[^,], %d",
                             &patients[i].id_key, patients[i].first_name,
                             patients[i].surname, &patients[i].age,
                             patients[i].gender, &patients[i].weight,
