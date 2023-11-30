@@ -37,6 +37,6 @@ typedef struct {
 
 }patient_medications;
 
-patient_journal* get_patient_journal();
+patient_journal* get_patient_journal(patient_journal patients[]);
 
 void dispensing();
