@@ -8,11 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e0cc2316-f283-44df-844f-e83625822abf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/database_interaction.c" beforeDir="false" afterPath="$PROJECT_DIR$/../database/database_interaction.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/main.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pillbox/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../pillbox/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pillbox/pillbox.c" beforeDir="false" afterPath="$PROJECT_DIR$/../pillbox/pillbox.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pillbox/pillbox.h" beforeDir="false" afterPath="$PROJECT_DIR$/../pillbox/pillbox.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +70,7 @@
       <workItem from="1701356825135" duration="26000" />
       <workItem from="1701356855800" duration="14000" />
       <workItem from="1701356874252" duration="48000" />
+      <workItem from="1701356932392" duration="59000" />
     </task>
     <servers />
   </component>
