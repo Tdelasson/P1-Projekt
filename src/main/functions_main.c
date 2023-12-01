@@ -1,3 +1,21 @@
+#include "main.h"
+
+int scan_resident_number(){
+    //Prompts and scans the resident id key
+    resident_record resident;
+    printf("Input ID key: \n-> ");
+    scanf("%d", &resident.id_key);
+    return resident.id_key;
+}
+
+
+
+
+
+
+
+
+
 void scan_personnel_card(){
 
 }

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Defining constants used in functions
-#define MAX_PATIENTS 50
+#define MAX_RESIDENTS 50
 #define MAX_NAME_LGT 50
 #define DOSE_LGT 10
 #define MAX_MEDICATIONS 15 // TODO: Dynamic allocation
@@ -38,7 +38,7 @@ typedef struct {
 // Making a struct type for resident medication data
 typedef struct {
     int id_key;
-    int patient_id_key;
+    int resident_id_key;
     // Making space for residents to take multiple medications
     char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
     char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
@@ -68,6 +68,12 @@ typedef struct {
 }medicine_conflicts;
 
 //Nursing_Home_personnel* get_staff_record(staff_record staffs[]);
-resident_record* get_resident_record(resident_record residents[]);
+int scan_resident_number();
+
+resident_record get_resident_record(int id_key);
+void print_resident_record(resident_record resident);
+
 resident_medications * get_resident_record_medicine(int resident_id_key);
+void print_resident_medication(resident_medications *medications);
+
 //resident_medications_conflicts* get_resident_medication_conflict(int medication_id_key);

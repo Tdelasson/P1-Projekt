@@ -1,13 +1,18 @@
 #include "main.h"
 
-int main (void){
-    //staff_record staffs[10];
-    resident_record residents[50];
-    get_resident_record(residents);
-    printf("%d \n", residents[0].id_key);
-    get_resident_record_medicine(residents[0].id_key);
-    //printf("\n\n%s",residents[0].first_name);
-    //resident_record * resident = get_resident_record();
-    //return number_of_residents_read;
+int main(void) {
+    resident_record resident;
+    resident.id_key = scan_resident_number();
+    resident = get_resident_record(resident.id_key);
+    print_resident_record(resident);
 
+    resident_medications *medications = get_resident_record_medicine(resident.id_key);
+    print_resident_medication(medications);
+
+    // Print the medication for Adam
+    //printf("Medication for Adam: %s\n", medications->medication[0]);
+
+    //free(medications);
+
+    return 0;
 }
