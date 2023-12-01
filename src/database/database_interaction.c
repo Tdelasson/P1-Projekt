@@ -77,7 +77,6 @@ resident_medications* get_resident_record_medicine(resident_medications medicati
 
         for (int j = 0; i < MAX_MEDICATIONS; j++) {
 
-
             int result_medicine = fscanf(resident_record_medicine_file, "%[^,], %[^,], %d, %d, %d, %d,",
                                          medications[i].medication[j], medications[i].medication_unit[j],
                                          &medications[i].total_daily_dose[j], &medications[i].morning_dose[j],
