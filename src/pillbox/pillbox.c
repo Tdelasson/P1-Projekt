@@ -11,6 +11,8 @@ void dispensing() {
 
     check_patient();
 
+    print_medicine();
+
     update_box_1(pill_box);
 
     print_box(pill_box);
@@ -28,6 +30,8 @@ void dispensing() {
 void check_patient(){
     resident_record residents[MAX_PATIENTS];
     get_resident_record(residents);
+    resident_medications medications[MAX_PATIENTS];
+    get_resident_record_medicine(medications);
 
     int resident_number;
     int run = 1;
@@ -48,6 +52,17 @@ void check_patient(){
             run = 0;
         }
     }
+
+    int result = LinSearch(residents, resident_number);
+
+    printf("Medication: %s, Medication type: %s Medication strength: %d %d %d %d \n",
+           medications[result].medication[result], medications[result].medication_unit[result],
+           medications[result].total_daily_dose[result], medications[result].morning_dose[result],
+           medications[result].noon_dose[result], medications[result].evening_dose[result]);
+}
+
+void print_medicine(){
+    
 }
 
 int LinSearch(resident_record residents[], int resident_number){
