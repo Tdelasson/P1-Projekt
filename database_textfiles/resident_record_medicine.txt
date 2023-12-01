@@ -1,51 +1,50 @@
-:
-3210, 1001, Ciprofloxacin, mg, 250, 125, 62.5, 62.5, Ibuprofen, mg, 200, 100, 0:
-6813, 1002, Simvastatin, mg, 40, 0, 0, 40, Naproxen, mg, 220, 0, 110, 110, Diazepam, mg, 10, 5, 0, 5:
-6428, 1003, Acetaminophen, mg, 500, 250, 250, 0, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250:
-9753, 1004, Atorvastatin, mg, 20, 0, 10, 10, Carvedilol, mg, 25, 12.5, 0, 12.5, Warfarin, mg, 5, 2.5, 0, 2.5:
-8642, 1005, Levothyroxine, mcg, 100, 50, 0, 50, Diazepam, mg, 10, 5, 0, 5, Metformin, mg, 500, 250, 0, 250:
-3198, 1006, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Loratadine, mg, 10, 0, 0, 10:
-2038, 1007, Loratadine, mg, 10, 0, 0, 10, Ibuprofen, mg, 500, 250, 0, 250, Acetaminophen, mg, 500, 250, 250, 0:
-9276, 1008, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250, Diazepam, mg, 10, 5, 0, 5:
-8765, 1009, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110:
-9765, 1010, Warfarin, mg, 5, 0, 2.5, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 0, 2.5, 2.5:
-5432, 1011, Warfarin, mg, 5, 0, 2.5, 2.5, Diazepam, mg, 10, 5, 0, 5, Ciprofloxacin, mg, 250, 0, 125, 125:
-3108, 1012, Ibuprofen, mg, 500, 250, 0, 250, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5:
-7642, 1013, Metformin, mg, 500, 250, 0, 250, Carvedilol, mg, 25, 12.5, 0, 12.5, Naproxen, mg, 220, 0, 110, 110, Diazepam, mg, 10, 5, 0, 5:
-9843, 1014, Naproxen, mg, 220, 0, 110, 110, Ciprofloxacin, mg, 250, 0, 125, 125, Warfarin, mg, 5, 2.5, 0, 2.5, Carvedilol, mg, 25, 12.5, 0, 12.5:
-8765, 1015, Carvedilol, mg, 25, 12.5, 0, 12.5, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5:
-4319, 1016, Metformin, mg, 1200, 1000, 500, 0, Celecoxib, mg, 200, 0, 200, 1200, Diazepam, mg, 10, 5, 0, 5, Naproxen, mg, 220, 0, 110, 110:
-9651, 1017, Diazepam, mg, 10, 5, 0, 5, Naproxen, mg, 220, 0, 110, 110, Ibuprofen, mg, 500, 250, 0, 250, Fluticasone, mcg, 50, 25, 0, 25:
-9854, 1018, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 10, 5, 0, 5, Naproxen, mg, 220, 0, 110, 110, Fluticasone, mcg, 50, 25, 0, 25:
-9847, 1019, Warfarin, mg, 10, 5, 0, 5, Lisinopril, mg, 10, 5, 0, 5, Acetaminophen, mg, 500, 250, 250, 0, Atorvastatin, mg, 20, 0, 10, 10:
-7653, 1020, Losartan, mg, 50, 25, 0, 25, Ibuprofen, mg, 200, 100, 0, 100, Atorvastatin, mg, 20, 0, 10, 10, Levothyroxine, mcg, 100, 50, 0, 50:
-7654, 1021, Levothyroxine, mcg, 100, 50, 0, 50, Loratadine, mg, 10, 0, 0, 10, Ibuprofen, mg, 500, 250, 0, 250:
-7655, 1022, Acetaminophen, mg, 500, 250, 250, 0, 250, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5:
-7656, 1023, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110:
-7657, 1024, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Levothyroxine, mcg, 100, 50, 0, 50:
-7658, 1025, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 0, 2.5, 2.5:
-7659, 1026, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250:
-7660, 1027, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250:
-7661, 1028, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125, Carvedilol, mg, 25, 12.5, 0, 12.5:
-7662, 1029, Carvedilol, mg, 25, 12.5, 0, 12.5, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250:
-7663, 1030, Metformin, mg, 500, 250, 0, 250, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125:
-7664, 1031, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250:
-7665, 1032, Acetaminophen, mg, 500, 250, 250, 0, 250, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5:
-7666, 1033, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110:
-7667, 1034, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Levothyroxine, mcg, 100, 50, 0, 50:
-7668, 1035, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 0, 2.5, 2.5:
-7669, 1036, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250:
-7670, 1037, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250:
-7671, 1038, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125, Carvedilol, mg, 25, 12.5, 0, 12.5:
-7672, 1039, Carvedilol, mg, 25, 12.5, 0, 12.5, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250:
-7673, 1040, Metformin, mg, 500, 250, 0, 250, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125:
-7674, 1041, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250:
-7675, 1042, Acetaminophen, mg, 500, 250, 250, 0, 250, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5:
-7676, 1043, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110:
-7677, 1044, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Levothyroxine, mcg, 100, 50, 0, 50:
-7678, 1045, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 0, 2.5, 2.5:
-7679, 1046, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250:
-7680, 1047, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250:
-7681, 1048, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125, Carvedilol, mg, 25, 12.5, 0, 12.5:
-7682, 1049, Carvedilol, mg, 25, 12.5, 0, 12.5, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250:
-7683, 1050, Metformin, mg, 500, 250, 0, 250, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125:
+3210, 1001, Ciprofloxacin, mg, 250, 125, 62.5, 62.5, Ibuprofen, mg, 200, 100, 0, 100
+6813, 1002, Simvastatin, mg, 40, 0, 0, 40, Naproxen, mg, 220, 0, 110, 110, Diazepam, mg, 10, 5, 0, 5
+6428, 1003, Acetaminophen, mg, 500, 250, 250, 0, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250
+9753, 1004, Atorvastatin, mg, 20, 0, 10, 10, Carvedilol, mg, 25, 12.5, 0, 12.5, Warfarin, mg, 5, 2.5, 0, 2.5
+8642, 1005, Levothyroxine, mcg, 100, 50, 0, 50, Diazepam, mg, 10, 5, 0, 5, Metformin, mg, 500, 250, 0, 250
+3198, 1006, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Loratadine, mg, 10, 0, 0, 10
+2038, 1007, Loratadine, mg, 10, 0, 0, 10, Ibuprofen, mg, 500, 250, 0, 250, Acetaminophen, mg, 500, 250, 250, 0
+9276, 1008, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250, Diazepam, mg, 10, 5, 0, 5
+8765, 1009, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110
+9765, 1010, Warfarin, mg, 5, 0, 2.5, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 0, 2.5, 2.5
+5432, 1011, Warfarin, mg, 5, 0, 2.5, 2.5, Diazepam, mg, 10, 5, 0, 5, Ciprofloxacin, mg, 250, 0, 125, 125
+3108, 1012, Ibuprofen, mg, 500, 250, 0, 250, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5
+7642, 1013, Metformin, mg, 500, 250, 0, 250, Carvedilol, mg, 25, 12.5, 0, 12.5, Naproxen, mg, 220, 0, 110, 110, Diazepam, mg, 10, 5, 0, 5
+9843, 1014, Naproxen, mg, 220, 0, 110, 110, Ciprofloxacin, mg, 250, 0, 125, 125, Warfarin, mg, 5, 2.5, 0, 2.5, Carvedilol, mg, 25, 12.5, 0, 12.5
+8765, 1015, Carvedilol, mg, 25, 12.5, 0, 12.5, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5
+4319, 1016, Metformin, mg, 1200, 1000, 500, 0, Celecoxib, mg, 200, 0, 200, 1200, Diazepam, mg, 10, 5, 0, 5, Naproxen, mg, 220, 0, 110, 110
+9651, 1017, Diazepam, mg, 10, 5, 0, 5, Naproxen, mg, 220, 0, 110, 110, Ibuprofen, mg, 500, 250, 0, 250, Fluticasone, mcg, 50, 25, 0, 25
+9854, 1018, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 10, 5, 0, 5, Naproxen, mg, 220, 0, 110, 110, Fluticasone, mcg, 50, 25, 0, 25
+9847, 1019, Warfarin, mg, 10, 5, 0, 5, Lisinopril, mg, 10, 5, 0, 5, Acetaminophen, mg, 500, 250, 250, 0, Atorvastatin, mg, 20, 0, 10, 10
+7653, 1020, Losartan, mg, 50, 25, 0, 25, Ibuprofen, mg, 200, 100, 0, 100, Atorvastatin, mg, 20, 0, 10, 10, Levothyroxine, mcg, 100, 50, 0, 50
+7654, 1021, Levothyroxine, mcg, 100, 50, 0, 50, Loratadine, mg, 10, 0, 0, 10, Ibuprofen, mg, 500, 250, 0, 250
+7655, 1022, Acetaminophen, mg, 500, 250, 250, 0, 250, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5
+7656, 1023, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110
+7657, 1024, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Levothyroxine, mcg, 100, 50, 0, 50
+7658, 1025, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 0, 2.5, 2.5
+7659, 1026, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250
+7660, 1027, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250
+7661, 1028, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125, Carvedilol, mg, 25, 12.5, 0, 12.5
+7662, 1029, Carvedilol, mg, 25, 12.5, 0, 12.5, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250
+7663, 1030, Metformin, mg, 500, 250, 0, 250, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125
+7664, 1031, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250
+7665, 1032, Acetaminophen, mg, 500, 250, 250, 0, 250, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5
+7666, 1033, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110
+7667, 1034, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Levothyroxine, mcg, 100, 50, 0, 50
+7668, 1035, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 0, 2.5, 2.5
+7669, 1036, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250
+7670, 1037, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250
+7671, 1038, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125, Carvedilol, mg, 25, 12.5, 0, 12.5
+7672, 1039, Carvedilol, mg, 25, 12.5, 0, 12.5, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250
+7673, 1040, Metformin, mg, 500, 250, 0, 250, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125
+7674, 1041, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250
+7675, 1042, Acetaminophen, mg, 500, 250, 250, 0, 250, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Diazepam, mg, 10, 5, 0, 5
+7676, 1043, Diazepam, mg, 10, 5, 0, 5, Warfarin, mg, 5, 2.5, 0, 2.5, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110
+7677, 1044, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 2.5, 0, 2.5, Levothyroxine, mcg, 100, 50, 0, 50
+7678, 1045, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Naproxen, mg, 220, 0, 110, 110, Warfarin, mg, 5, 0, 2.5, 2.5
+7679, 1046, Warfarin, mg, 5, 0, 2.5, 2.5, Levothyroxine, mcg, 100, 50, 0, 50, Ibuprofen, mg, 200, 100, 0, 100, Aspirin, mg, 500, 250, 0, 250
+7680, 1047, Aspirin, mg, 500, 250, 0, 250, Ciprofloxacin, mg, 250, 0, 125, 125, Metformin, mg, 500, 250, 0, 250
+7681, 1048, Metformin, mg, 500, 250, 0, 250, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125, Carvedilol, mg, 25, 12.5, 0, 12.5
+7682, 1049, Carvedilol, mg, 25, 12.5, 0, 12.5, Loratadine, mg, 10, 0, 0, 10, Metformin, mg, 500, 250, 0, 250
+7683, 1050, Metformin, mg, 500, 250, 0, 250, Ibuprofen, mg, 200, 100, 0, 100, Warfarin, mg, 5, 2.5, 0, 2.5, Ciprofloxacin, mg, 250, 0, 125, 125

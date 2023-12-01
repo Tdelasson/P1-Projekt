@@ -15,26 +15,34 @@ resident_record get_resident_record(int id_key) {
         exit(EXIT_FAILURE);
     }
 
-    // Loop through the file until the end
-    // Feof checks if the end of the file has been reached
-    while (!feof(resident_record_file)) {
-        // Read data from the file using the corrected format specifier
-        int result = fscanf(resident_record_file, ": %d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
-                            &resident.id_key,
-                            resident.first_name,
-                            resident.surname, &resident.apartment_number, &resident.age,
-                            resident.gender, &resident.weight,
-                            resident.weight_unit, &resident.social_security_number);
+    // Initialize a variable to check if the record was found
+    int record_found = 0;
 
-        // Check if the expected number of fields (9) were successfully read
-        if (result == 9 && resident.id_key == id_key) {
-            // If the ID key matches, break out of the loop
+    // Loop through the file as long as there are records to read
+    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
+                  &resident.id_key,
+                  resident.first_name,
+                  resident.surname, &resident.apartment_number, &resident.age,
+                  resident.gender, &resident.weight,
+                  resident.weight_unit, &resident.social_security_number) == 9) {
+        // Check if the ID key matches
+        if (resident.id_key == id_key) {
+            record_found = 1;
             break;
         }
     }
 
     // Close the file as it is no longer needed
     fclose(resident_record_file);
+
+    // If the record was not found, you might want to handle it appropriately
+    if (!record_found) {
+        // Handle the case where the record with the given ID key was not found
+        // For example, you might set some default values or print an error message
+        // and exit the program.
+        printf("Record with ID %d not found.\n", id_key);
+        exit(EXIT_FAILURE);
+    }
 
     // Return the resident information
     return resident;
@@ -50,58 +58,64 @@ void print_resident_record(resident_record resident) {
 
 }
 
-// Function to retrieve resident medication information from a file and display it
-resident_medications *get_resident_record_medicine(int resident_id_key) {
-    FILE *resident_record_medicine_file = fopen("resident_record_medicine.txt", "r");
 
-    if (resident_record_medicine_file == NULL) {
-        printf("Could not open file \n");
-        exit(EXIT_FAILURE);
+void get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
+    FILE *file = fopen("resident_record_medicine.txt", "r");
+    if (file == NULL) {
+        fprintf(stderr, "Error opening file.\n");
+        return;
     }
 
-    // Dynamically allocate memory for an array of medications
-    resident_medications *medications = malloc(MAX_MEDICATIONS * sizeof(resident_medications));
-    if (medications == NULL) {
-        printf("Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
+    int patientId, medicalId;
+    int medications_count = 0;
 
-    // Initialize the medication array index
-    int i = 0;
-
-    while (fscanf(resident_record_medicine_file, ": %d, %d", &medications[i].id_key, &medications[i].resident_id_key) == 2) {
-        // Check if the current resident is the one we're looking for
-        if (medications[i].resident_id_key == resident_id_key) {
-            for (int j = 0; j < MAX_MEDICATIONS; j++) {
-                // Read medication details
-                if (fscanf(resident_record_medicine_file, "%[^,], %[^,], %d, %d, %d, %d,",
-                           medications[i].medication[j], medications[i].medication_unit[j],
-                           &medications[i].total_daily_dose[j], &medications[i].morning_dose[j],
-                           &medications[i].noon_dose[j], &medications[i].evening_dose[j]) != 6) {
-                    break;
-                }
-
-                // Print the medication for debugging
-                printf("Medication: %s\n", medications[i].medication[j]);
-            }
-            break;  // Exit the loop since we found the resident's medication
+    // Find the resident and start reading medications
+    while (fscanf(file, "%d, %d,", &medicalId, &patientId) == 2) {
+        // Skip over medications for other patients
+        if (patientId != resident_id_key) {
+            char buffer[256]; // Adjust the buffer size as needed
+            fgets(buffer, sizeof(buffer), file);
+            continue;
         }
 
-        i++;
+        // Make a for loop that stores each medication in the medications array
 
-        // Break if the array is full
-        if (i >= MAX_MEDICATIONS) {
-            break;
+       /* while (medications_count < MAX_MEDICATIONS &&
+               fscanf(file, "%49[^,], %49[^,], %d, %d, %d, %d,",
+                      medications[medications_count].medication,
+                      medications[medications_count].medication_unit,
+                      &medications[medications_count].total_daily_dose,
+                      &medications[medications_count].morning_dose,
+                      &medications[medications_count].noon_dose,
+                      &medications[medications_count].evening_dose) == 6) {
+
+            // Null-terminate the strings
+            medications[medications_count].medication[MAX_MEDICATION_NAME_LGT] = '\0';
+            medications[medications_count].medication_unit[MAX_MEDICATION_NAME_LGT] = '\0';
+
+            medications_count++;
         }
-    }
 
-    fclose(resident_record_medicine_file);
+        // Break out of the loop once medications for the target patient are read
+        break;
+    }*/
 
-    return medications;  // Return the pointer to the dynamically allocated array
+    fclose(file);
 }
 
-void print_resident_medication(resident_medications *medications) {
-    //printf("Medication: %s\n", medications->medication[0]);
+
+
+
+
+
+
+
+
+void print_resident_medication(resident_medications medications[]) {
+    printf("Medication:\n");
+    for (int i = 0; i < MAX_MEDICATIONS; i++) {
+        printf("%s\n", medications[i].medication);
+    }
 }
 
 /*

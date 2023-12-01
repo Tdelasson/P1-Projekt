@@ -6,7 +6,9 @@ int main(void) {
     resident = get_resident_record(resident.id_key);
     print_resident_record(resident);
 
-    resident_medications *medications = get_resident_record_medicine(resident.id_key);
+    resident_medications medications[MAX_MEDICATIONS];
+
+    get_resident_record_medicine(medications, resident.id_key);
     print_resident_medication(medications);
 
     // Print the medication for Adam

@@ -6,7 +6,7 @@
 #define MAX_NAME_LGT 50
 #define DOSE_LGT 10
 #define MAX_MEDICATIONS 15 // TODO: Dynamic allocation
-#define MAX_MEDICATION_NAME_LGT 50
+#define MAX_MEDICATION_NAME_LGT 100
 #define MAX_MEDICATION_TYPE_NAME_LGT 20
 #define MAX_MEDICATION_UNIT_NAME_LGT 4
 #define MAX_AGE_LGT 3
@@ -37,16 +37,14 @@ typedef struct {
 
 // Making a struct type for resident medication data
 typedef struct {
-    int id_key;
-    int resident_id_key;
     // Making space for residents to take multiple medications
-    char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
-    char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
+    char medication[MAX_MEDICATION_NAME_LGT];
+    char medication_unit[MAX_MEDICATION_NAME_LGT];
 
-    int total_daily_dose[MAX_MEDICATIONS];
-    int morning_dose[MAX_MEDICATIONS];
-    int noon_dose[MAX_MEDICATIONS];
-    int evening_dose[MAX_MEDICATIONS];
+    int total_daily_dose;
+    int morning_dose;
+    int noon_dose;
+    int evening_dose;
 
 }resident_medications;
 
@@ -73,7 +71,7 @@ int scan_resident_number();
 resident_record get_resident_record(int id_key);
 void print_resident_record(resident_record resident);
 
-resident_medications * get_resident_record_medicine(int resident_id_key);
+void get_resident_record_medicine(resident_medications medications[],int resident_id_key);
 void print_resident_medication(resident_medications *medications);
 
 //resident_medications_conflicts* get_resident_medication_conflict(int medication_id_key);
