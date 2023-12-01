@@ -11,6 +11,8 @@ void dispensing() {
 
     check_patient();
 
+    print_medicine();
+
     update_box_1(pill_box);
 
     print_box(pill_box);
@@ -26,28 +28,47 @@ void dispensing() {
 }
 
 void check_patient(){
-    patient_journal patients[MAX_PATIENTS];
-    get_patient_journal(patients);
-    int patient_number;
 
-    printf("Type the patients number\n>");
-    char input[100];
-    fgets(input, 100, stdin);
-    sscanf(input, "%d", &patient_number);
-    int result = LinSearch(patients, patient_number);
+    resident_record residents[MAX_PATIENTS];
+    get_resident_record(residents);
+    resident_medications medications[MAX_PATIENTS];
+    get_resident_record_medicine(medications);
 
-    if (result == -1){
-        printf("Patient not registered\n");
+    int resident_number;
+    int run = 1;
+
+    while (run == 1) {
+        printf("Type the patients number\n>");
+        char input[100];
+        fgets(input, 100, stdin);
+        sscanf(input, "%d", &resident_number);
+
+        int result = LinSearch(residents, resident_number);
+
+        if (result == -1) {
+            printf("Patient not registered\n");
+        } else {
+            printf("Patient registered\n");
+            printf("%s %s\n", residents[result].first_name, residents[result].surname);
+            run = 0;
+        }
     }
-    else {
-        printf("Patient registered\n");
-        printf("%s %s\n", patients[result].first_name, patients[result].surname);
-    }
+
+    int result = LinSearch(residents, resident_number);
+
+    printf("Medication: %s, Medication type: %s Medication strength: %d %d %d %d \n",
+           medications[result].medication[result], medications[result].medication_unit[result],
+           medications[result].total_daily_dose[result], medications[result].morning_dose[result],
+           medications[result].noon_dose[result], medications[result].evening_dose[result]);
 }
 
-int LinSearch(patient_journal patients[], int patient_number){
+void print_medicine(){
+    
+}
+
+int LinSearch(resident_record residents[], int resident_number){
     for (int i = 0; i < MAX_PATIENTS;i++){
-        if (patients[i].id_key == patient_number) {
+        if (residents[i].id_key == resident_number) {
             return i;
         }
     }
@@ -57,7 +78,6 @@ int LinSearch(patient_journal patients[], int patient_number){
 void check_medicine () {
     printf("Type the ");
 }
-
 
 void print_box_place(box_place c){
     switch (c) {

@@ -1,12 +1,14 @@
+void scan_personnel_card(){
 
+}
 void check_search_function(){
     // Checks which search funtion is most optimal to use
     // Can be binary search, linear search, etc..
 }
 
 
-void get_patient_data(){
-    // Scan the patients social security card / number
+void get_resident_data(){
+    // Scan the residents social security card / number
     //Checks from the database
 }
 

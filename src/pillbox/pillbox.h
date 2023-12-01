@@ -13,7 +13,8 @@ typedef enum box_place {none, monday, tuesday, wednesday, thursday, friday, satu
 
 //void dispensing(patient_journal *patients[]);
 void check_patient();
-int LinSearch(patient_journal patients[MAX_PATIENTS], int patient_number);
+int LinSearch(resident_record patients[MAX_PATIENTS], int resident_number);
+void print_medicine();
 void print_box_place(box_place c);
 void print_box(box_place pill_box[][COLUMNS]);
 int update_box_1 (box_place pill_box[][COLUMNS]);
