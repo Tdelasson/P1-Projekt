@@ -4,8 +4,20 @@
 #include <string.h>
 #include <malloc.h>
 
-int medicine_calculator(){
-    
+double convert(double dose, const char *from_unit, const char *to_unit);
+int strength_calculator();
+int name_calculator();
+
+int main(void){
+
+    char mg[] = "mg", mcg[] = "mcg", g[] = "g", ml[] = "ml", l[] = "l", mcl[] = "mcl";
+
+    char mgml[] = "mg/ml", mgmcl[] = "mg/mcl", gml[] = "g/ml", gmcl[] = "g/mcl", gl[] = "g/l";
+
+    double dose = 100;
+
+    convert(dose, gl, mgml);
+
 }
 
 int name_calculator(){
