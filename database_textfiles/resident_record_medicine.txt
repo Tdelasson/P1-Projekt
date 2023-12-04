@@ -1,4 +1,4 @@
-/*Medicine ID key, Resident ID key, Medicine Name, Weight unit, Daily dosis_1, Morning dosis_1, Noon dosis_1, Evening Dosis_1. Repeating of first medicine dosis split.  */
+/* ID-key residents medication, Resident ID key, Medicine Name, Weight unit, Daily dosis_1, Morning dosis_1, Noon dosis_1, Evening Dosis_1. Repeating of first medicine dosis split.  */
 
 :
 3210, 1001, Ciprofloxacin, mg, 250, 125, 62.5, 62.5, Ibuprofen, mg, 200, 100, 0:
