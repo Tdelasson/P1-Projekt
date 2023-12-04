@@ -28,7 +28,6 @@ void dispensing() {
 }
 
 void check_patient(){
-
     resident_record residents[MAX_PATIENTS];
     get_resident_record(residents);
     resident_medications medications[MAX_PATIENTS];

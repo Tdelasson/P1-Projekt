@@ -37,16 +37,16 @@ typedef struct {
 
 // Making a struct type for resident medication data
 typedef struct {
-    int id_key;
-    int patient_id_key;
+    double id_key;
+    double patient_id_key;
     // Making space for residents to take multiple medications
     char medication[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
     char medication_unit[MAX_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
 
-    int total_daily_dose[MAX_MEDICATIONS];
-    int morning_dose[MAX_MEDICATIONS];
-    int noon_dose[MAX_MEDICATIONS];
-    int evening_dose[MAX_MEDICATIONS];
+    double total_daily_dose[MAX_MEDICATIONS];
+    double morning_dose[MAX_MEDICATIONS];
+    double noon_dose[MAX_MEDICATIONS];
+    double evening_dose[MAX_MEDICATIONS];
     
 }resident_medications;
 

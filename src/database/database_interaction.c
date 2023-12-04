@@ -73,12 +73,13 @@ resident_medications* get_resident_record_medicine(resident_medications medicati
     // Loop through the array of resident_record structures
     for (i; i < MAX_PATIENTS; i++) {
         // Read data from the file using the corrected format specifier
-        int result_patient = fscanf(resident_record_medicine_file, ": %d, %d",
+        double result_patient = fscanf(resident_record_medicine_file, ": %lf, %lf",
                                     &medications[i].id_key, &medications[i].patient_id_key);
+
 
         for (int j = 0; i < MAX_MEDICATIONS; j++) {
 
-            int result_medicine = fscanf(resident_record_medicine_file, "%[^,], %[^,], %d, %d, %d, %d,",
+            double result_medicine = fscanf(resident_record_medicine_file, "%[^,], %[^,], %lf, %lf, %lf, %lf,",
                                          medications[i].medication[j], medications[i].medication_unit[j],
                                          &medications[i].total_daily_dose[j], &medications[i].morning_dose[j],
                                          &medications[i].noon_dose[j], &medications[i].evening_dose[j]);
