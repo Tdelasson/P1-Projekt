@@ -1,20 +1,17 @@
 #include "main.h"
 
 int main(void) {
+    // Get the resident's personal information and print it
     resident_record resident;
-    resident.id_key = scan_resident_number();
-    resident = get_resident_record(resident.id_key);
+    resident = get_resident_record();
     print_resident_record(resident);
 
+    // Get the resident's medication information and print it
     resident_medications medications[MAX_MEDICATIONS];
+    int number_of_medications = get_resident_record_medicine(medications, resident.id_key);
+    print_resident_medication(medications, number_of_medications);
 
-    get_resident_record_medicine(medications, resident.id_key);
-    print_resident_medication(medications);
-
-    // Print the medication for Adam
-    //printf("Medication for Adam: %s\n", medications->medication[0]);
-
-    //free(medications);
+    get_resident_medication_conflict(medications);
 
     return 0;
 }

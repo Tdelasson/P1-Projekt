@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "..\main\main.h"
+#include "string.h"
 
 // Function to retrieve resident information from a file and display it
-resident_record get_resident_record(int id_key) {
+resident_record get_resident_record(void) {
     resident_record resident;
 
     // Open the resident record file in read mode
@@ -15,159 +16,180 @@ resident_record get_resident_record(int id_key) {
         exit(EXIT_FAILURE);
     }
 
-    // Initialize a variable to check if the record was found
     int record_found = 0;
 
-    // Loop through the file as long as there are records to read
-    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
-                  &resident.id_key,
-                  resident.first_name,
-                  resident.surname, &resident.apartment_number, &resident.age,
-                  resident.gender, &resident.weight,
-                  resident.weight_unit, &resident.social_security_number) == 9) {
-        // Check if the ID key matches
-        if (resident.id_key == id_key) {
-            record_found = 1;
-            break;
-        }
-    }
-
-    // Close the file as it is no longer needed
-    fclose(resident_record_file);
-
-    // If the record was not found, you might want to handle it appropriately
-    if (!record_found) {
-        // Handle the case where the record with the given ID key was not found
-        // For example, you might set some default values or print an error message
-        // and exit the program.
-        printf("Record with ID %d not found.\n", id_key);
-        exit(EXIT_FAILURE);
+    while(record_found == 0){
+        // Loop through the file as long as there are records to read;
+        resident.id_key = scan_resident_number();
+        record_found = scan_resident_database(resident_record_file,&resident,resident.id_key);
     }
 
     // Return the resident information
+    fclose(resident_record_file);
     return resident;
 }
 
+int scan_resident_number(){
+    //Prompts and scans the resident id key
+    int id_key;
+    printf("Enter Resident ID: \n-> ");
+    scanf("%d", &id_key);
+    return id_key;
+}
+
+int scan_resident_database(FILE *resident_record_file,resident_record* resident,int id_key){
+    rewind(resident_record_file); // Move the file pointer to the beginning of the file
+
+    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
+                  &resident->id_key, resident->first_name, resident->surname,
+                  &resident->apartment_number, &resident->age,
+                  resident->gender, &resident->weight,
+                  resident->weight_unit, &resident->social_security_number) == 9) {
+        // Check if the ID key matches
+        if (resident->id_key == id_key) {
+            return 1;
+        }
+
+    }
+    printf("ERROR! ID Key not found\n");
+    return 0;
+
+}
 
 void print_resident_record(resident_record resident) {
-    printf("Name: %s %s\n Apartment number: %.2lf\n Age: %d\n Gender: %s\n "
-           "Weight: %d %s\n Social Security Number: %d\n\n",
+    printf("Name: %s %s\n"
+           "Apartment number: %.2lf\n"
+           "Age: %d\n"
+           "Gender: %s\n"
+           "Weight: %d %s\n"
+           "Social Security Number: %d\n\n",
            resident.first_name, resident.surname,
            resident.apartment_number, resident.age, resident.gender,
            resident.weight, resident.weight_unit, resident.social_security_number);
 
 }
 
-
-void get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
+int get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
     FILE *file = fopen("resident_record_medicine.txt", "r");
     if (file == NULL) {
         fprintf(stderr, "Error opening file.\n");
-        return;
+        return EXIT_FAILURE;
     }
 
     int patientId, medicalId;
     int medications_count = 0;
 
-    // Find the resident and start reading medications
     while (fscanf(file, "%d, %d,", &medicalId, &patientId) == 2) {
-        // Skip over medications for other patients
-        if (patientId != resident_id_key) {
-            char buffer[256]; // Adjust the buffer size as needed
-            fgets(buffer, sizeof(buffer), file);
-            continue;
+        if (patientId == resident_id_key) {
+            while (medications_count < MAX_MEDICATIONS &&
+                   fscanf(file, "%[^,], %[^,], %lf, %5[^,],",
+                          medications[medications_count].medication,
+                          medications[medications_count].medication_unit,
+                          &medications[medications_count].total_weekly_dose,
+                          medications[medications_count].medication_type) == 4) {
+
+                // Null-terminate the strings
+                medications[medications_count].medication
+                [strlen(medications[medications_count].medication)] = '\0';
+
+                medications[medications_count].medication_unit[strlen(medications
+                                                                      [medications_count].medication_unit)] = '\0';
+
+                medications[medications_count].medication_type
+                [strlen(medications[medications_count].medication_type)] = '\0';
+
+                medications_count++;
+            }
+
+            // Break out of the loop once medications for the target patient are read
+            break;
+        } else {
+            // Skip the rest of the line for medications of other residents
+            while (fgetc(file) != '\n' && !feof(file)) {
+                // Keep reading characters until the end of the line
+            }
         }
-
-        // Make a for loop that stores each medication in the medications array
-
-       /* while (medications_count < MAX_MEDICATIONS &&
-               fscanf(file, "%49[^,], %49[^,], %d, %d, %d, %d,",
-                      medications[medications_count].medication,
-                      medications[medications_count].medication_unit,
-                      &medications[medications_count].total_daily_dose,
-                      &medications[medications_count].morning_dose,
-                      &medications[medications_count].noon_dose,
-                      &medications[medications_count].evening_dose) == 6) {
-
-            // Null-terminate the strings
-            medications[medications_count].medication[MAX_MEDICATION_NAME_LGT] = '\0';
-            medications[medications_count].medication_unit[MAX_MEDICATION_NAME_LGT] = '\0';
-
-            medications_count++;
-        }
-
-        // Break out of the loop once medications for the target patient are read
-        break;
-    }*/
+    }
 
     fclose(file);
+
+    // Return the number of medications read
+    return medications_count;
 }
 
 
-
-
-
-
-
-
-
-void print_resident_medication(resident_medications medications[]) {
-    printf("Medication:\n");
-    for (int i = 0; i < MAX_MEDICATIONS; i++) {
-        printf("%s\n", medications[i].medication);
+void print_resident_medication(resident_medications medications[], int medications_count) {
+    for (int i = 0; i < medications_count; i++) {
+        printf("Medication: %s\n", medications[i].medication);
+        printf("Unit: %s\n", medications[i].medication_unit);
+        printf("Weekly dose: %.2lf\n", medications[i].total_weekly_dose);
+        printf("Medication type: %s\n\n", medications[i].medication_type);
     }
 }
 
-/*
-medicine_conflicts * get_resident_medication_conflict(int resident_id_key) {
-// Open the resident record file in read mode
 
+void get_resident_medication_conflict(resident_medications medications[]) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
-    FILE *resident_record_medicine_file = fopen("resident_record_medicine.txt");
-
-    //search for the resident in the medication database
 
     // Check if the file was successfully opened
-    if (resident_record_conflict_file == NULL || resident_record_medicine_file) {
+    if (resident_record_conflict_file == NULL) {
         printf("Could not open file \n");
         exit(EXIT_FAILURE);
     }
 
     // Create an array to store resident records
-    resident_record residents[50];
-    medicine_conflicts conflicts[50];
-    int conflict_count = 0;
+    medicine_conflicts conflicts[MAX_MEDICATIONS];
+    int id_key;
+    char resident_medication[MAX_MEDICATION_NAME_LGT];
 
-    // Loop through the array of resident_record structures
-    for (int i; i < MAX_RESIDENTS; i++) {
+    // Loop through the array of medication
+    for (int i = 0; i < MAX_MEDICATIONS; i++) {
+        // Move the file pointer to the beginning
+        rewind(resident_record_conflict_file);
 
-        // Read data from the file using the corrected format specifier
-        int result_RESIDENT = fscanf(resident_record_file, ": %d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
-                                     &residents[i].id_key, residents[i].first_name,
-                                     residents[i].surname);
+        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &id_key, resident_medication) == 2) {
+            if (strcmp(resident_medication, medications[i].medication) == 0) {
+                // Skip the ID and medication names
+                while (fgetc(resident_record_conflict_file) != ',');
 
-        if (result_RESIDENT != 3) {
-            break;
+                // Read conflicting medications
+                int j = 0;
+                while (fscanf(resident_record_conflict_file, "%[^,],", conflicts[i].conflicting_medication[j]) == 1) {
+                    // Check if the read string contains only alphabetic characters
+                    if (isalpha(conflicts[i].conflicting_medication[j][0])) {
+                        conflicts[i].conflicting_medication[j][strlen(conflicts[i].conflicting_medication[j])] = '\0';
+                        j++;
+                    }
+                }
+
+                // Break out of the loop once the medication is found
+                break;
+            } else {
+                // Skip the rest of the line for medications of other residents
+                while (fgetc(resident_record_conflict_file) != '\n' && !feof(resident_record_conflict_file)) {
+                    // Keep reading characters until the end of the line
+                }
+            }
         }
 
+        // Process the conflicts for each medication
+        printf("\nConflicting medication for medication: %s\n", medications[i].medication);
 
-        for (int j = 0; j < MAX_MEDICATIONS; j++) {
-
-            int result_medicine = fscanf(resident_record_file, "%[^,], %[^,], %[^,], %[^,],",
-                                         residents[i].medication[j], residents[i].medication_type[j],
-                                         residents[i].medication_strength[j], residents[i].medication_unit[j]);
-            if (result_medicine != 4) {
-                break;
-            }
+        for (int j = 0; j < MAX_CONFLICTING_MEDICATIONS && conflicts[i].conflicting_medication[j][0] != '\0'; j++) {
+            printf("Conflicting medication: %s\n", conflicts[i].conflicting_medication[j]);
         }
     }
 
-    fclose(resident_record_medicine_file);
     fclose(resident_record_conflict_file);
-
-    return conflicts;
 }
-*/
+
+
+
+
+
+
+
+
 medicine_database* get_resident_medicine_data(medicine_database residents[]);
 
 medicine_conflicts* get_medicine_conflicts(medicine_conflicts residents[]);
