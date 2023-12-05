@@ -40,7 +40,6 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
             {"mg/ml->g/l", 0.001}, {"mg/ml->mmol/ml", },
             {"g/l->mg/ml", 1000.0}, {"g/l->mmol/ml", },
             {"mmol/ml->g/l", }, {"mmol/ml->mg/ml", }
-
             // Add more conversions as needed
     };
 
