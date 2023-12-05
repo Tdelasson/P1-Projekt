@@ -1,3 +1,5 @@
+Format: ID_key, resident_medication_idkey, conflicting medication 1, conflicting medication 2, etc.
+
 0574,Aspirin,Ibuprofen,Clopidogrel,Amoxicillin, Celecoxib, Prednisone
 9856,Levothyroxine,Furosemide,Warfarin
 6198,Citalopram,Amphetamine,Loratadine,Levothyroxine,Fluoxetine
@@ -31,4 +33,5 @@
 2748,Esomeprazole,Omeprazole,Lansoprazole
 6709,Fluticasone,Loratadine,Levothyroxine,Warfarin
 0123,Alprazolam,Diazepam,Clonazepam
+
 

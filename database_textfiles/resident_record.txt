@@ -1,3 +1,4 @@
+Id key, name, apartment number, age, gender, weight, weight unit, CPR number
 
 1001, Adam, Johnson, 1.01, 76, Male, 85, kg, 2008476351
 1002, Benjamin, Smith, 2.14, 77, Male, 110, kg, 2312459803
