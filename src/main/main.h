@@ -35,9 +35,9 @@ typedef struct {
 typedef struct {
     // Making space for residents to take multiple medications
     char medication[MAX_MEDICATION_NAME_LGT];
-    char medication_unit[MAX_MEDICATION_NAME_LGT];
     double total_weekly_dose;
-    char medication_type[5];
+    char medication_unit[MAX_MEDICATION_NAME_LGT];
+
 
 }resident_medications;
 
