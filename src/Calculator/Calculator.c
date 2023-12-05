@@ -18,8 +18,7 @@ int main(void){
 
     double dose = 20;
 
-    convert(dose, vw, gml);
-    convert(dose, gml, gl);
+    convert(dose, mcg, mcl);
 
 }
 
@@ -39,22 +38,18 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
             { "l->mcl", 1000000.0 }, { "mcl->l", 0.000001 },
             {"mg/ml->g/l", 0.001}, {"g/l->mg/ml", 1000.0},
             {"g/ml->g/l", 1000.0}, {"g/l->g/ml", 0.001},
+            { "g->ml", 1.0 }, { "mg->ml", 0.001 },
+            { "mcg->mcl", 0.001 }
 
             // Add more conversions as needed
     };
 
     for (int i = 0; i < sizeof(conversions) / sizeof(conversions[0]); ++i) {
-        char unit_pair_copy[strlen(conversions[i].unit_pair) + 1]; // Creating a copy of unit_pair
-        strcpy(unit_pair_copy, conversions[i].unit_pair);
-
-        char *from_token = strtok(unit_pair_copy, "->");
-        char *to_token = strtok(NULL, "->");
-
-        if (from_token != NULL && to_token != NULL) {
-            if (strcmp(from_unit, from_token) == 0 && strcmp(to_unit, to_token) == 0) {
-                double result = dose * conversions[i].multiplier;
-                printf("Convert %   lf %s to %s: %lf %s\n", dose, from_unit, to_unit, result, to_unit);
-                return result;            }
+        if (strstr(conversions[i].unit_pair, from_unit) != NULL &&
+            strstr(conversions[i].unit_pair, to_unit) != NULL) {
+            double result = dose * conversions[i].multiplier;
+            printf("Convert %lf %s to %s: %lf %s\n", dose, from_unit, to_unit, result, to_unit);
+            return result;
         }
     }
     printf("Invalid conversion!\n");
