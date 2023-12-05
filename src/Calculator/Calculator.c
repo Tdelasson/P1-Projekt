@@ -14,15 +14,12 @@ int main(void){
 
     char mgml[] = "mg/ml", mgmcl[] = "mg/mcl", gml[] = "g/ml", gmcl[] = "g/mcl", gl[] = "g/l";
 
-    double dose = 100;
+    double dose = 20;
 
     convert(dose, gl, mgml);
 
 }
 
-int name_calculator(){
-
-}
 
 double convert(double dose, const char *from_unit, const char *to_unit) {
     struct Conversion {
@@ -37,9 +34,9 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
             { "ml->l", 0.001 }, { "l->ml", 1000.0 },
             { "ml->mcl", 1000.0 }, { "mcl->ml", 0.001 },
             { "l->mcl", 1000000.0 }, { "mcl->l", 0.000001 },
-            {"mg/ml->g/l", 0.001}, {"mg/ml->mmol/ml", },
-            {"g/l->mg/ml", 1000.0}, {"g/l->mmol/ml", },
-            {"mmol/ml->g/l", }, {"mmol/ml->mg/ml", }
+            {"mg/ml->g/l", 0.001}, {"g/l->mg/ml", 1000.0},
+            {"g/ml->g/l", 1000.0}, {"g/l->g/ml", 0.001},
+
 
             // Add more conversions as needed
     };
@@ -62,6 +59,8 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
     return -1; // Invalid conversion
 }
 
-int strength_calculator(){
-    
+int infusion(){
+    // {"%v/w->g/ml", 1.0};
+    // {"%v/v->g/g", 1.0};
+    // {"%w/w->ml/ml"};
 }
