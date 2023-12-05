@@ -74,30 +74,29 @@ int get_resident_record_medicine(resident_medications medications[], int residen
     FILE *file = fopen("resident_record_medicine.txt", "r");
     if (file == NULL) {
         fprintf(stderr, "Error opening file.\n");
-        return EXIT_FAILURE;
+        return -1;
     }
 
     int patientId, medicalId;
     int medications_count = 0;
 
-    while (fscanf(file, "%d, %d,", &medicalId, &patientId) == 2) {
+    while (fscanf(file, "%d,%d,", &medicalId, &patientId) == 2) {
         if (patientId == resident_id_key) {
             while (medications_count < MAX_MEDICATIONS &&
-                   fscanf(file, "%[^,], %[^,], %lf, %5[^,],",
-                          medications[medications_count].medication,
-                          medications[medications_count].medication_unit,
+                   fscanf(file, "%d, %lf, %[^,],%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%lf,",
+                          &medications[medications_count].medication,
                           &medications[medications_count].total_weekly_dose,
-                          medications[medications_count].medication_type) == 4) {
-
-                // Null-terminate the strings
-                medications[medications_count].medication
-                [strlen(medications[medications_count].medication)] = '\0';
-
-                medications[medications_count].medication_unit[strlen(medications
-                                                                      [medications_count].medication_unit)] = '\0';
-
-                medications[medications_count].medication_type
-                [strlen(medications[medications_count].medication_type)] = '\0';
+                          medications[medications_count].medication_unit,
+                          &medications[medications_count].weekdays[0],
+                          &medications[medications_count].weekdays[1],
+                          &medications[medications_count].weekdays[2],
+                          &medications[medications_count].weekdays[3],
+                          &medications[medications_count].weekdays[4],
+                          &medications[medications_count].weekdays[5],
+                          &medications[medications_count].weekdays[6],
+                          &medications[medications_count].morning_dose,
+                          &medications[medications_count].afternoon_dose,
+                          &medications[medications_count].evening_dose) == 13) {
 
                 medications_count++;
             }
@@ -118,13 +117,20 @@ int get_resident_record_medicine(resident_medications medications[], int residen
     return medications_count;
 }
 
-
 void print_resident_medication(resident_medications medications[], int medications_count) {
     for (int i = 0; i < medications_count; i++) {
-        printf("Medication: %s\n", medications[i].medication);
+        printf("Medication: %d\n", medications[i].medication);
         printf("Unit: %s\n", medications[i].medication_unit);
         printf("Weekly dose: %.2lf\n", medications[i].total_weekly_dose);
-        printf("Medication type: %s\n\n", medications[i].medication_type);
+        printf("Weekdays to dose: ");
+        for (int j = 0; j < 7; j++) {
+            printf("%d ", medications[i].weekdays[j]);
+        }
+        printf("\n");
+        printf("Morning dose: %.2lf\n", medications[i].morning_dose);
+        printf("Afternoon dose: %.2lf\n", medications[i].afternoon_dose);
+        printf("Evening dose: %.2lf\n", medications[i].evening_dose);
+        printf("\n");
     }
 }
 
@@ -141,7 +147,7 @@ void get_resident_medication_conflict(resident_medications medications[], int nu
     // Create an array to store resident records
     medicine_conflicts conflicts[MAX_MEDICATIONS];
     int id_key;
-    char resident_medication[MAX_MEDICATION_NAME_LGT];
+    int resident_medication;
 
     // Loop through the array of medication
     for (int i = 0; i < number_of_medications; i++) {
@@ -154,8 +160,8 @@ void get_resident_medication_conflict(resident_medications medications[], int nu
         }
 
         // Iterate through the file to find conflicts for the current medication
-        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &id_key, resident_medication) == 2) {
-            if (strcmp(resident_medication, medications[i].medication) == 0) {
+        while (fscanf(resident_record_conflict_file, "%d, %d,", &id_key, &resident_medication) == 2) {
+            if (resident_medication == medications[i].medication) {
                 // Skip the ID and medication names
                 while (fgetc(resident_record_conflict_file) != ',');
 
