@@ -14,9 +14,12 @@ int main(void){
 
     char mgml[] = "mg/ml", mgmcl[] = "mg/mcl", gml[] = "g/ml", gmcl[] = "g/mcl", gl[] = "g/l";
 
+    char vw[] = "%v/w";
+
     double dose = 20;
 
-    convert(dose, gl, mgml);
+    convert(dose, vw, gml);
+    convert(dose, gml, gl);
 
 }
 
