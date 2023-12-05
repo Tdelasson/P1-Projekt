@@ -70,5 +70,5 @@ int get_resident_record_medicine(resident_medications medications[], int residen
 void print_resident_medication(resident_medications medications[], int medications_count);
 
 // Checks for conflicts in medications for the resident
-void get_resident_medication_conflict(resident_medications medications[]);
+void get_resident_medication_conflict(resident_medications medications[], int number_of_medications);
 // check_resident_medications

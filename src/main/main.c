@@ -11,7 +11,7 @@ int main(void) {
     int number_of_medications = get_resident_record_medicine(medications, resident.id_key);
     print_resident_medication(medications, number_of_medications);
 
-    get_resident_medication_conflict(medications);
+    get_resident_medication_conflict(medications, number_of_medications);
 
     return 0;
 }

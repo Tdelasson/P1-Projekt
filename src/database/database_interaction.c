@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "..\main\main.h"
 #include "string.h"
+#include <ctype.h>
 
 // Function to retrieve resident information from a file and display it
 resident_record get_resident_record(void) {
@@ -128,7 +129,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 }
 
 
-void get_resident_medication_conflict(resident_medications medications[]) {
+void get_resident_medication_conflict(resident_medications medications[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
 
     // Check if the file was successfully opened
@@ -143,10 +144,16 @@ void get_resident_medication_conflict(resident_medications medications[]) {
     char resident_medication[MAX_MEDICATION_NAME_LGT];
 
     // Loop through the array of medication
-    for (int i = 0; i < MAX_MEDICATIONS; i++) {
+    for (int i = 0; i < number_of_medications; i++) {
         // Move the file pointer to the beginning
         rewind(resident_record_conflict_file);
 
+        // Initialize the conflicting medications array for each iteration
+        for (int j = 0; j < MAX_CONFLICTING_MEDICATIONS; j++) {
+            conflicts[i].conflicting_medication[j][0] = '\0';
+        }
+
+        // Iterate through the file to find conflicts for the current medication
         while (fscanf(resident_record_conflict_file, "%d, %[^,],", &id_key, resident_medication) == 2) {
             if (strcmp(resident_medication, medications[i].medication) == 0) {
                 // Skip the ID and medication names
@@ -155,9 +162,10 @@ void get_resident_medication_conflict(resident_medications medications[]) {
                 // Read conflicting medications
                 int j = 0;
                 while (fscanf(resident_record_conflict_file, "%[^,],", conflicts[i].conflicting_medication[j]) == 1) {
-                    // Check if the read string contains only alphabetic characters
-                    if (isalpha(conflicts[i].conflicting_medication[j][0])) {
-                        conflicts[i].conflicting_medication[j][strlen(conflicts[i].conflicting_medication[j])] = '\0';
+                    // Remove leading and trailing whitespace from conflicting medication names
+                    char *trimmed_name = strtok(conflicts[i].conflicting_medication[j], " \t\n\r");
+                    if (trimmed_name != NULL && isalpha(trimmed_name[0])) {
+                        strcpy(conflicts[i].conflicting_medication[j], trimmed_name);
                         j++;
                     }
                 }
@@ -182,6 +190,7 @@ void get_resident_medication_conflict(resident_medications medications[]) {
 
     fclose(resident_record_conflict_file);
 }
+
 
 
 
