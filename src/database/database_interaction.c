@@ -137,6 +137,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 
 void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
+
     // Check if the file was successfully opened
     if (resident_record_conflict_file == NULL) {
         printf("Could not open file \n");
@@ -148,43 +149,75 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
     int id_key = 0;
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     int conflict_count = 0;
-    int conflicting_meds = 0;
+
 
     // Loop through the array of medication
     for (int i = 0; i < number_of_medications; i++) {
         // Move the file pointer to the beginning
         rewind(resident_record_conflict_file);
 
+        // Reset counters for each medication
+        conflict_count = 0;
+        conflict_count = 0;
 
         // Iterate through the file to find conflicts for the current medication
         while (fscanf(resident_record_conflict_file, "%d, %[^,],", &id_key, resident_medication) == 2) {
-            printf("Resident medication: %s\n", resident_medication);
 
-            //printf("REACHED\n");
-            // Check if the ID key matches
-            if (strcmp(resident_medication,medicine_details[i].name) == 0) {
-                printf("REACHED\n");
-                while (fscanf(resident_record_conflict_file, " %s,",
-                              conflicts[i].conflicting_medication[conflict_count]) == 1) {
+            if (strcmp(resident_medication, medicine_details[i].name) == 0) {
 
-                    if (conflicts[i].conflicting_medication[conflict_count]) {
-                        conflicting_meds++;
+                char line[1024]; // remember to adjust the buffer size accordingly
+                if (fgets(line, sizeof(line), resident_record_conflict_file) != NULL) {
+                    // Tokenize the line using strtok
+                    char *token = strtok(line, ",");
+                    while (token != NULL) {
+                        // Remove newline character if present in the last token
+                        size_t len = strlen(token);
+                        if (len > 0 && token[len - 1] == '\n') {
+                            token[len - 1] = '\0';
+                        }
+
+                        // Process the token (save it to your data structure, etc.)
+                        strcpy(conflicts[i].conflicting_medication[conflict_count], token);
+
+                        // Increment counters
+                        conflict_count++;
+
+                        // Get the next token
+                        token = strtok(NULL, ",");
                     }
-                    conflict_count++;
                 }
-
+            } else {
+                // Skip the rest of the line for medications of other residents
+                while (fgetc(resident_record_conflict_file) != '\n' &&
+                       !feof(resident_record_conflict_file)) {
+                    // Keep reading characters until the end of the line
+                }
             }
-
             // Process the conflicts for each medication
 
-
-
         }
-        printf("\nConflicting medication for medication: %s\n", medicine_details[i].name);
+        printf("\nConflicting medications for: %s\n", medicine_details[i].name);
+        for (int j = 0; j < conflict_count; j++) {
+            printf("%s\n", conflicts[i].conflicting_medication[j]);
+        }
+
+        for (int j = 0; j < conflict_count; j++) {
+            for (int k = 0; k < number_of_medications; k++) {
+                if (strcmp(conflicts[i].conflicting_medication[j], medicine_details[k].name) == 0) {
+                    printf("Conflicting medication found: %s and %s\n", medicine_details[i].name, medicine_details[k].name);
+                }
+            }
+        }
+
     }
+
+
+
 
     fclose(resident_record_conflict_file);
 }
+
+
 
 
 void get_medication_details(medicine_database medicine_details[],
