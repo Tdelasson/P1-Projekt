@@ -26,6 +26,10 @@ staff_record get_staff_record(staff_record staffs[10]) {
     return *staffs; // Returning the first staff_record, but this might not be what you want
 }
 
+void print_staff_record(staff_record staff){
+
+}
+
 int scan_staff_number() {
     int id_key;
     printf("Enter Personnel ID_Key: ");
