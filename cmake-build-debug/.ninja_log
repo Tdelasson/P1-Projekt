@@ -31,3 +31,12 @@
 8	278	7235754175185300	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
 280	430	7235754176744348	src/database/libdatabase_interaction.a	bdbd97f550a665b1
 431	651	7235754178849213	src/main/main.exe	4820bb8735f8b678
+34	236	7235767693818493	src/main/CMakeFiles/functions_main.dir/functions_main.c.obj	2bd6ff6eaa3c218b
+20	249	7235767693945196	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+8	328	7235767694730638	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
+237	417	7235767695641363	src/main/libfunctions_main.a	db9d42c7c554d5a9
+329	471	7235767696109586	src/database/libdatabase_interaction.a	bdbd97f550a665b1
+471	694	7235767698328472	src/main/main.exe	4820bb8735f8b678
+6	261	7235768339484670	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
+262	420	7235768341093393	src/database/libdatabase_interaction.a	bdbd97f550a665b1
+420	631	7235768343153558	src/main/main.exe	4820bb8735f8b678

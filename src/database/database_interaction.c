@@ -4,31 +4,6 @@
 #include "string.h"
 #include <ctype.h>
 
-/*staff_record get_staff_record(staff_record staffs[10]) {
-    FILE *nursing_home_file = fopen("Nursing_Home_personnel.txt", "r");
-
-    if (nursing_home_file == NULL) {
-        printf("Could not open file \n");
-        exit(EXIT_FAILURE);
-    }
-
-    int i;
-    for (i = 0; i < 10; i++) {
-        int staff_result = fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
-                                  &staffs[i].id_key, staffs[i].first_name, staffs[i].surname);
-        if (staff_result != 3) {
-            break;
-        }
-    }
-
-    fclose(nursing_home_file);
-
-    return *staffs; // Returning the first staff_record, but this might not be what you want
-}
-
-void print_staff_record(staff_record staff){
-
-}
 
 int scan_staff_number() {
     int id_key;
@@ -36,11 +11,45 @@ int scan_staff_number() {
     scanf("%d", &id_key);
     return id_key;
 }
+int verify_staff(int staff_id) {
+    FILE *nursing_home_file = fopen("nursing_home_staff.txt", "r");
+    staff_record staff;
 
-int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key) {
-    staff_record staffs[10];
-    // Populate the staffs array by reading the file
-    get_staff_record(staffs);
+    if (nursing_home_file == NULL) {
+        printf("Could not open file \n");
+        exit(EXIT_FAILURE);
+    }
+
+    int i;
+    for (i = 0; i < STAFF; i++) {
+        int staff_result = fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
+                                  &staff.id_key, staff.first_name, staff.surname);
+        if (staff.id_key == staff_id) {
+            printf("\nStaff checked in\n");
+            printf("Name: %s %s\n\n", staff.first_name, staff.surname);
+            fclose(nursing_home_file);
+            return 1;
+
+        } else if (staff_result != 3) {
+            printf("Error reading file\n");
+            fclose(nursing_home_file);
+            return 0;
+        }
+    }
+    fclose(nursing_home_file);
+    printf("Staff not registered\n");
+    return EXIT_FAILURE;
+}
+
+
+void print_staff_record(staff_record staff){
+
+}
+
+
+int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key) {;
+    // Populate the staff array by reading the file
+    verify_staff(staff);
     int staff_number;
     int run = 1;
 
@@ -49,9 +58,9 @@ int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key)
         scanf("%d", &staff_number);
 
         for (int i = 0; i < 10; i++) {
-            if (staff_number == staffs[i].id_key) {
+            if (staff_number == staff[i].id_key) {
                 printf("Staff checked in\n");
-                printf("Name: %s %s\n", staffs[i].first_name, staffs[i].surname);
+                printf("Name: %s %s\n", staff[i].first_name, staff[i].surname);
                 run = 0;
                 break;  // Exit the loop when staff is found
             }
@@ -62,7 +71,7 @@ int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key)
     }
     return 0;
 }
-*/
+
 
 // Function to retrieve resident information from a file and display it
 resident_record get_resident_record(void) {

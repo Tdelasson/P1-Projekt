@@ -1,7 +1,7 @@
 
 staff_record get_staff_record(staff_record staffs[]) {
     // Open the resident record file in read mode
-    FILE *nursing_home_file = fopen("Nursing_Home_personnel.txt", "r");
+    FILE *nursing_home_file = fopen("nursing_home_staff.txt", "r");
 
     // Check if the file was successfully opened
     if (nursing_home_file == NULL) {

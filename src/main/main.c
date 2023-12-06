@@ -1,12 +1,10 @@
 #include "main.h"
 
 int main(void) {
-   /* staff_record staffs[10];
-    get_staff_record(staffs);
-    for (int i = 0; i < 10; i++) {
-        print_staff_record(staffs[i]);
-    }
-*/
+    staff_record staff[10];
+    int staff_number = scan_staff_number();
+    verify_staff(staff_number);
+
     // Get the resident's personal information and print it
     resident_record resident;
     resident = get_resident_record();
