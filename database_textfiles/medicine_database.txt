@@ -1,6 +1,3 @@
-Format: ID Key, Medicine name, Medicine type (pills, liquid, tablets, etc),
-Strength , Unit of strength (mg, mcg, mg/ml, etc) *
-
 2001,Aspirin,Pill,500,mg
 2002,Ibuprofen,Liquid,200,mg/ml
 2003,Acetaminophen,Pill,500,mg

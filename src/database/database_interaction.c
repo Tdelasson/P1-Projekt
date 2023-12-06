@@ -135,9 +135,8 @@ void print_resident_medication(resident_medications medications[], int medicatio
 }
 
 
-void get_resident_medication_conflict(resident_medications medications[], int number_of_medications) {
+void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
-
     // Check if the file was successfully opened
     if (resident_record_conflict_file == NULL) {
         printf("Could not open file \n");
@@ -145,61 +144,104 @@ void get_resident_medication_conflict(resident_medications medications[], int nu
     }
 
     // Create an array to store resident records
-    medicine_conflicts conflicts[MAX_MEDICATIONS];
-    int id_key;
-    int resident_medication;
+    medicine_conflicts conflicts[MAX_CONFLICTING_MEDICATIONS];
+    int id_key = 0;
+    char resident_medication[MAX_MEDICATION_NAME_LGT];
+    int conflict_count = 0;
+    int conflicting_meds = 0;
 
     // Loop through the array of medication
     for (int i = 0; i < number_of_medications; i++) {
         // Move the file pointer to the beginning
         rewind(resident_record_conflict_file);
 
-        // Initialize the conflicting medications array for each iteration
-        for (int j = 0; j < MAX_CONFLICTING_MEDICATIONS; j++) {
-            conflicts[i].conflicting_medication[j][0] = '\0';
-        }
 
         // Iterate through the file to find conflicts for the current medication
-        while (fscanf(resident_record_conflict_file, "%d, %d,", &id_key, &resident_medication) == 2) {
-            if (resident_medication == medications[i].medication) {
-                // Skip the ID and medication names
-                while (fgetc(resident_record_conflict_file) != ',');
+        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &id_key, resident_medication) == 2) {
+            printf("Resident medication: %s\n", resident_medication);
 
-                // Read conflicting medications
-                int j = 0;
-                while (fscanf(resident_record_conflict_file, "%[^,],", conflicts[i].conflicting_medication[j]) == 1) {
-                    // Remove leading and trailing whitespace from conflicting medication names
-                    char *trimmed_name = strtok(conflicts[i].conflicting_medication[j], " \t\n\r");
-                    if (trimmed_name != NULL && isalpha(trimmed_name[0])) {
-                        strcpy(conflicts[i].conflicting_medication[j], trimmed_name);
-                        j++;
+            //printf("REACHED\n");
+            // Check if the ID key matches
+            if (strcmp(resident_medication,medicine_details[i].name) == 0) {
+                printf("REACHED\n");
+                while (fscanf(resident_record_conflict_file, " %s,",
+                              conflicts[i].conflicting_medication[conflict_count]) == 1) {
+
+                    if (conflicts[i].conflicting_medication[conflict_count]) {
+                        conflicting_meds++;
                     }
+                    conflict_count++;
                 }
 
-                // Break out of the loop once the medication is found
-                break;
-            } else {
-                // Skip the rest of the line for medications of other residents
-                while (fgetc(resident_record_conflict_file) != '\n' && !feof(resident_record_conflict_file)) {
-                    // Keep reading characters until the end of the line
-                }
             }
-        }
 
-        // Process the conflicts for each medication
-        printf("\nConflicting medication for medication: %s\n", medications[i].medication);
+            // Process the conflicts for each medication
 
-        for (int j = 0; j < MAX_CONFLICTING_MEDICATIONS && conflicts[i].conflicting_medication[j][0] != '\0'; j++) {
-            printf("Conflicting medication: %s\n", conflicts[i].conflicting_medication[j]);
+
+
         }
+        printf("\nConflicting medication for medication: %s\n", medicine_details[i].name);
     }
 
     fclose(resident_record_conflict_file);
 }
 
 
+void get_medication_details(medicine_database medicine_details[],
+                            resident_medications medications[], int number_of_medications) {
+    FILE *medicine_database_file = fopen("medicine_database.txt", "r");
+
+    // Check if the file was successfully opened
+    if (medicine_database_file == NULL) {
+        printf("Could not open file \n");
+        exit(EXIT_FAILURE);
+    }
 
 
+
+    // Loop through resident medications
+    for (int i = 0; i < number_of_medications; i++) {
+        rewind(medicine_database_file);  // Move the file pointer to the beginning of the file
+
+        // Reset ID_Key found flag for each resident medication
+        int id_key_found = 0;
+
+        // Loop through the medicine database
+        while (fscanf(medicine_database_file, "%d,%[^,],%[^,],%lf,%s",
+                      &medicine_details[i].id_key, medicine_details[i].name,
+                      medicine_details[i].type, &medicine_details[i].strength,
+                      medicine_details[i].unit_of_strength) == 5) {
+            if (medicine_details[i].id_key == medications[i].medication) {
+                // ID_Key found, set the flag
+                id_key_found = 1;
+                break;  // Break out of the loop after finding a match
+            }
+        }
+
+        // Check if the ID_Key is not found for the current resident medication
+        if (!id_key_found) {
+            printf("ID_Key %d not found in the database.\n", medications[i].medication);
+            fclose(medicine_database_file);  // Close the file before exiting
+            exit(EXIT_FAILURE);
+        }
+
+    }
+
+    fclose(medicine_database_file);
+}
+
+
+void print_medicine_info(medicine_database medicine_details[], int number_of_medications) {
+    for (int i = 0; i < number_of_medications; i++) {
+        printf("Medicine ID: %d\n"
+               "Medicine name: %s\n"
+               "Medicine type: %s\n"
+               "Medicine strength: %.2lf\n"
+               "Medicine unit of strength: %s\n\n",
+               medicine_details[i].id_key, medicine_details[i].name, medicine_details[i].type,
+               medicine_details[i].strength, medicine_details[i].unit_of_strength);
+    }
+}
 
 
 
