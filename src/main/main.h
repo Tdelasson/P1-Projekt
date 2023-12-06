@@ -60,11 +60,11 @@ typedef struct {
 
 }medicine_conflicts;
 
-int scan_staff_number();
+/*int scan_staff_number();
 
 staff_record get_staff_record(staff_record[10]);
-int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key);
-void print_staff_record(staff_record staff);
+int scan_staff_records/*(FILE *Nursing_Home_file, staff_record* staff, int id_key);
+void print_staff_record(staff_record staff);*/
 
 
 // scans ID key input from user

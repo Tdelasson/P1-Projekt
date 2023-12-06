@@ -4,7 +4,7 @@
 #include "string.h"
 #include <ctype.h>
 
-staff_record get_staff_record(staff_record staffs[10]) {
+/*staff_record get_staff_record(staff_record staffs[10]) {
     FILE *nursing_home_file = fopen("Nursing_Home_personnel.txt", "r");
 
     if (nursing_home_file == NULL) {
@@ -62,7 +62,7 @@ int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key)
     }
     return 0;
 }
-
+*/
 
 // Function to retrieve resident information from a file and display it
 resident_record get_resident_record(void) {
@@ -235,7 +235,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
 
     // Create an array to store resident records
     medicine_conflicts conflicts[MAX_CONFLICTING_MEDICATIONS];
-    int id_key = 0;
+    int social_security_number = 0;
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     int conflict_count = 0;
 
@@ -250,7 +250,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
         conflict_count = 0;
 
         // Iterate through the file to find conflicts for the current medication
-        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &id_key, resident_medication) == 2) {
+        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &social_security_number, resident_medication) == 2) {
 
             if (strcmp(resident_medication, medicine_details[i].name) == 0) {
 
@@ -327,7 +327,7 @@ void get_medication_details(medicine_database medicine_details[],
         rewind(medicine_database_file);  // Move the file pointer to the beginning of the file
 
         // Reset ID_Key found flag for each resident medication
-        int id_key_found = 0;
+        int social_security_number_found = 0;
 
         // Loop through the medicine database
         while (fscanf(medicine_database_file, "%d,%[^,],%[^,],%lf,%s",
@@ -336,14 +336,14 @@ void get_medication_details(medicine_database medicine_details[],
                       medicine_details[i].unit_of_strength) == 5) {
             if (medicine_details[i].id_key == medications[i].medication) {
                 // ID_Key found, set the flag
-                id_key_found = 1;
+                social_security_number_found = 1;
                 break;  // Break out of the loop after finding a match
             }
         }
 
-        // Check if the ID_Key is not found for the current resident medication
-        if (!id_key_found) {
-            printf("ID_Key %d not found in the database.\n", medications[i].medication);
+        // Check if the social_security_number is not found for the current resident medication
+        if (!social_security_number_found) {
+            printf("social_security_number %d not found in the database.\n", medications[i].medication);
             fclose(medicine_database_file);  // Close the file before exiting
             exit(EXIT_FAILURE);
         }
