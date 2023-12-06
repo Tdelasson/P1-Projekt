@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
+#define OMR_FACTOR 3
 
 double convert(double dose, const char *from_unit, const char *to_unit);
 int strength_calculator();
@@ -15,10 +16,11 @@ int main(void){
     char mgml[] = "mg/ml", mgmcl[] = "mg/mcl", gml[] = "g/ml", gmcl[] = "g/mcl", gl[] = "g/l";
 
     char vw[] = "%v/w";
+    //char mgmgml[] = "mg/(mg/ml)";
 
     double dose = 20;
 
-    convert(dose, mcg, mcl);
+    convert(dose, l, ml);
 
 }
 
@@ -60,4 +62,14 @@ int infusion(){
     // {"%v/w->g/ml", 1.0};
     // {"%v/v->g/g", 1.0};
     // {"%w/w->ml/ml"};
+
+    double volume, hastighed, inf_opl, tid;
+
+    double dosis;
+    
+    volume = dosis/inf_opl;   //enhed er ml
+
+    hastighed = volume/tid;   //enhed er ml/t
+
+    double drops_minuts = hastighed/OMR_FACTOR;  //enhed er dråber/minutter
 }
