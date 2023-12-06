@@ -74,10 +74,6 @@ int LinSearch(resident_record residents[], int resident_number){
     return -1;
 }
 
-void check_medicine () {
-    printf("Type the ");
-}
-
 void print_box_place(box_place c){
     switch (c) {
         case monday:
