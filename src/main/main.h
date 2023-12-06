@@ -37,7 +37,7 @@ typedef struct {
     int medication;
     double total_weekly_dose;
     char medication_unit[MAX_MEDICATION_NAME_LGT];
-    int weekdays[7];
+    int weekdays [7];
     double morning_dose;
     double afternoon_dose;
     double evening_dose;
