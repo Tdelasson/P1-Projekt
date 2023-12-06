@@ -13,8 +13,8 @@
 //Making a struct type for Nursing home staff personnel
 typedef struct{
     int id_key;
-    char first_name;
-    char surname;
+    char first_name [50];
+    char surname [50];
 }staff_record;
 
 // Making a struct type for resident record data
@@ -58,7 +58,12 @@ typedef struct {
 
 }medicine_conflicts;
 
-// Nursing_Home_personnel* get_staff_record(staff_record staffs[]);
+int scan_staff_number();
+
+staff_record get_staff_record(staff_record[10]);
+int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key);
+void print_staff_record(staff_record staff);
+
 
 // scans ID key input from user
 int scan_resident_number();

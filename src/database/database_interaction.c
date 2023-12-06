@@ -4,6 +4,62 @@
 #include "string.h"
 #include <ctype.h>
 
+staff_record get_staff_record(staff_record staffs[10]) {
+    FILE *nursing_home_file = fopen("Nursing_Home_personnel.txt", "r");
+
+    if (nursing_home_file == NULL) {
+        printf("Could not open file \n");
+        exit(EXIT_FAILURE);
+    }
+
+    int i;
+    for (i = 0; i < 10; i++) {
+        int staff_result = fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
+                                  &staffs[i].id_key, staffs[i].first_name, staffs[i].surname);
+        if (staff_result != 3) {
+            break;
+        }
+    }
+
+    fclose(nursing_home_file);
+
+    return *staffs; // Returning the first staff_record, but this might not be what you want
+}
+
+int scan_staff_number() {
+    int id_key;
+    printf("Enter Personnel ID_Key: ");
+    scanf("%d", &id_key);
+    return id_key;
+}
+
+int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key) {
+    staff_record staffs[10];
+    // Populate the staffs array by reading the file
+    get_staff_record(staffs);
+    int staff_number;
+    int run = 1;
+
+    while (run == 1) {
+        printf("Type the staff's number\n>");
+        scanf("%d", &staff_number);
+
+        for (int i = 0; i < 10; i++) {
+            if (staff_number == staffs[i].id_key) {
+                printf("Staff checked in\n");
+                printf("Name: %s %s\n", staffs[i].first_name, staffs[i].surname);
+                run = 0;
+                break;  // Exit the loop when staff is found
+            }
+        }
+        if (run == 1) {
+            printf("Staff not registered\n");
+        }
+    }
+    return 0;
+}
+
+
 // Function to retrieve resident information from a file and display it
 resident_record get_resident_record(void) {
     resident_record resident;
@@ -21,8 +77,8 @@ resident_record get_resident_record(void) {
 
     while(record_found == 0){
         // Loop through the file as long as there are records to read;
-        resident.id_key = scan_resident_number();
-        record_found = scan_resident_database(resident_record_file,&resident,resident.id_key);
+        resident.social_security_number = scan_resident_number();
+        record_found = scan_resident_database(resident_record_file,&resident,resident.social_security_number);
     }
 
     // Return the resident information
@@ -32,13 +88,13 @@ resident_record get_resident_record(void) {
 
 int scan_resident_number(){
     //Prompts and scans the resident id key
-    int id_key;
-    printf("Enter Resident ID: \n-> ");
-    scanf("%d", &id_key);
-    return id_key;
+    int social_security_number;
+    printf("Enter Resident CPR: \n-> ");
+    scanf("%d", &social_security_number);
+    return social_security_number;
 }
 
-int scan_resident_database(FILE *resident_record_file,resident_record* resident,int id_key){
+int scan_resident_database(FILE *resident_record_file,resident_record* resident,int social_security_number){
     rewind(resident_record_file); // Move the file pointer to the beginning of the file
 
     while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
@@ -47,12 +103,12 @@ int scan_resident_database(FILE *resident_record_file,resident_record* resident,
                   resident->gender, &resident->weight,
                   resident->weight_unit, &resident->social_security_number) == 9) {
         // Check if the ID key matches
-        if (resident->id_key == id_key) {
+        if (resident->social_security_number == social_security_number) {
             return 1;
         }
 
     }
-    printf("ERROR! ID Key not found\n");
+    printf("ERROR! Resident not found\n");
     return 0;
 
 }
@@ -70,7 +126,7 @@ void print_resident_record(resident_record resident) {
 
 }
 
-int get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
+int get_resident_record_medicine(resident_medications medications[], int resident_social_security_number) {
     FILE *file = fopen("resident_record_medicine.txt", "r");
     if (file == NULL) {
         fprintf(stderr, "Error opening file.\n");
@@ -81,7 +137,7 @@ int get_resident_record_medicine(resident_medications medications[], int residen
     int medications_count = 0;
 
     while (fscanf(file, "%d,%d,", &medicalId, &patientId) == 2) {
-        if (patientId == resident_id_key) {
+        if (patientId == resident_social_security_number) {
             while (medications_count < MAX_MEDICATIONS &&
                    fscanf(file, " %d, %lf, %[^,],%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%lf,",
                           &medications[medications_count].medication,

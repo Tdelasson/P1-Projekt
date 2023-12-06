@@ -1,5 +1,5 @@
-/*
-staff_record* get_staff_record(staff_record staffs[]) {
+
+staff_record get_staff_record(staff_record staffs[]) {
     // Open the resident record file in read mode
     FILE *nursing_home_file = fopen("Nursing_Home_personnel.txt", "r");
 
@@ -44,4 +44,3 @@ staff_record* get_staff_record(staff_record staffs[]) {
         }
 
     }
-    */
