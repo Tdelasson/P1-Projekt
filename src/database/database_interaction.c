@@ -229,6 +229,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
         // Reset counters for each medication
         conflict_count = 0;
 
+        // TODO: Understand this code
         // Iterate through the file to find conflicts for the current medication
         while (fscanf(resident_record_conflict_file, "%d, %[^,],", &social_security_number, resident_medication) == 2) {
 
