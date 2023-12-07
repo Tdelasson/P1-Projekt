@@ -87,4 +87,6 @@ void get_medication_details(medicine_database medicine_details [],
                             resident_medications medications[], int number_of_medications);
 void print_medicine_detail_info(medicine_database medicine_details[], int number_of_medications);
 
-void dispensing();
+//void weekdays(box_place j, resident_medications medications[], int medications_count);
+
+void dispensing(resident_medications medications[], int medications_count);

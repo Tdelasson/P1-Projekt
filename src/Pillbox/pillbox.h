@@ -1,3 +1,6 @@
+#include "../Main/main.h"
+
+
 #ifndef DATABASE_DB_PILLBOX_H
 #define DATABASE_DB_PILLBOX_H
 
@@ -14,3 +17,5 @@ void print_box_place(box_place c);
 void print_box(box_place pill_box[][COLUMNS]);
 int update_box_1 (box_place pill_box[][COLUMNS]);
 void clear_pill_box(box_place pill_box[][COLUMNS]);
+
+//void weekdays(box_place j, resident_medications medications[], int medications_count);

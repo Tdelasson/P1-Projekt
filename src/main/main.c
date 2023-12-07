@@ -20,13 +20,15 @@ int main(void) {
         printf("No medications found for Resident: %s %s\n", resident.first_name, resident.surname);
     }
 */
+    //weekdays(medications, number_of_medications);
+
     medicine_database medicine_details[MAX_MEDICATIONS];
     get_medication_details(medicine_details,medications, number_of_medications);
     print_medicine_detail_info(medicine_details, number_of_medications);
 
     get_resident_medication_conflict(medicine_details, number_of_medications);
 
-    dispensing();
+    dispensing(medications, number_of_medications);
 
     return 0;
 }

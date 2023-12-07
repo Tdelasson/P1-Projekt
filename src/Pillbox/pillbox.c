@@ -1,23 +1,57 @@
 #include "pillbox.h"
-#include "..\main\main.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-void dispensing() {
+void dispensing(resident_medications medications[], int medications_count) {
     box_place pill_box[ROWS][COLUMNS] = {{none,    monday, tuesday, wednesday, thursday, friday, saturday, sunday},
                                          {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
 
-    print_box(pill_box);
+    for (int i = 0; i < medications_count; i++) {
+        update_box_1(pill_box);
 
-    clear_pill_box(pill_box);
+        print_box(pill_box);
 
-    update_box_1 (pill_box);
+        clear_pill_box(pill_box);
+    }
 
 
 
 }
+/*
+void weekdays(box_place j, resident_medications medications[], int medications_count) {
+    for (int i = 0; i < medications_count; i++) {
+        for (int j = 0; j < 7; j++) {
+            if (medications[i].weekdays[j] == 1) {
+                switch (j) {
+                    case 0:
+                        printf("Monday ");
+                        break;
+                    case 1:
+                        printf("Tuesday ");
+                        break;
+                    case 2:
+                        printf("Wednesday ");
+                        break;
+                    case 3:
+                        printf("Thursday ");
+                        break;
+                    case 4:
+                        printf("Friday ");
+                        break;
+                    case 5:
+                        printf("Saturday ");
+                        break;
+                    case 6:
+                        printf("Sunday ");
+                        break;
+                }
+            }
+        }
+    }
+}
+*/
 
 void print_box_place(box_place c){
     switch (c) {
@@ -78,6 +112,18 @@ void print_box_place(box_place c){
     }
 }
 
+/*
+void print_box1(box_place pill_box[][COLUMNS]) {
+    for (int x = 0; x < ROWS; x++) {
+        for (int y = 0; y < 1; y++) {
+            printf("  ");
+            weekdays(pill_box[x][y]);
+        }
+        printf("\n");
+    }
+}
+*/
+
 void print_box(box_place pill_box[][COLUMNS]) {
     for (int x = 0; x < ROWS; x++) {
         for (int y = 0; y < COLUMNS; y++) {
@@ -90,9 +136,8 @@ void print_box(box_place pill_box[][COLUMNS]) {
 
 int update_box_1 (box_place pill_box[][COLUMNS]) {
 
-    double medications[medications_count].total_weekly_dose,
 
-    
+
 
     pill_box[1][1] = one;
     pill_box[1][2] = one;
