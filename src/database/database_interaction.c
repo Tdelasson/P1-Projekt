@@ -348,10 +348,3 @@ void print_medicine_detail_info(medicine_database medicine_details[], int number
     }
 }
 
-
-
-
-
-medicine_database* get_resident_medicine_data(medicine_database residents[]);
-
-medicine_conflicts* get_medicine_conflicts(medicine_conflicts residents[]);
