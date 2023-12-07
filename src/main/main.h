@@ -86,3 +86,5 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
 void get_medication_details(medicine_database medicine_details [],
                             resident_medications medications[], int number_of_medications);
 void print_medicine_detail_info(medicine_database medicine_details[], int number_of_medications);
+
+void dispensing();
