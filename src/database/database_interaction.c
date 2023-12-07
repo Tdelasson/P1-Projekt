@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "..\main\main.h"
 #include "string.h"
-#include <ctype.h>
 
 
 int scan_staff_number() {
@@ -11,7 +10,9 @@ int scan_staff_number() {
     scanf("%d", &id_key);
     return id_key;
 }
-int verify_staff(int staff_id) {
+
+int verify_staff(void) {
+    int staff_id;
     FILE *nursing_home_file = fopen("nursing_home_staff.txt", "r");
     staff_record staff;
 
@@ -21,55 +22,27 @@ int verify_staff(int staff_id) {
     }
 
     int i;
-    for (i = 0; i < STAFF; i++) {
-        int staff_result = fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
-                                  &staff.id_key, staff.first_name, staff.surname);
-        if (staff.id_key == staff_id) {
-            printf("\nStaff checked in\n");
-            printf("Name: %s %s\n\n", staff.first_name, staff.surname);
-            fclose(nursing_home_file);
-            return 1;
+    while(1) {
+        rewind(nursing_home_file);
+        staff_id = scan_staff_number();
 
-        } else if (staff_result != 3) {
-            printf("Error reading file\n");
-            fclose(nursing_home_file);
-            return 0;
-        }
-    }
-    fclose(nursing_home_file);
-    printf("Staff not registered\n");
-    return EXIT_FAILURE;
-}
+        for (i = 0; 1; i++) {
+            int staff_result = fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
+                                      &staff.id_key, staff.first_name, staff.surname);
+            if (staff.id_key == staff_id) {
+                printf("\nStaff checked in\n");
+                printf("Name: %s %s\n\n", staff.first_name, staff.surname);
+                fclose(nursing_home_file);
+                return 1;
 
-
-void print_staff_record(staff_record staff){
-
-}
-
-
-int scan_staff_records(FILE *Nursing_Home_file, staff_record* staff, int id_key) {;
-    // Populate the staff array by reading the file
-    verify_staff(staff);
-    int staff_number;
-    int run = 1;
-
-    while (run == 1) {
-        printf("Type the staff's number\n>");
-        scanf("%d", &staff_number);
-
-        for (int i = 0; i < 10; i++) {
-            if (staff_number == staff[i].id_key) {
-                printf("Staff checked in\n");
-                printf("Name: %s %s\n", staff[i].first_name, staff[i].surname);
-                run = 0;
-                break;  // Exit the loop when staff is found
+            } else if (staff_result != 3) {
+                break;
             }
         }
-        if (run == 1) {
-            printf("Staff not registered\n");
-        }
+        fclose(nursing_home_file);
+        printf("Staff not registered\n");
     }
-    return 0;
+
 }
 
 
@@ -82,7 +55,7 @@ resident_record get_resident_record(void) {
 
     // Check if the file was successfully opened
     if (resident_record_file == NULL) {
-        printf("Could not open file \n");
+        fprintf(stderr, "Error opening resident record file.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -139,10 +112,10 @@ void print_resident_record(resident_record resident) {
 
 }
 
-int get_resident_record_medicine(resident_medications medications[], int resident_social_security_number) {
+int get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
     FILE *file = fopen("resident_record_medicine.txt", "r");
     if (file == NULL) {
-        fprintf(stderr, "Error opening file.\n");
+        fprintf(stderr, "Error opening resident_record_medicine file.\n");
         return -1;
     }
 
@@ -150,7 +123,7 @@ int get_resident_record_medicine(resident_medications medications[], int residen
     int medications_count = 0;
 
     while (fscanf(file, "%d,%d,", &medicalId, &patientId) == 2) {
-        if (patientId == resident_social_security_number) {
+        if (patientId == resident_id_key) {
             while (medications_count < MAX_MEDICATIONS &&
                    fscanf(file, " %d, %lf, %[^,],%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%lf,",
                           &medications[medications_count].medication,
@@ -167,7 +140,6 @@ int get_resident_record_medicine(resident_medications medications[], int residen
                           &medications[medications_count].afternoon_dose,
                           &medications[medications_count].evening_dose) == 13)
             {
-
 
                 medications_count++;
             }
@@ -223,7 +195,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 
                 // Print dose information for the day
                 printf("\nMorning dose: %.2lf\n", medications[i].morning_dose);
-                printf("Afternoon dose: %.2lf\n", medications[i].afternoon_dose);
+                printf("Noon dose: %.2lf\n", medications[i].afternoon_dose);
                 printf("Evening dose: %.2lf\n", medications[i].evening_dose);
                 printf("\n\n");
             }
@@ -238,7 +210,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
 
     // Check if the file was successfully opened
     if (resident_record_conflict_file == NULL) {
-        printf("Could not open file \n");
+        fprintf(stderr, "Error opening resident_record_conflict file.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -255,7 +227,6 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
         rewind(resident_record_conflict_file);
 
         // Reset counters for each medication
-        conflict_count = 0;
         conflict_count = 0;
 
         // Iterate through the file to find conflicts for the current medication
@@ -295,11 +266,12 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
             // Process the conflicts for each medication
 
         }
-        printf("\nConflicting medications for: %s\n", medicine_details[i].name);
+        /*printf("\nConflicting medications for: %s\n", medicine_details[i].name);
         for (int j = 0; j < conflict_count; j++) {
             printf("%s\n", conflicts[i].conflicting_medication[j]);
-        }
+        }*/
 
+        // TODO: Make sure conflicting medications dont get printed twice
         for (int j = 0; j < conflict_count; j++) {
             for (int k = 0; k < number_of_medications; k++) {
                 if (strcmp(conflicts[i].conflicting_medication[j], medicine_details[k].name) == 0) {
@@ -325,10 +297,9 @@ void get_medication_details(medicine_database medicine_details[],
 
     // Check if the file was successfully opened
     if (medicine_database_file == NULL) {
-        printf("Could not open file \n");
+        fprintf(stderr, "Error opening medicine database file.\n");
         exit(EXIT_FAILURE);
     }
-
 
 
     // Loop through resident medications
@@ -336,7 +307,7 @@ void get_medication_details(medicine_database medicine_details[],
         rewind(medicine_database_file);  // Move the file pointer to the beginning of the file
 
         // Reset ID_Key found flag for each resident medication
-        int social_security_number_found = 0;
+        int medicine_id_key_found = 0;
 
         // Loop through the medicine database
         while (fscanf(medicine_database_file, "%d,%[^,],%[^,],%lf,%s",
@@ -345,14 +316,15 @@ void get_medication_details(medicine_database medicine_details[],
                       medicine_details[i].unit_of_strength) == 5) {
             if (medicine_details[i].id_key == medications[i].medication) {
                 // ID_Key found, set the flag
-                social_security_number_found = 1;
+                medicine_id_key_found = 1;
                 break;  // Break out of the loop after finding a match
             }
         }
 
         // Check if the social_security_number is not found for the current resident medication
-        if (!social_security_number_found) {
-            printf("social_security_number %d not found in the database.\n", medications[i].medication);
+        if (!medicine_id_key_found) {
+            fprintf(stderr,"Id key for medicine %d not found in the database.\n",
+                    medications[i].medication);
             fclose(medicine_database_file);  // Close the file before exiting
             exit(EXIT_FAILURE);
         }
@@ -363,7 +335,7 @@ void get_medication_details(medicine_database medicine_details[],
 }
 
 
-void print_medicine_info(medicine_database medicine_details[], int number_of_medications) {
+void print_medicine_detail_info(medicine_database medicine_details[], int number_of_medications) {
     for (int i = 0; i < number_of_medications; i++) {
         printf("Medicine ID: %d\n"
                "Medicine name: %s\n"

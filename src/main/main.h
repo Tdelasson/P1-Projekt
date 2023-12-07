@@ -9,7 +9,7 @@
 #define MAX_GENDER_LGT 6
 #define MAX_CONFLICTING_MEDICATIONS 10
 #define MEDICATIONS 51
-#define STAFF 10
+#define STAFF 11
 
 //Making a struct type for Nursing home staff personnel
 typedef struct{
@@ -58,11 +58,10 @@ typedef struct {
     int id_key;
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     char conflicting_medication[10][MAX_MEDICATION_NAME_LGT];
-
 }medicine_conflicts;
 
 int scan_staff_number();
-int verify_staff(int id_key);
+int verify_staff(void);
 /*
 int scan_staff_records/*(FILE *Nursing_Home_file, staff_record* staff, int id_key);
 void print_staff_record(staff_record staff);*/
@@ -86,4 +85,4 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
 
 void get_medication_details(medicine_database medicine_details [],
                             resident_medications medications[], int number_of_medications);
-void print_medicine_info(medicine_database medicine_details[], int number_of_medications);
+void print_medicine_detail_info(medicine_database medicine_details[], int number_of_medications);
