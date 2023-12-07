@@ -8,6 +8,7 @@ int scan_staff_number() {
     int id_key;
     printf("Enter Personnel ID_Key: ");
     scanf("%d", &id_key);
+    clear_input_buffer(); // Clear input buffer to handle potential extra characters
     return id_key;
 }
 
@@ -22,27 +23,34 @@ int verify_staff(void) {
     }
 
     int i;
-    while(1) {
+    while (1) {
+        int found = 0;  // Flag to check if a valid staff ID is found
+
         rewind(nursing_home_file);
         staff_id = scan_staff_number();
 
-        for (i = 0; 1; i++) {
-            int staff_result = fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
-                                      &staff.id_key, staff.first_name, staff.surname);
+        for (i = 0; fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
+                           &staff.id_key, staff.first_name, staff.surname) == 3; i++) {
             if (staff.id_key == staff_id) {
                 printf("\nStaff checked in\n");
                 printf("Name: %s %s\n\n", staff.first_name, staff.surname);
                 fclose(nursing_home_file);
                 return 1;
-
-            } else if (staff_result != 3) {
-                break;
             }
         }
-        fclose(nursing_home_file);
-        printf("Staff not registered\n");
-    }
 
+        if (feof(nursing_home_file)) {
+            // Exit the loop if end of file is reached
+            printf("Invalid staff ID. Try again.\n\n");
+        }
+
+    }
+}
+
+
+void clear_input_buffer(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 
@@ -231,20 +239,25 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
 
         // TODO: Understand this code
         // Iterate through the file to find conflicts for the current medication
-        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &social_security_number, resident_medication) == 2) {
+        while (fscanf(resident_record_conflict_file, "%d, %[^,],",
+                      &social_security_number, resident_medication) == 2) {
 
             if (strcmp(resident_medication, medicine_details[i].name) == 0) {
 
-                char line[1024]; // remember to adjust the buffer size accordingly
+                // Buffer to store the line read from the file. Makes space for maximum number of conflicting
+                // medications and maximum length of each medication name
+                char line[MAX_CONFLICTING_MEDICATIONS*sizeof(char)
+                *MAX_MEDICATION_NAME_LGT];
+
+                // Read the rest of the line
+                // fgets reads untill it reaches a newline character or sizeof(line) is reached
                 if (fgets(line, sizeof(line), resident_record_conflict_file) != NULL) {
-                    // Tokenize the line using strtok
+
+                    // Tokenize (splitting the string into smaller strings) the line using strtok
                     char *token = strtok(line, ",");
+
+                    // Loop through the tokens (conflicting medications)
                     while (token != NULL) {
-                        // Remove newline character if present in the last token
-                        size_t len = strlen(token);
-                        if (len > 0 && token[len - 1] == '\n') {
-                            token[len - 1] = '\0';
-                        }
 
                         // Process the token (save it to your data structure, etc.)
                         strcpy(conflicts[i].conflicting_medication[conflict_count], token);
@@ -253,13 +266,13 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
                         conflict_count++;
 
                         // Get the next token
+                        // strtok returns NULL when there are no more tokens
                         token = strtok(NULL, ",");
                     }
                 }
             } else {
                 // Skip the rest of the line for medications of other residents
-                while (fgetc(resident_record_conflict_file) != '\n' &&
-                       !feof(resident_record_conflict_file)) {
+                while (fgetc(resident_record_conflict_file) != '\n') {
                     // Keep reading characters until the end of the line
                 }
 
@@ -267,10 +280,10 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
             // Process the conflicts for each medication
 
         }
-        /*printf("\nConflicting medications for: %s\n", medicine_details[i].name);
+        printf("\nConflicting medications for: %s\n", medicine_details[i].name);
         for (int j = 0; j < conflict_count; j++) {
             printf("%s\n", conflicts[i].conflicting_medication[j]);
-        }*/
+        }
 
         // TODO: Make sure conflicting medications dont get printed twice
         for (int j = 0; j < conflict_count; j++) {

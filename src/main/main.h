@@ -62,6 +62,7 @@ typedef struct {
 
 int scan_staff_number();
 int verify_staff(void);
+void clear_input_buffer(void);
 /*
 int scan_staff_records/*(FILE *Nursing_Home_file, staff_record* staff, int id_key);
 void print_staff_record(staff_record staff);*/
