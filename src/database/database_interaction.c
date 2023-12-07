@@ -361,3 +361,14 @@ void print_medicine_detail_info(medicine_database medicine_details[], int number
     }
 }
 
+char program_restart() {
+    char restart_program;
+    printf("Next resident? (y/n)\n");
+    scanf(" %c", &restart_program);
+
+    if (restart_program != 'y' && restart_program != 'n') {
+        printf("Invalid input, please try again\n");
+        program_restart();
+    }
+    return restart_program;
+}
