@@ -1,5 +1,3 @@
-Id key, first name, last name
-
 8382,John,Smith
 5678,Emily,Johnson
 9012,Michael,Williams
