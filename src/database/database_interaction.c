@@ -72,18 +72,18 @@ resident_record get_resident_record(void) {
     return resident;
 }
 
-int scan_resident_number(){
+unsigned long int scan_resident_number(){
     //Prompts and scans the resident id key
-    int social_security_number;
+    unsigned long int social_security_number;
     printf("Enter Resident CPR: \n-> ");
-    scanf("%d", &social_security_number);
+    scanf("%lu", &social_security_number);
     return social_security_number;
 }
 
-int scan_resident_database(FILE *resident_record_file,resident_record* resident,int social_security_number){
+int scan_resident_database(FILE *resident_record_file,resident_record* resident, unsigned long int social_security_number){
     rewind(resident_record_file); // Move the file pointer to the beginning of the file
 
-    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
+    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %lu",
                   &resident->id_key, resident->first_name, resident->surname,
                   &resident->apartment_number, &resident->age,
                   resident->gender, &resident->weight,
@@ -105,7 +105,7 @@ void print_resident_record(resident_record resident) {
            "Age: %d\n"
            "Gender: %s\n"
            "Weight: %d %s\n"
-           "Social Security Number: %d\n\n",
+           "Social Security Number: %lu\n\n",
            resident.first_name, resident.surname,
            resident.apartment_number, resident.age, resident.gender,
            resident.weight, resident.weight_unit, resident.social_security_number);

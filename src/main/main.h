@@ -28,7 +28,7 @@ typedef struct {
     char gender [MAX_GENDER_LGT];
     int weight;
     char weight_unit [5];
-    int social_security_number;
+    unsigned long int social_security_number;
 
 }resident_record;
 
@@ -68,11 +68,11 @@ void print_staff_record(staff_record staff);*/
 
 
 // scans ID key input from user
-int scan_resident_number();
+unsigned long int scan_resident_number();
 
 // Scans and prints the resident personal information from resident_record.txt
 resident_record get_resident_record(void);
-int scan_resident_database(FILE *resident_record_file,resident_record* resident,int id_key);
+int scan_resident_database(FILE *resident_record_file,resident_record* resident, unsigned long int social_security_number);
 void print_resident_record(resident_record resident);
 
 // Scans and prints the resident medication information from resident_record_medicine.txt
