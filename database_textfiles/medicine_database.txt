@@ -50,6 +50,6 @@
 2050,Metformin,Liquid,1000,mg/ml
 2051,Cloxacillin,Pill,500,mg
 2052,Levetiracetam,Pill,500,mg
-
+2053,Amoxicillin,Pill,500,mg
 
 

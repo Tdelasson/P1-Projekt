@@ -79,7 +79,9 @@ void print_resident_medication(resident_medications medications[], int medicatio
 
 // Checks for conflicts in medications for the resident
 void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications);
-// check_resident_medications
+void print_conflicting_medications(medicine_database medicine_details[],
+                                   char conflicting_medications[MAX_MEDICATIONS]
+[MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT], int number_of_medications);
 
 void get_medication_details(medicine_database medicine_details [],
                             resident_medications medications[], int number_of_medications);
