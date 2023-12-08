@@ -3,12 +3,11 @@
 #include "..\main\main.h"
 #include "string.h"
 
-
+// Functions for staff verification. Checks if the staff id is in the database nursing_home_staff.txt
 int scan_staff_number() {
     int id_key;
     printf("Enter Personnel ID_Key: ");
     scanf("%d", &id_key);
-    clear_input_buffer(); // Clear input buffer to handle potential extra characters
     return id_key;
 }
 
@@ -48,13 +47,8 @@ int verify_staff(void) {
 }
 
 
-void clear_input_buffer(void) {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
-}
 
-
-// Function to retrieve resident information from a file and display it
+// Functions to retrieve resident information from resident_record.txt and display it
 resident_record get_resident_record(void) {
     resident_record resident;
 
@@ -120,6 +114,8 @@ void print_resident_record(resident_record resident) {
 
 }
 
+
+// Functions to retrieve resident medication information from a resident_record_medicine.txt and display it
 int get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
     FILE *file = fopen("resident_record_medicine.txt", "r");
     if (file == NULL) {
@@ -213,6 +209,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 }
 
 
+// Functions to retrieve medication conflict information from medicine_conflicts.txt and display it
 void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
 
@@ -237,7 +234,6 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
         // Reset counters for each medication
         conflict_count = 0;
 
-        // TODO: Understand this code
         // Iterate through the file to find conflicts for the current medication
         while (fscanf(resident_record_conflict_file, "%d, %[^,],",
                       &social_security_number, resident_medication) == 2) {
@@ -271,7 +267,9 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
                     }
                 }
             } else {
-                // Skip the rest of the line for medications of other residents
+
+                // Reads the rest of the line without saving it to a variable thereby
+                // skipping the rest of the line
                 while (fgetc(resident_record_conflict_file) != '\n') {
                     // Keep reading characters until the end of the line
                 }
@@ -304,7 +302,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
 
 
 
-
+// Functions to retrieve medication details information from medicine_database.txt and display it
 void get_medication_details(medicine_database medicine_details[],
                             resident_medications medications[], int number_of_medications) {
     FILE *medicine_database_file = fopen("medicine_database.txt", "r");
@@ -361,6 +359,8 @@ void print_medicine_detail_info(medicine_database medicine_details[], int number
     }
 }
 
+
+// Function to restart the program if needed
 char program_restart() {
     char restart_program;
     while(1) {
