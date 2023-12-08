@@ -28,7 +28,7 @@ int main(void) {
 
     get_resident_medication_conflict(medicine_details, number_of_medications);
 
-    dispensing(medications, number_of_medications);
+    dispensing(medications, medicine_details, number_of_medications);
 
     return 0;
 }

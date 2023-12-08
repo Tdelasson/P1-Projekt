@@ -89,4 +89,4 @@ void print_medicine_detail_info(medicine_database medicine_details[], int number
 
 //void weekdays(box_place j, resident_medications medications[], int medications_count);
 
-void dispensing(resident_medications medications[], int medications_count);
+void dispensing(resident_medications medications[], medicine_database medicine_details[], int medications_count);
