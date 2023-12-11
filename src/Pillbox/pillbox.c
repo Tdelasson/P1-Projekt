@@ -33,7 +33,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
             char strength_type[10];
             strcpy(strength_type, medicine_details[i].unit_of_strength);
 
-            print_box(pill_box, actual_morning_dose,  actual_noon_dose,  actual_evening_dose, strength_type);
+            print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
             clear_pill_box(pill_box);
 
         } else {
@@ -58,10 +58,9 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
             char strength_type[10];
             strcpy(strength_type, medicine_details[i].unit_of_strength);
 
-            print_box(pill_box, actual_morning_dose,  actual_noon_dose,  actual_evening_dose, strength_type);
+            print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
             clear_pill_box(pill_box);
         }
-
 
         printf("\n");
         char y;
@@ -114,13 +113,13 @@ void print_box_place(box_place c, double actual_morning_dose, double actual_noon
             printf("   ");
             break;
         case actual_morning:
-            printf("%.5lf %s  ", actual_morning_dose, strength_type);
+            printf("%.4lf %s ", actual_morning_dose, strength_type);
             break;
         case actual_noon:
-            printf("%lf %s  ", actual_noon_dose, strength_type);
+            printf("%.4lf %s ", actual_noon_dose, strength_type);
             break;
         case actual_evening:
-            printf("%lf %s  ", actual_evening_dose, strength_type);
+            printf("%.4lf %s ", actual_evening_dose, strength_type);
             break;
         default:
             printf("invalid");
@@ -176,7 +175,6 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
             return result;
         }
     }
-
 
     printf("Invalid conversion!\n");
     return -1; // Invalid conversion
