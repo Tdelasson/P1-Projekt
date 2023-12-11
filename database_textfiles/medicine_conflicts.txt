@@ -1,4 +1,4 @@
-4001,Aspirin,Ibuprofen,Clopidogrel,Amoxicillin,Celecoxib,Prednisone
+4001,Aspirin,Ibuprofen,Amoxicillin,Celecoxib,Prednisone,Clopidogrel,
 4002,Levothyroxine,Furosemide,Warfarin,Hydrochlorothiazide,Amlodipine,Fluticasone
 4003,Citalopram,Amphetamine,Loratadine,Levothyroxine,Fluoxetine,Ranitidine, Methylphenidate
 4004,Amlodipine,Levothyroxine,Warfarin, Atorvastatin,Carvedilol,Lisinopril,Metoprolol
@@ -14,7 +14,7 @@
 4015,Clonazepam,Alprazolam,Loratadine
 4016,Fluoxetine,Citalopram,Escitalopram,Ranitidine,Bupropion,Trazodone
 4017,Amphetamine,Methylphenidate,Citalopram
-4018,Clopidogrel,Warfarin,Diazepam,Aspirin
+4018,Clopidogrel,Warfarin,Aspirin,Diazepam
 4019,Rosuvastatin,Simvastatin,Atorvastatin
 4020,Bupropion,Escitalopram,Fluoxetine,Sertraline,Simvastatin
 4021,Lisinopril,Amlodipine,Warfarin,Hydrochlorothiazide

@@ -94,12 +94,12 @@ resident_record get_resident_record(void) {
     return resident;
 }
 
-int scan_resident_number(){
-    int CPR_number;
+unsigned long int scan_resident_number(){
+    unsigned long int social_security_number;
     printf("Enter resident CPR number: ");
 
     // Check if the input is a valid integer
-    if (scanf("%d", &CPR_number) != 1) {
+    if (scanf("%lu", &social_security_number) != 1) {
         printf("Invalid input. Please enter a valid integer.\n");
         // Clear the input buffer to prevent an infinite loop
         while (getchar() != '\n');
@@ -108,13 +108,13 @@ int scan_resident_number(){
         return -1;
     }
 
-    return CPR_number;
+    return social_security_number;
 }
 
-int scan_resident_database(FILE *resident_record_file,resident_record* resident,int social_security_number){
+int scan_resident_database(FILE *resident_record_file,resident_record* resident,unsigned long int social_security_number){
     rewind(resident_record_file); // Move the file pointer to the beginning of the file
 
-    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
+    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %lu",
                   &resident->id_key, resident->first_name, resident->surname,
                   &resident->apartment_number, &resident->age,
                   resident->gender, &resident->weight,
@@ -136,7 +136,7 @@ void print_resident_record(resident_record resident) {
            "Age: %d\n"
            "Gender: %s\n"
            "Weight: %d %s\n"
-           "Social Security Number: %d\n\n",
+           "Social Security Number: %lu\n\n",
            resident.first_name, resident.surname,
            resident.apartment_number, resident.age, resident.gender,
            resident.weight, resident.weight_unit, resident.social_security_number);
@@ -238,14 +238,6 @@ void print_resident_medication(resident_medications medications[], int medicatio
 }
 
 
-bool isMedicationAlreadyInList(char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT], int i, char *medication) {
-    for (int l = 0; l < MAX_CONFLICTING_MEDICATIONS; l++) {
-        if (strcmp(conflicting_medications[i][l], medication) == 0) {
-            return true;
-        }
-    }
-    return false;
-}
 
 void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
@@ -256,7 +248,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
     }
 
     medicine_conflicts conflicts[MAX_CONFLICTING_MEDICATIONS];
-    int social_security_number = 0;
+    unsigned long int social_security_number = 0;
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     int conflict_count;
     char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
@@ -265,18 +257,15 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
         rewind(resident_record_conflict_file);
         conflict_count = 0;
 
-        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &social_security_number, resident_medication) == 2) {
+        while (fscanf(resident_record_conflict_file, "%lu , %[^,],", &social_security_number, resident_medication) == 2) {
 
             if (strcmp(resident_medication, medicine_details[i].name) == 0) {
                 char line[MAX_CONFLICTING_MEDICATIONS * MAX_MEDICATION_NAME_LGT];
                 if (fgets(line, sizeof(line), resident_record_conflict_file) != NULL) {
                     char *token = strtok(line, ",");
                     while (token != NULL) {
-                        // Check if medication is already in the list before adding
-                        if (!isMedicationAlreadyInList(conflicting_medications, i, token)) {
                             strcpy(conflicts[i].conflicting_medication[conflict_count], token);
                             conflict_count++;
-                        }
                         token = strtok(NULL, ",");
                     }
                 }
@@ -286,21 +275,11 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
             }
         }
 
-        printf("\nConflicting medications for [%s]: ", medicine_details[i].name);
-        for (int j = 0; j < conflict_count; j++) {
-            printf("%s", conflicts[i].conflicting_medication[j]);
-
-            // Print comma only if there are more conflicting medications to follow
-            if (j < conflict_count - 1) {
-                printf(",");
-            }
-        }
-
         // Save conflicting medications for later printing
         int conflicting_medications_count = 0;
         for (int k = 0; k < number_of_medications; k++) {
-            for (int l = 0; l < MAX_CONFLICTING_MEDICATIONS; l++) {
-                if (l < conflict_count && strcmp(conflicts[i].conflicting_medication[l], medicine_details[k].name) == 0) {
+            for (int l = 0; l < conflict_count; l++) {
+                if (strcmp(conflicts[i].conflicting_medication[l], medicine_details[k].name) == 0) {
                     strcpy(conflicting_medications[i][conflicting_medications_count], medicine_details[k].name);
                     conflicting_medications_count++;
                 }
@@ -318,26 +297,19 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
 }
 
 void print_conflicting_medications(medicine_database medicine_details[], char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT], int number_of_medications) {
-    printf("\n\nConflicting medications:\n");
+    printf("Conflicting medications:\n");
 
     for (int i = 0; i < number_of_medications; i++) {
-        printf("\nConflicting medications for [%s]: ", medicine_details[i].name);
 
         // Check if there are conflicting medications for the current medicine
-        if (conflicting_medications[i][0][0] == '\0') {
-            printf("None");
-        } else {
+        if (conflicting_medications[i][0][0] != '\0') {
             for (int j = 0; j < MAX_CONFLICTING_MEDICATIONS && conflicting_medications[i][j][0] != '\0'; j++) {
-                printf("%s", conflicting_medications[i][j]);
-
-                // Print comma and space only if there are more conflicting medications to follow
-                if (conflicting_medications[i][j + 1][0] != '\0') {
-                    printf(", ");
-                }
+                printf("\n%s and %s are conflicting medications.\n", medicine_details[i].name, conflicting_medications[i][j]);
             }
         }
         printf("\n");
     }
+
 }
 
 
