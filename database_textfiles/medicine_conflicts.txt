@@ -1,38 +1,37 @@
-4001,Aspirin,Ibuprofen,Amoxicillin,Celecoxib,Prednisone,Clopidogrel,
-4002,Levothyroxine,Furosemide,Warfarin,Hydrochlorothiazide,Amlodipine,Fluticasone
-4003,Citalopram,Amphetamine,Loratadine,Levothyroxine,Fluoxetine,Ranitidine, Methylphenidate
-4004,Amlodipine,Levothyroxine,Warfarin, Atorvastatin,Carvedilol,Lisinopril,Metoprolol
-4005,Metformin,Celecoxib
-4006,Omeprazole,Lansoprazole,Esomeprazole
-4007,Warfarin,Lisinopril,Levothyroxine,Amlodipine,Clopidogrel,Fluticasone
-4008,Diazepam,Alprazolam, Clopidogrel
-4009,Furosemide,Loratadine
-4010,Ranitidine,Citalopram,Fluoxetine,Lansoprazole
-4011,Hydrochlorothiazide,Lisinopril,Levothyroxine
-4012,Sertraline,Citalopram,Escitalopram,Bupropion
-4014,Carvedilol,Amlodipine,Metoprolol
-4015,Clonazepam,Alprazolam,Loratadine
-4016,Fluoxetine,Citalopram,Escitalopram,Ranitidine,Bupropion,Trazodone
-4017,Amphetamine,Methylphenidate,Citalopram
-4018,Clopidogrel,Warfarin,Aspirin,Diazepam
-4019,Rosuvastatin,Simvastatin,Atorvastatin
-4020,Bupropion,Escitalopram,Fluoxetine,Sertraline,Simvastatin
-4021,Lisinopril,Amlodipine,Warfarin,Hydrochlorothiazide
-4022,Amoxicillin,Ibuprofen,Aspirin, Doxycycline
-4023,Ibuprofen,Aspirin, Celecoxib, Prednisone, Amoxicillin
-4024,Trazodone,Fluoxetine,Escitalopram
-4025,Celecoxib,Ibuprofen,Aspirin,Metformin
-4026,Methylphenidate,Amphetamine,Citalopram
-4027,Metoprolol,Amlodipine,Carvedilol
-4029,Prednisone,Ibuprofen,Aspirin
-4030,Doxycycline,Ciprofloxacin,Amoxicillin
-4031,Esomeprazole,Omeprazole,Lansoprazole
-4032,Fluticasone,Loratadine,Levothyroxine,Warfarin
-4033,Alprazolam,Diazepam,Clonazepam
-4034,Simvastatin,Atorvastatin,Bupropion,Rosuvastatin
-4035,Loratadine, Fluticasone, Clonazepam, Furosemide, Citalopram
-4036,Atorvastatin, Amlodipine, Rosuvastatin, Simvastatin
-4037,Ciprofloxacin, Doxycycline
-4038,Lansoprazole, Ranitidine, Omeprazole, Esomeprazole
-4039,Escitalopram,Trazodone,Fluoxetine,Sertraline,Bupropion
-
+40001,Aspirin,Ibuprofen,Amoxicillin,Celecoxib,Prednisone,Clopidogrel,
+40002,Levothyroxine,Furosemide,Warfarin,Hydrochlorothiazide,Amlodipine,Fluticasone
+40003,Citalopram,Amphetamine,Loratadine,Levothyroxine,Fluoxetine,Ranitidine, Methylphenidate
+40004,Amlodipine,Levothyroxine,Warfarin, Atorvastatin,Carvedilol,Lisinopril,Metoprolol
+40005,Metformin,Celecoxib
+40006,Omeprazole,Lansoprazole,Esomeprazole
+40007,Warfarin,Lisinopril,Levothyroxine,Amlodipine,Clopidogrel,Fluticasone
+40008,Diazepam,Alprazolam, Clopidogrel
+40009,Furosemide,Loratadine
+40010,Ranitidine,Citalopram,Fluoxetine,Lansoprazole
+40011,Hydrochlorothiazide,Lisinopril,Levothyroxine
+40012,Sertraline,Citalopram,Escitalopram,Bupropion
+40013,Carvedilol,Amlodipine,Metoprolol
+40014,Clonazepam,Alprazolam,Loratadine
+40015,Fluoxetine,Citalopram,Escitalopram,Ranitidine,Bupropion,Trazodone
+40016,Amphetamine,Methylphenidate,Citalopram
+40017,Clopidogrel,Warfarin,Aspirin,Diazepam
+40018,Rosuvastatin,Simvastatin,Atorvastatin
+40019,Bupropion,Escitalopram,Fluoxetine,Sertraline,Simvastatin
+40020,Lisinopril,Amlodipine,Warfarin,Hydrochlorothiazide
+40021,Amoxicillin,Ibuprofen,Aspirin, Doxycycline
+40022,Ibuprofen,Aspirin, Celecoxib, Prednisone, Amoxicillin
+40023,Trazodone,Fluoxetine,Escitalopram
+40024,Celecoxib,Ibuprofen,Aspirin,Metformin
+40025,Methylphenidate,Amphetamine,Citalopram
+40026,Metoprolol,Amlodipine,Carvedilol
+40027,Prednisone,Ibuprofen,Aspirin
+40028,Doxycycline,Ciprofloxacin,Amoxicillin
+40029,Esomeprazole,Omeprazole,Lansoprazole
+40030,Fluticasone,Loratadine,Levothyroxine,Warfarin
+40031,Alprazolam,Diazepam,Clonazepam
+40032,Simvastatin,Atorvastatin,Bupropion,Rosuvastatin
+40033,Loratadine, Fluticasone, Clonazepam, Furosemide, Citalopram
+40034,Atorvastatin, Amlodipine, Rosuvastatin, Simvastatin
+40035,Ciprofloxacin, Doxycycline
+40036,Lansoprazole, Ranitidine, Omeprazole, Esomeprazole
+40037,Escitalopram,Trazodone,Fluoxetine,Sertraline,Bupropion
