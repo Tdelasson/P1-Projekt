@@ -24,7 +24,13 @@ int main(void) {
         get_medication_details(medicine_details, medications, number_of_medications);
         print_medicine_detail_info(medicine_details, number_of_medications);
 
-        get_resident_medication_conflict(medicine_details, number_of_medications);
+        if (get_resident_medication_conflict(medicine_details, number_of_medications)==true){
+            fprintf(stderr,"Medication conflict found for Resident: %s %s\n", resident.first_name, resident.surname);
+            return EXIT_FAILURE;
+        }
+        else {
+            printf("No medication conflicts found for Resident: %s %s\n", resident.first_name, resident.surname);
+        }
 
         if (program_restart()== 'y'){
             printf("\n");

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Defining constants used in functions
 #define MAX_RESIDENTS 50
@@ -78,7 +79,7 @@ int get_resident_record_medicine(resident_medications medications[], int residen
 void print_resident_medication(resident_medications medications[], int medications_count);
 
 // Checks for conflicts in medications for the resident
-void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications);
+bool get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications);
 void print_conflicting_medications(medicine_database medicine_details[],
                                    char conflicting_medications[MAX_MEDICATIONS]
 [MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT], int number_of_medications);

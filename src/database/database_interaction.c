@@ -239,7 +239,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 
 
 
-void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
+bool get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
 
     if (resident_record_conflict_file == NULL) {
@@ -252,6 +252,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     int conflict_count;
     char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
+    int conflicting_medications_count = 0;
 
     for (int i = 0; i < number_of_medications; i++) {
         rewind(resident_record_conflict_file);
@@ -276,7 +277,7 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
         }
 
         // Save conflicting medications for later printing
-        int conflicting_medications_count = 0;
+
         for (int k = 0; k < number_of_medications; k++) {
             for (int l = 0; l < conflict_count; l++) {
                 if (strcmp(conflicts[i].conflicting_medication[l], medicine_details[k].name) == 0) {
@@ -286,15 +287,20 @@ void get_resident_medication_conflict(medicine_database medicine_details[], int 
             }
         }
 
-        // Print a newline after each medication's conflicting medications
-        printf("\n");
+
+
     }
 
-    fclose(resident_record_conflict_file);
-
-    // Print conflicting medications as the last output
-    print_conflicting_medications(medicine_details, conflicting_medications, number_of_medications);
+    if (conflicting_medications_count > 0){
+        print_conflicting_medications(medicine_details, conflicting_medications, number_of_medications);
+        return true;
+    }
+    else{
+        return false;
+    }
 }
+
+
 
 void print_conflicting_medications(medicine_database medicine_details[], char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT], int number_of_medications) {
     printf("Conflicting medications:\n");
