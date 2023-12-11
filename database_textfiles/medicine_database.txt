@@ -2,7 +2,7 @@
 2002,Ibuprofen,Liquid,200,mg/ml
 2003,Acetaminophen,Pill,500,mg
 2004,Ciprofloxacin,Liquid,250,mg/ml
-2005,Levothyroxine,Liquid,100,mcg/ml
+2005,Levothyroxine,Liquid,100,mg/ml
 2006,Atorvastatin,Pill,20,mg
 2007,Levothyroxine,Liquid,100,mcg/ml
 2008,Metformin,Liquid,500,mg/ml

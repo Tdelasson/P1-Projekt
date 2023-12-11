@@ -12,11 +12,14 @@ typedef enum box_place {none, monday, tuesday, wednesday, thursday, friday, satu
     morning, noon, evening,
     empty, actual_morning, actual_noon, actual_evening} box_place;
 
-void print_box_place(box_place c, double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]);
-void print_box(box_place pill_box[][COLUMNS], double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]);
-int update_box_1 (box_place pill_box[][COLUMNS], resident_medications medications[],
-                  medicine_database medicine_details[], int medications_count);
+void print_box_place(box_place c, double actual_morning_dose, double actual_noon_dose,
+                     double actual_evening_dose, char strength_type[]);
+
+void print_box(box_place pill_box[][COLUMNS], double actual_morning_dose, double actual_noon_dose,
+               double actual_evening_dose, char strength_type[]);
+
 int medication_days (resident_medications medications);
+
 void clear_pill_box(box_place pill_box[][COLUMNS]);
 
-//void weekdays(box_place j, resident_medications medications[], int medications_count);
+double convert(double dose, const char *from_unit, const char *to_unit);
