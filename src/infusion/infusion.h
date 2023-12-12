@@ -1,3 +1,4 @@
+#include "..\main\main.h"
 #include <stdio.h>
 
 // Defining constants used in functions
