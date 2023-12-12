@@ -1,5 +1,4 @@
-#include "../main/main.h"
-#include "../database/database_interaction.h"
+#include "../infusion/infusion.h"
 
 #ifndef DATABASE_DB_PILLBOX_H
 #define DATABASE_DB_PILLBOX_H
@@ -8,6 +7,8 @@
 
 #define ROWS 4
 #define COLUMNS 8
+
+void dispensing(resident_medications medications[], medicine_database medicine_details[], int medications_count);
 
 typedef enum box_place {none, monday, tuesday, wednesday, thursday, friday, saturday, sunday,
     morning, noon, evening,
