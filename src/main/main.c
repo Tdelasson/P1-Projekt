@@ -2,7 +2,7 @@
 #include "../pillbox/pillbox.h"
 
 int main(void) {
-    verify_staff();
+    //verify_staff();
 
     while (1) {
 

@@ -32,3 +32,5 @@ void fill_day (double actual_morning_dose, double actual_noon_dose, double actua
 void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dose, double* actual_evening_dose,
                             double actual_weekly_dose, double number_of_days, resident_medications medications[],
                             medicine_database medicine_details[], int i);
+
+void check_medicine(resident_medications medications[], medicine_database medicine_details[], int i);

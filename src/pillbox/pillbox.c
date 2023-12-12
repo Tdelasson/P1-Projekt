@@ -14,6 +14,9 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
     char strength_type[10];
 
     for (int i = 0; i < medications_count; i++) {
+
+        check_medicine(medications, medicine_details , i);
+
         if (strcmp(medications[i].medication_unit, medicine_details[i].unit_of_strength) == 0) {
             double actual_weekly_dose = medications[i].total_weekly_dose;
 
@@ -97,6 +100,29 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
         }
     }
 }
+
+void check_medicine(resident_medications medications[], medicine_database medicine_details[], int i) {
+
+    int streg_kode;
+    printf("First medicine to dispense: %s\n", medicine_details[i].name);
+    printf("indtast stregkode for medicin\n->");
+    scanf("%d", &streg_kode);
+
+    int found = 0; // Introduce a flag to track if the medicine is found or not
+
+    while (1) {
+        if (medications[i].medication == streg_kode) {
+            printf("Medicine found\n");
+            break;
+        } else {
+            printf("Medicine not found\n");
+            printf("indtast stregkode for medicin\n->");
+            scanf("%d", &streg_kode);
+        }
+    }
+}
+
+
 
 void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dose, double* actual_evening_dose,
                              double actual_weekly_dose, double number_of_days, resident_medications medications[],
