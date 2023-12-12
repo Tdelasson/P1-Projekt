@@ -1,5 +1,4 @@
 #include "pillbox.h"
-#include "../database/database_interaction.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

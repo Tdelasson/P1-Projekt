@@ -1,4 +1,5 @@
-#include "../Main/main.h"
+#include "../main/main.h"
+#include "../database/database_interaction.h"
 
 #ifndef DATABASE_DB_PILLBOX_H
 #define DATABASE_DB_PILLBOX_H
