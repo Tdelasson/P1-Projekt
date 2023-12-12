@@ -1,9 +1,12 @@
-#include "..\main\main.h"
 #include <stdio.h>
+#include "../database/database_interaction.h"
+
 
 // Defining constants used in functions
 #define CONVERT_FACTOR 3
 #define CONVERSION_TO_MGML 100.00
+
+void infusion(resident_record resident);
 
 //gets information from user
 void scan_information(double* stock_solution_strength, double* dose_prescribed,

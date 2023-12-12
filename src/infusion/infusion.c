@@ -1,21 +1,15 @@
 #include "infusion.h"
 
-void infusion(void);
 
-int main(void){
-    infusion();
-}
 
-void infusion(void){
+void infusion(resident_record resident){
     // Declaring of variables entered by the nurse
     double *stock_solution_strength, *dose_prescribed, *strength_of_solution, *time_in_hours;
 
     // Declaring of variables calculated
     double total_dose, dose_in_ml, total_amount_solution, total_amount_infusion, drops_pr_min;
 
-    //get patient data from resident_record
-    resident_record resident;
-    resident = get_resident_record();
+
 
     //aquire information from employee
     scan_information(stock_solution_strength, dose_prescribed,
