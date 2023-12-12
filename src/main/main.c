@@ -10,5 +10,7 @@ int main(void) {
 
     infusion(resident);
 
+    program_restart();
+
     return 0;
 }

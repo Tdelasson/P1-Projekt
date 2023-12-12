@@ -34,7 +34,6 @@ int verify_staff(void) {
     bool validStaffFound = false;
 
     while (!validStaffFound) {
-        int found = 0;  // Flag to check if a valid staff ID is found
         int staff_id = -1;
 
         rewind(nursing_home_file);
@@ -252,7 +251,7 @@ bool get_resident_medication_conflict(medicine_database medicine_details[], int 
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     int conflict_count;
     char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
-    int conflicting_medications_count = 0;
+    int conflicting_medications_count;
     bool conflict_found = false;
 
     for (int i = 0; i < number_of_medications; i++) {
