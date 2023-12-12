@@ -34,24 +34,23 @@ int main(void) {
         }
 
 
-    //weekdays(medications, number_of_medications);
+        //weekdays(medications, number_of_medications);
 
-    //print medication dispense information
-    for (int i = 0; i < medications_count; i++) {
+        //print medication dispense information
+        for (int i = 0; i < medications_count; i++) {
 
-        if (strcmp(medicine_details[i].type, "Liquid") == 0) {
-            // TODO implement Liquids
+            if (strcmp(medicine_details[i].type, "Liquid") == 0) {
+                // TODO implement Liquids
+            } else if (strcmp(medicine_details[i].type, "pills") == 0) {
+                // TODO implement pillbox
+            }
         }
 
-        else if (strcmp(medicine_details[i].type, "pills") == 0) {
-            // TODO implement pillbox
-        }
+        //check for new resident
+        program_restart();
+
+        dispensing(medications, medicine_details, number_of_medications);
+
+        return 0;
     }
-
-    //check for new resident
-    program_restart();
-
-    dispensing(medications, medicine_details, number_of_medications);
-
-    return 0;
 }
