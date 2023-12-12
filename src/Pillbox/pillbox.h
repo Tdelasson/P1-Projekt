@@ -23,3 +23,10 @@ int medication_days (resident_medications medications);
 void clear_pill_box(box_place pill_box[][COLUMNS]);
 
 double convert(double dose, const char *from_unit, const char *to_unit);
+
+void fill_day (double actual_morning_dose, double actual_noon_dose, double actual_evening_dose,
+               box_place pill_box[][COLUMNS], int j);
+
+void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dose, double* actual_evening_dose,
+                            double actual_weekly_dose, double number_of_days, resident_medications medications[],
+                            medicine_database medicine_details[], int i);
