@@ -6,7 +6,7 @@
 #define MAX_NAME_LGT 50
 #define MAX_MEDICATIONS 15 // TODO: Dynamic allocation
 #define MAX_MEDICATION_NAME_LGT 100
-#define MAX_GENDER_LGT 6
+#define MAX_SEX_LGT 6
 #define MAX_CONFLICTING_MEDICATIONS 10
 
 
@@ -25,7 +25,7 @@ typedef struct {
     char surname[MAX_NAME_LGT];
     double apartment_number;
     int age;
-    char gender [MAX_GENDER_LGT];
+    char sex [MAX_SEX_LGT];
     int weight;
     char weight_unit [5];
     unsigned long int social_security_number;

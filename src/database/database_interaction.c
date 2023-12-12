@@ -116,7 +116,7 @@ int scan_resident_database(FILE *resident_record_file,resident_record* resident,
     while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %lu",
                   &resident->id_key, resident->first_name, resident->surname,
                   &resident->apartment_number, &resident->age,
-                  resident->gender, &resident->weight,
+                  resident->sex, &resident->weight,
                   resident->weight_unit, &resident->social_security_number) == 9) {
         // Check if the ID key matches
         if (resident->social_security_number == social_security_number) {
@@ -133,11 +133,11 @@ void print_resident_record(resident_record resident) {
     printf("Name: %s %s\n"
            "Apartment number: %.2lf\n"
            "Age: %d\n"
-           "Gender: %s\n"
+           "Sex: %s\n"
            "Weight: %d %s\n"
            "Social Security Number: %lu\n\n",
            resident.first_name, resident.surname,
-           resident.apartment_number, resident.age, resident.gender,
+           resident.apartment_number, resident.age, resident.sex,
            resident.weight, resident.weight_unit, resident.social_security_number);
 
 }
