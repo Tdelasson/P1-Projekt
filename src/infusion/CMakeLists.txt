@@ -1,0 +1,2 @@
+add_library(Calculator infusion.c)
+target_link_libraries(Calculator database_interaction)
