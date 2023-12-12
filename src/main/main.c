@@ -2,7 +2,6 @@
 #include <string.h>
 
 int main(void) {
-
     verify_staff();
 
     //infusion(resident);
@@ -35,7 +34,7 @@ int main(void) {
         }
 
 
-    }
+    //weekdays(medications, number_of_medications);
 
     //print medication dispense information
     for (int i = 0; i < medications_count; i++) {
@@ -51,6 +50,8 @@ int main(void) {
 
     //check for new resident
     program_restart();
+
+    dispensing(medications, medicine_details, number_of_medications);
 
     return 0;
 }

@@ -51,5 +51,3 @@
 20051,Cloxacillin,Pill,500,mg
 20052,Levetiracetam,Pill,500,mg
 20053,Amoxicillin,Pill,500,mg
-
-

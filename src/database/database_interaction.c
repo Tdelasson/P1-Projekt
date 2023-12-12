@@ -387,7 +387,6 @@ void print_medicine_detail_info(medicine_database medicine_details[], int number
     }
 }
 
-
 // Function to restart the program if needed
 char program_restart() {
     char restart_program;
