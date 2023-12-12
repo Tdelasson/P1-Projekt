@@ -9,13 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3381e2b-1840-4ebc-aebd-67e24571d9e2" name="Changes" comment="Opdateret SQL databasen">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ac72a438-db26-4589-9d29-b80d162957d7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ac72a438-db26-4589-9d29-b80d162957d7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infusion/infusion.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/infusion/infusion.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/infusion/infusion.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/infusion/infusion.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/functions_main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/functions_main.c" afterDir="false" />
-    </list>
+    <list default="true" id="d3381e2b-1840-4ebc-aebd-67e24571d9e2" name="Changes" comment="Opdateret SQL databasen" />
     <list id="aa5bd11c-c49f-481d-8653-3f370669b668" name="Changes by JacobLenovo" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +146,7 @@
       <workItem from="1700553174255" duration="6000" />
       <workItem from="1700813561847" duration="870000" />
       <workItem from="1702302941724" duration="122000" />
-      <workItem from="1702303131547" duration="2640000" />
+      <workItem from="1702303131547" duration="3212000" />
     </task>
     <task id="LOCAL-00001" summary="Opdateret SQL databasen">
       <option name="closed" value="true" />
