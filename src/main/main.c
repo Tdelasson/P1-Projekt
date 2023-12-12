@@ -6,8 +6,6 @@ int main(void) {
 
     while (1) {
 
-        //infusion(resident);
-
         //get patient data from resident_record
         resident_record resident;
         resident = get_resident_record();
@@ -44,22 +42,16 @@ int main(void) {
                     }
                 }
 
-                //weekdays(medications, number_of_medications);
-
-                //print medication dispense information
-
                 dispensing(medications, medicine_details, number_of_medications);
 
-                /*if (strcmp(medicine_details[i].type, "Liquid") == 0) {
-                    // TODO implement Liquids
-                } else if (strcmp(medicine_details[i].type, "pills") == 0) {
-                    // TODO implement pillbox
-                }*/
                 break;
+
             } else if (choice == 'I' || choice == 'i') {
                 infusion(resident);
                 break;
-            } else {
+
+            } else
+            {
                 printf("Invalid choice\n");
             }
         }

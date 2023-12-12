@@ -3,7 +3,7 @@
 
 void infusion(resident_record resident){
     // Declaring of variables entered by the nurse
-    double *stock_solution_strength, *dose_prescribed, *strength_of_solution, *time_in_hours;
+    double stock_solution_strength, dose_prescribed, strength_of_solution, time_in_hours;
 
     // Declaring of variables calculated
     double total_dose, dose_in_ml, total_amount_solution, total_amount_infusion, drops_pr_min;
@@ -11,22 +11,22 @@ void infusion(resident_record resident){
 
 
     //aquire information from employee
-    scan_information(stock_solution_strength, dose_prescribed,
-                     strength_of_solution, time_in_hours);
+    scan_information(&stock_solution_strength, &dose_prescribed,
+                     &strength_of_solution, &time_in_hours);
 
     //check if the strength of the stock solution is in percent
-    is_percent(stock_solution_strength);
+    is_percent(&stock_solution_strength);
 
     //calculate the dose of medicine needed in mg
-    total_dose = dose(resident.weight, dose_prescribed);
+    total_dose = dose(resident.weight, &dose_prescribed);
     printf("The dose for the resident is: %0.3lf mg\n", total_dose);
 
     //calculate quantity of stock solution needed in ml.
-    dose_in_ml = amount_of_stock_solution(total_dose, stock_solution_strength);
+    dose_in_ml = amount_of_stock_solution(total_dose, &stock_solution_strength);
     printf("Amount of stock solution needed: %0.3lf ml\n", dose_in_ml);
 
     //calculate the amount of solution in total
-    total_amount_solution = amount_of_solution(total_dose, strength_of_solution);
+    total_amount_solution = amount_of_solution(total_dose, &strength_of_solution);
 
     //calculate the amount of infusion liquid needed
     total_amount_infusion = amount_of_infusion_liquid(total_amount_solution, dose_in_ml);
@@ -35,7 +35,7 @@ void infusion(resident_record resident){
     printf("Amount of total infusion: %0.3lf ml\n", total_amount_solution);
 
     //calculate drops pr. min.
-    drops_pr_min = speed_of_infusion(total_amount_solution, time_in_hours);
+    drops_pr_min = speed_of_infusion(total_amount_solution, &time_in_hours);
     printf("speed of infusion %0.3lf dr/min\n", drops_pr_min);
 }
 
