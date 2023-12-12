@@ -21,10 +21,20 @@ int main(void) {
     get_medication_details(medicine_details, medications, medications_count);
     print_medicine_detail_info(medicine_details, medications_count);
 
+
     //check for medication conflicts
-    if (get_resident_medication_conflict(medicine_details, medications_count) == true) {
+    char conflict;
+    while (get_resident_medication_conflict(medicine_details, medications_count) == true
+    && conflict != 'y') {
         fprintf(stderr, "Medication conflict detected\n");
-        return EXIT_FAILURE;
+        printf("Would you like to continue? (y/n)\n");
+        scanf("%c", &conflict);
+
+        if (conflict == 'n') {
+            return 0;
+        }
+
+
     }
 
     //print medication dispense information

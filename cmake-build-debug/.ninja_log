@@ -53,3 +53,11 @@
 13	174	7240801631617161	src/infusion/CMakeFiles/Calculator.dir/infusion.c.obj	c6d4225b34a295fe
 175	296	7240801632834934	src/infusion/libCalculator.a	46314e91146d39ba
 297	476	7240801634558416	src/main/main.exe	d6557ef22540200d
+8	172	7240811310896151	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+173	360	7240811312726564	src/main/main.exe	d6557ef22540200d
+6	159	7240811564928970	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+160	333	7240811566609490	src/main/main.exe	d6557ef22540200d
+7	169	7240812002213476	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+171	338	7240812003842686	src/main/main.exe	d6557ef22540200d
+7	166	7240812551474217	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+167	381	7240812553516472	src/main/main.exe	d6557ef22540200d
