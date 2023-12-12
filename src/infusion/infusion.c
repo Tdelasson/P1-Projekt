@@ -1,7 +1,6 @@
 #include "infusion.h"
 
 
-
 void infusion(resident_record resident){
     // Declaring of variables entered by the nurse
     double *stock_solution_strength, *dose_prescribed, *strength_of_solution, *time_in_hours;
@@ -66,7 +65,7 @@ void is_percent(double* stock_solution_strength){
         printf("Is the strength in percent? write Y or N \n>");
         scanf(" %c", &unit);
         if (unit == 'Y' || unit == 'y') {
-            *stock_solution_strength = *stock_solution_strength / CONVERSION_TO_MGML;
+            *stock_solution_strength = *stock_solution_strength * CONVERSION_TO_MGML;
             printf("Strength: %lf mg/mL \n", *stock_solution_strength);
         }
         else if (unit == 'N' || unit == 'n')

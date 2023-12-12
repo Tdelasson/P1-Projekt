@@ -3,14 +3,13 @@
 #include <stdbool.h>
 
 // Defining constants used in functions
-#define MAX_RESIDENTS 50
 #define MAX_NAME_LGT 50
 #define MAX_MEDICATIONS 15 // TODO: Dynamic allocation
 #define MAX_MEDICATION_NAME_LGT 100
 #define MAX_GENDER_LGT 6
 #define MAX_CONFLICTING_MEDICATIONS 10
-#define MEDICATIONS 51
-#define STAFF 11
+
+
 
 //Making a struct type for Nursing home staff personnel
 typedef struct{
@@ -46,6 +45,8 @@ typedef struct {
 
 }resident_medications;
 
+
+// Making a struct type for medication details
 typedef struct {
     int id_key;
     char name[MAX_MEDICATION_NAME_LGT];
@@ -55,18 +56,19 @@ typedef struct {
 
 }medicine_database;
 
+
+// Making a struct type for medication conflicts
 typedef struct {
     int id_key;
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     char conflicting_medication[10][MAX_MEDICATION_NAME_LGT];
 }medicine_conflicts;
 
+// Scans and prints the staff personal information from staff_record.txt
 int scan_staff_number();
 int verify_staff(void);
 
-
-
-// scans ID key input from user
+// scans CPR input from user
 unsigned long int scan_resident_number();
 
 // Scans and prints the resident personal information from resident_record.txt

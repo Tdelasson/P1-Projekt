@@ -4,7 +4,7 @@
 
 // Defining constants used in functions
 #define CONVERT_FACTOR 3
-#define CONVERSION_TO_MGML 100.00
+#define CONVERSION_TO_MGML 10.00
 
 void infusion(resident_record resident);
 
