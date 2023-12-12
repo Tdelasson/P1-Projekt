@@ -27,3 +27,9 @@
 16	165	7240767797043763	src/infusion/libCalculator.a	46314e91146d39ba
 7	171	7240767797061994	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
 172	359	7240767798902406	src/main/main.exe	d6557ef22540200d
+16	263	7240784622808217	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+6	315	7240784623319225	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
+316	466	7240784624840484	src/database/libdatabase_interaction.a	bdbd97f550a665b1
+466	673	7240784626804885	src/main/main.exe	d6557ef22540200d
+6	152	7240785235364387	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
+153	347	7240785237247910	src/main/main.exe	d6557ef22540200d
