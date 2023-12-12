@@ -1,4 +1,3 @@
-#include <string.h>
 #include "main.h"
 #include "../pillbox/pillbox.h"
 

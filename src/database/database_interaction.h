@@ -4,7 +4,7 @@
 
 // Defining constants used in functions
 #define MAX_NAME_LGT 50
-#define MAX_MEDICATIONS 15 // TODO: Dynamic allocation
+#define MAX_MEDICATIONS 10 // TODO: Dynamic allocation
 #define MAX_MEDICATION_NAME_LGT 100
 #define MAX_SEX_LGT 6
 #define MAX_CONFLICTING_MEDICATIONS 10
