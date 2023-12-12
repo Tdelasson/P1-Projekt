@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "..\main\main.h"
 #include "string.h"
 #include <stdbool.h>
+#include "database_interaction.h"
 
 // Functions for staff verification. Checks if the staff id is in the database nursing_home_staff.txt
 int scan_staff_number(void) {
@@ -247,12 +247,13 @@ bool get_resident_medication_conflict(medicine_database medicine_details[], int 
         exit(EXIT_FAILURE);
     }
 
-    medicine_conflicts conflicts[MAX_CONFLICTING_MEDICATIONS];
+    medicine_conflicts conflicts[MAX_MEDICATIONS];
     unsigned long int social_security_number = 0;
     char resident_medication[MAX_MEDICATION_NAME_LGT];
     int conflict_count;
     char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
     int conflicting_medications_count = 0;
+    bool conflict_found = false;
 
     for (int i = 0; i < number_of_medications; i++) {
         rewind(resident_record_conflict_file);
@@ -265,8 +266,8 @@ bool get_resident_medication_conflict(medicine_database medicine_details[], int 
                 if (fgets(line, sizeof(line), resident_record_conflict_file) != NULL) {
                     char *token = strtok(line, ",");
                     while (token != NULL) {
-                            strcpy(conflicts[i].conflicting_medication[conflict_count], token);
-                            conflict_count++;
+                        strcpy(conflicts[i].conflicting_medication[conflict_count], token);
+                        conflict_count++;
                         token = strtok(NULL, ",");
                     }
                 }
@@ -276,33 +277,43 @@ bool get_resident_medication_conflict(medicine_database medicine_details[], int 
             }
         }
 
+
         // Save conflicting medications for later printing
 
-        for (int k = 0; k < number_of_medications; k++) {
-            for (int l = 0; l < conflict_count; l++) {
+        for (int l = 0; l < number_of_medications; l++) {
+            conflicting_medications_count = 0;
+
+            for (int k = 0; k < number_of_medications; k++) {
                 if (strcmp(conflicts[i].conflicting_medication[l], medicine_details[k].name) == 0) {
                     strcpy(conflicting_medications[i][conflicting_medications_count], medicine_details[k].name);
                     conflicting_medications_count++;
+                    conflict_found = true;
                 }
             }
         }
 
 
-
     }
 
-    if (conflicting_medications_count > 0){
+
+    fclose(resident_record_conflict_file);
+
+    if (conflict_found == true)
+    {
         print_conflicting_medications(medicine_details, conflicting_medications, number_of_medications);
-        return true;
-    }
-    else{
-        return false;
+        return conflict_found;
+    } else {
+        return conflict_found;
     }
 }
 
 
+void print_conflicting_medications(medicine_database medicine_details[],
+                                   char conflicting_medications[MAX_MEDICATIONS]
+                                   [MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT],
+                                   int number_of_medications) {
 
-void print_conflicting_medications(medicine_database medicine_details[], char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT], int number_of_medications) {
+
     printf("Conflicting medications:\n");
 
     for (int i = 0; i < number_of_medications; i++) {

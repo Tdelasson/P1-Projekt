@@ -1,4 +1,4 @@
-#include "main.h"
+#include "../database/database_interaction.h"
 
 int main(void) {
     while(1) {
