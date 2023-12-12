@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Defining constants used in functions
 #define MAX_RESIDENTS 50
@@ -28,7 +29,7 @@ typedef struct {
     char gender [MAX_GENDER_LGT];
     int weight;
     char weight_unit [5];
-    int social_security_number;
+    unsigned long int social_security_number;
 
 }resident_record;
 
@@ -62,17 +63,15 @@ typedef struct {
 
 int scan_staff_number();
 int verify_staff(void);
-/*
-int scan_staff_records/*(FILE *Nursing_Home_file, staff_record* staff, int id_key);
-void print_staff_record(staff_record staff);*/
+
 
 
 // scans ID key input from user
-int scan_resident_number();
+unsigned long int scan_resident_number();
 
 // Scans and prints the resident personal information from resident_record.txt
 resident_record get_resident_record(void);
-int scan_resident_database(FILE *resident_record_file,resident_record* resident,int id_key);
+int scan_resident_database(FILE *resident_record_file,resident_record* resident,unsigned long int social_security_number);
 void print_resident_record(resident_record resident);
 
 // Scans and prints the resident medication information from resident_record_medicine.txt
@@ -80,9 +79,13 @@ int get_resident_record_medicine(resident_medications medications[], int residen
 void print_resident_medication(resident_medications medications[], int medications_count);
 
 // Checks for conflicts in medications for the resident
-void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications);
-// check_resident_medications
+bool get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications);
+void print_conflicting_medications(medicine_database medicine_details[],
+                                   char conflicting_medications[MAX_MEDICATIONS]
+[MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT], int number_of_medications);
 
 void get_medication_details(medicine_database medicine_details [],
                             resident_medications medications[], int number_of_medications);
 void print_medicine_detail_info(medicine_database medicine_details[], int number_of_medications);
+
+char program_restart();
