@@ -1,10 +1,70 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "..\main\main.h"
 #include "string.h"
-#include <ctype.h>
+#include <stdbool.h>
+#include "database_interaction.h"
 
-// Function to retrieve resident information from a file and display it
+// Functions for staff verification. Checks if the staff id is in the database nursing_home_staff.txt
+int scan_staff_number(void) {
+    int staff_id;
+    printf("Enter staff ID: ");
+
+    // Check if the input is a valid integer
+    if (scanf("%d", &staff_id) != 1) {
+        printf("Invalid input. Please enter a valid integer.\n");
+        // Clear the input buffer to prevent an infinite loop
+        while (getchar() != '\n');
+        // You may also choose to return an error code or handle it as appropriate
+        // For simplicity, I'll return a value of -1 to indicate an error
+        return -1;
+    }
+
+    return staff_id;
+}
+
+int verify_staff(void) {
+    FILE *nursing_home_file = fopen("nursing_home_staff.txt", "r");
+
+    if (nursing_home_file == NULL) {
+        printf("Could not open file \n");
+        exit(EXIT_FAILURE);
+    }
+
+    staff_record staff;
+    bool validStaffFound = false;
+
+    while (!validStaffFound) {
+        int found = 0;  // Flag to check if a valid staff ID is found
+        int staff_id = -1;
+
+        rewind(nursing_home_file);
+        while (staff_id == -1) {
+            staff_id = scan_staff_number();
+        }
+
+        for (int i = 0; fscanf(nursing_home_file, "%d, %49[^,], %49[^\n]\n",
+                               &staff.id_key, staff.first_name, staff.surname) == 3; i++) {
+            if (staff.id_key == staff_id) {
+                printf("\nStaff checked in\n");
+                printf("Name: %s %s\n\n", staff.first_name, staff.surname);
+                validStaffFound = true;
+                break;  // Exit the inner loop
+            }
+        }
+
+        if (!validStaffFound) {
+            printf("Invalid staff ID. Try again.\n\n");
+        }
+    }
+
+    fclose(nursing_home_file);
+
+    return 1;  // Indicate success
+}
+
+
+
+// Functions to retrieve resident information from resident_record.txt and display it
 resident_record get_resident_record(void) {
     resident_record resident;
 
@@ -13,7 +73,7 @@ resident_record get_resident_record(void) {
 
     // Check if the file was successfully opened
     if (resident_record_file == NULL) {
-        printf("Could not open file \n");
+        fprintf(stderr, "Error opening resident record file.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -21,8 +81,12 @@ resident_record get_resident_record(void) {
 
     while(record_found == 0){
         // Loop through the file as long as there are records to read;
-        resident.id_key = scan_resident_number();
-        record_found = scan_resident_database(resident_record_file,&resident,resident.id_key);
+        resident.social_security_number = -1;
+        while (resident.social_security_number == -1) {
+            resident.social_security_number = scan_resident_number();
+        }
+
+        record_found = scan_resident_database(resident_record_file,&resident,resident.social_security_number);
     }
 
     // Return the resident information
@@ -30,29 +94,38 @@ resident_record get_resident_record(void) {
     return resident;
 }
 
-int scan_resident_number(){
-    //Prompts and scans the resident id key
-    int id_key;
-    printf("Enter Resident ID: \n-> ");
-    scanf("%d", &id_key);
-    return id_key;
+unsigned long int scan_resident_number(){
+    unsigned long int social_security_number;
+    printf("Enter resident CPR number: ");
+
+    // Check if the input is a valid integer
+    if (scanf("%lu", &social_security_number) != 1) {
+        printf("Invalid input. Please enter a valid integer.\n");
+        // Clear the input buffer to prevent an infinite loop
+        while (getchar() != '\n');
+        // You may also choose to return an error code or handle it as appropriate
+        // For simplicity, I'll return a value of -1 to indicate an error
+        return -1;
+    }
+
+    return social_security_number;
 }
 
-int scan_resident_database(FILE *resident_record_file,resident_record* resident,int id_key){
+int scan_resident_database(FILE *resident_record_file,resident_record* resident,unsigned long int social_security_number){
     rewind(resident_record_file); // Move the file pointer to the beginning of the file
 
-    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %d",
+    while (fscanf(resident_record_file, "%d, %[^,], %[^,], %lf, %d, %[^,], %d, %[^,], %lu",
                   &resident->id_key, resident->first_name, resident->surname,
                   &resident->apartment_number, &resident->age,
                   resident->gender, &resident->weight,
                   resident->weight_unit, &resident->social_security_number) == 9) {
         // Check if the ID key matches
-        if (resident->id_key == id_key) {
+        if (resident->social_security_number == social_security_number) {
             return 1;
         }
 
     }
-    printf("ERROR! ID Key not found\n");
+    printf("ERROR! Resident not found\n");
     return 0;
 
 }
@@ -63,17 +136,19 @@ void print_resident_record(resident_record resident) {
            "Age: %d\n"
            "Gender: %s\n"
            "Weight: %d %s\n"
-           "Social Security Number: %d\n\n",
+           "Social Security Number: %lu\n\n",
            resident.first_name, resident.surname,
            resident.apartment_number, resident.age, resident.gender,
            resident.weight, resident.weight_unit, resident.social_security_number);
 
 }
 
+
+// Functions to retrieve resident medication information from a resident_record_medicine.txt and display it
 int get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
     FILE *file = fopen("resident_record_medicine.txt", "r");
     if (file == NULL) {
-        fprintf(stderr, "Error opening file.\n");
+        fprintf(stderr, "Error opening resident_record_medicine file.\n");
         return -1;
     }
 
@@ -98,7 +173,6 @@ int get_resident_record_medicine(resident_medications medications[], int residen
                           &medications[medications_count].afternoon_dose,
                           &medications[medications_count].evening_dose) == 13)
             {
-
 
                 medications_count++;
             }
@@ -154,7 +228,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 
                 // Print dose information for the day
                 printf("\nMorning dose: %.2lf\n", medications[i].morning_dose);
-                printf("Afternoon dose: %.2lf\n", medications[i].afternoon_dose);
+                printf("Noon dose: %.2lf\n", medications[i].afternoon_dose);
                 printf("Evening dose: %.2lf\n", medications[i].evening_dose);
                 printf("\n\n");
             }
@@ -164,102 +238,109 @@ void print_resident_medication(resident_medications medications[], int medicatio
 }
 
 
-void get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
+
+bool get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
 
-    // Check if the file was successfully opened
     if (resident_record_conflict_file == NULL) {
-        printf("Could not open file \n");
+        fprintf(stderr, "Error opening resident_record_conflict file.\n");
         exit(EXIT_FAILURE);
     }
 
-    // Create an array to store resident records
-    medicine_conflicts conflicts[MAX_CONFLICTING_MEDICATIONS];
-    int id_key = 0;
+    medicine_conflicts conflicts[MAX_MEDICATIONS];
+    unsigned long int social_security_number = 0;
     char resident_medication[MAX_MEDICATION_NAME_LGT];
-    int conflict_count = 0;
+    int conflict_count;
+    char conflicting_medications[MAX_MEDICATIONS][MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT];
+    int conflicting_medications_count = 0;
+    bool conflict_found = false;
 
-
-    // Loop through the array of medication
     for (int i = 0; i < number_of_medications; i++) {
-        // Move the file pointer to the beginning
         rewind(resident_record_conflict_file);
-
-        // Reset counters for each medication
-        conflict_count = 0;
         conflict_count = 0;
 
-        // Iterate through the file to find conflicts for the current medication
-        while (fscanf(resident_record_conflict_file, "%d, %[^,],", &id_key, resident_medication) == 2) {
+        while (fscanf(resident_record_conflict_file, "%lu , %[^,],", &social_security_number, resident_medication) == 2) {
 
             if (strcmp(resident_medication, medicine_details[i].name) == 0) {
-
-                char line[1024]; // remember to adjust the buffer size accordingly
+                char line[MAX_CONFLICTING_MEDICATIONS * MAX_MEDICATION_NAME_LGT];
                 if (fgets(line, sizeof(line), resident_record_conflict_file) != NULL) {
-                    // Tokenize the line using strtok
                     char *token = strtok(line, ",");
                     while (token != NULL) {
-                        // Remove newline character if present in the last token
-                        size_t len = strlen(token);
-                        if (len > 0 && token[len - 1] == '\n') {
-                            token[len - 1] = '\0';
-                        }
-
-                        // Process the token (save it to your data structure, etc.)
                         strcpy(conflicts[i].conflicting_medication[conflict_count], token);
-
-                        // Increment counters
                         conflict_count++;
-
-                        // Get the next token
                         token = strtok(NULL, ",");
                     }
                 }
             } else {
-                // Skip the rest of the line for medications of other residents
-                while (fgetc(resident_record_conflict_file) != '\n' &&
-                       !feof(resident_record_conflict_file)) {
-                    // Keep reading characters until the end of the line
+                while (fgetc(resident_record_conflict_file) != '\n') {
                 }
-
             }
-            // Process the conflicts for each medication
-
-        }
-        printf("\nConflicting medications for: %s\n", medicine_details[i].name);
-        for (int j = 0; j < conflict_count; j++) {
-            printf("%s\n", conflicts[i].conflicting_medication[j]);
         }
 
-        for (int j = 0; j < conflict_count; j++) {
+
+        // Save conflicting medications for later printing
+
+        for (int l = 0; l < number_of_medications; l++) {
+            conflicting_medications_count = 0;
+
             for (int k = 0; k < number_of_medications; k++) {
-                if (strcmp(conflicts[i].conflicting_medication[j], medicine_details[k].name) == 0) {
-                    printf("Conflicting medication found: %s and %s\n", medicine_details[i].name,
-                           medicine_details[k].name);
+                if (strcmp(conflicts[i].conflicting_medication[l], medicine_details[k].name) == 0) {
+                    strcpy(conflicting_medications[i][conflicting_medications_count], medicine_details[k].name);
+                    conflicting_medications_count++;
+                    conflict_found = true;
                 }
             }
         }
+
 
     }
+
+
     fclose(resident_record_conflict_file);
 
-    printf("\n");
+    if (conflict_found == true)
+    {
+        print_conflicting_medications(medicine_details, conflicting_medications, number_of_medications);
+        return conflict_found;
+    } else {
+        return conflict_found;
+    }
+}
+
+
+void print_conflicting_medications(medicine_database medicine_details[],
+                                   char conflicting_medications[MAX_MEDICATIONS]
+                                   [MAX_CONFLICTING_MEDICATIONS][MAX_MEDICATION_NAME_LGT],
+                                   int number_of_medications) {
+
+
+    printf("Conflicting medications:\n");
+
+    for (int i = 0; i < number_of_medications; i++) {
+
+        // Check if there are conflicting medications for the current medicine
+        if (conflicting_medications[i][0][0] != '\0') {
+            for (int j = 0; j < MAX_CONFLICTING_MEDICATIONS && conflicting_medications[i][j][0] != '\0'; j++) {
+                printf("\n%s and %s are conflicting medications.\n", medicine_details[i].name, conflicting_medications[i][j]);
+            }
+        }
+        printf("\n");
+    }
+
 }
 
 
 
-
-
+// Functions to retrieve medication details information from medicine_database.txt and display it
 void get_medication_details(medicine_database medicine_details[],
                             resident_medications medications[], int number_of_medications) {
     FILE *medicine_database_file = fopen("medicine_database.txt", "r");
 
     // Check if the file was successfully opened
     if (medicine_database_file == NULL) {
-        printf("Could not open file \n");
+        fprintf(stderr, "Error opening medicine database file.\n");
         exit(EXIT_FAILURE);
     }
-
 
 
     // Loop through resident medications
@@ -267,7 +348,7 @@ void get_medication_details(medicine_database medicine_details[],
         rewind(medicine_database_file);  // Move the file pointer to the beginning of the file
 
         // Reset ID_Key found flag for each resident medication
-        int id_key_found = 0;
+        int medicine_id_key_found = 0;
 
         // Loop through the medicine database
         while (fscanf(medicine_database_file, "%d,%[^,],%[^,],%lf,%s",
@@ -276,14 +357,15 @@ void get_medication_details(medicine_database medicine_details[],
                       medicine_details[i].unit_of_strength) == 5) {
             if (medicine_details[i].id_key == medications[i].medication) {
                 // ID_Key found, set the flag
-                id_key_found = 1;
+                medicine_id_key_found = 1;
                 break;  // Break out of the loop after finding a match
             }
         }
 
-        // Check if the ID_Key is not found for the current resident medication
-        if (!id_key_found) {
-            printf("ID_Key %d not found in the database.\n", medications[i].medication);
+        // Check if the social_security_number is not found for the current resident medication
+        if (!medicine_id_key_found) {
+            fprintf(stderr,"Id key for medicine %d not found in the database.\n",
+                    medications[i].medication);
             fclose(medicine_database_file);  // Close the file before exiting
             exit(EXIT_FAILURE);
         }
@@ -294,7 +376,7 @@ void get_medication_details(medicine_database medicine_details[],
 }
 
 
-void print_medicine_info(medicine_database medicine_details[], int number_of_medications) {
+void print_medicine_detail_info(medicine_database medicine_details[], int number_of_medications) {
     for (int i = 0; i < number_of_medications; i++) {
         printf("Medicine ID: %d\n"
                "Medicine name: %s\n"
@@ -307,9 +389,19 @@ void print_medicine_info(medicine_database medicine_details[], int number_of_med
 }
 
 
+// Function to restart the program if needed
+char program_restart() {
+    char restart_program;
+    while(1) {
+        printf("Next resident? (y/n)\n");
+        scanf(" %c", &restart_program);
 
-
-
-medicine_database* get_resident_medicine_data(medicine_database residents[]);
-
-medicine_conflicts* get_medicine_conflicts(medicine_conflicts residents[]);
+        if (restart_program == 'y' || restart_program == 'n') {
+            break;
+        }
+        else {
+            printf("Invalid input. Try again.\n");
+        }
+    }
+    return restart_program;
+}
