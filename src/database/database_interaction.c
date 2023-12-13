@@ -239,7 +239,7 @@ void print_resident_medication(resident_medications medications[], int medicatio
 
 
 bool get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
-    FILE *resident_record_conflict_file = fopen("medicine_conflicts.txt", "r");
+    FILE *resident_record_conflict_file = fopen("../database_textfiles/medicine_conflicts.txt", "r");
 
     if (resident_record_conflict_file == NULL) {
         fprintf(stderr, "Error opening resident_record_conflict file.\n");
@@ -333,7 +333,7 @@ void print_conflicting_medications(medicine_database medicine_details[],
 // Functions to retrieve medication details information from medicine_database.txt and display it
 void get_medication_details(medicine_database medicine_details[],
                             resident_medications medications[], int number_of_medications) {
-    FILE *medicine_database_file = fopen("medicine_database.txt", "r");
+    FILE *medicine_database_file = fopen("../database_textfiles/medicine_database.txt", "r");
 
     // Check if the file was successfully opened
     if (medicine_database_file == NULL) {
