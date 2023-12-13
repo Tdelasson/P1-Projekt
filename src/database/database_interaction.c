@@ -64,7 +64,7 @@ int verify_staff(void) {
 
 
 // Functions to retrieve resident information from resident_record.txt and display it
-resident_record get_resident_record(void) {
+resident_record get_resident_record() {
     resident_record resident;
 
     // Open the resident record file in read mode
@@ -145,7 +145,7 @@ void print_resident_record(resident_record resident) {
 
 // Functions to retrieve resident medication information from a resident_record_medicine.txt and display it
 int get_resident_record_medicine(resident_medications medications[], int resident_id_key) {
-    FILE *file = fopen("resident_record_medicine.txt", "r");
+    FILE *file = fopen("../database_textfiles/resident_record_medicine.txt", "r");
     if (file == NULL) {
         fprintf(stderr, "Error opening resident_record_medicine file.\n");
         return -1;
