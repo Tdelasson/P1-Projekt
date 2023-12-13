@@ -95,7 +95,7 @@ resident_record get_resident_record(void) {
 
 unsigned long int scan_resident_number(){
     unsigned long int social_security_number;
-    printf("Enter resident CPR number: ");
+    printf("Enter resident CPR number:");
 
     // Check if the input is a valid integer
     if (scanf("%lu", &social_security_number) != 1) {
@@ -380,8 +380,7 @@ void print_medicine_detail_info(medicine_database medicine_details[], int number
         printf("Medicine ID: %d\n"
                "Medicine name: %s\n"
                "Medicine type: %s\n"
-               "Medicine strength: %.2lf\n"
-               "Medicine unit of strength: %s\n\n",
+               "Medicine strength: %.2lf %s\n\n",
                medicine_details[i].id_key, medicine_details[i].name, medicine_details[i].type,
                medicine_details[i].strength, medicine_details[i].unit_of_strength);
     }
