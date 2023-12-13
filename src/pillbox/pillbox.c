@@ -108,8 +108,6 @@ void check_medicine(resident_medications medications[], medicine_database medici
     printf("indtast stregkode for medicin\n->");
     scanf("%d", &streg_kode);
 
-    int found = 0; // Introduce a flag to track if the medicine is found or not
-
     while (1) {
         if (medications[i].medication == streg_kode) {
             printf("Medicine found\n");
@@ -121,7 +119,6 @@ void check_medicine(resident_medications medications[], medicine_database medici
         }
     }
 }
-
 
 
 void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dose, double* actual_evening_dose,
