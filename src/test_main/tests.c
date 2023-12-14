@@ -1,13 +1,30 @@
-#include "test_database.h"
+#include "tests.h"
 
 
 int main(void){
+
+    // Database tests
     test_scan_resident_database();
     test_get_resident_record_medicine();
     test_get_resident_medication_conflict();
     test_get_medication_details();
+
+
+    // Pillbox tests
+    test_calculate_actual_dose();
+    test_convert();
+
+    // Infusion tests
+    test_dose();
+    test_amount_of_stock_solution();
+    test_amount_of_solution();
+    test_amount_of_infusion_liquid();
+    test_speed_of_infusion();
+
+
 }
 
+// Database tests
 void test_scan_resident_database(){
     // Open the resident record file in read mode
     FILE *resident_record_file = fopen("../database_textfiles/resident_record.txt", "r");
@@ -220,3 +237,141 @@ void test_get_medication_details() {
     assert(strcmp(medicine_details[2].unit_of_strength,"mg") == 0);
 }
 
+// Pillbox tests
+void test_calculate_actual_dose() {
+    double actual_morning_dose;
+    double actual_noon_dose;
+    double actual_evening_dose;
+
+    double actual_weekly_dose, number_of_days;
+    resident_medications medications[MAX_MEDICATIONS];
+    medicine_database medicine_details[MAX_MEDICATIONS];
+    int i;
+
+    //test if calculate_actual_dose correctly calculates the actual dose
+    actual_morning_dose = 0.0;
+    actual_noon_dose = 0.0;
+    actual_evening_dose = 0.0;
+    actual_weekly_dose = 1000.0;
+    number_of_days = 5.0;
+    medications[0].morning_dose = 0.5;
+    medications[0].afternoon_dose = 0.0;
+    medications[0].evening_dose = 0.5;
+    i = 0;
+    medicine_details[0].strength = 100;
+    calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
+                          actual_weekly_dose, number_of_days, medications, medicine_details, i);
+
+    // number of pills morning noon and evening should be 1, 0 and 1 respectively
+    assert(actual_morning_dose == 1.0);
+    assert(actual_noon_dose == 0.0);
+    assert(actual_evening_dose == 1.0);
+
+
+    // Second test
+    actual_morning_dose = 0.0;
+    actual_noon_dose = 0.0;
+    actual_evening_dose = 0.0;
+    actual_weekly_dose = 1600.0;
+    number_of_days = 4.0;
+    medications[0].morning_dose = 0.5;
+    medications[0].afternoon_dose = 0.5;
+    medications[0].evening_dose = 0.0;
+    i = 0;
+    medicine_details[0].strength = 50;
+    calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
+                          actual_weekly_dose, number_of_days, medications, medicine_details, i);
+
+
+    // number of pills morning noon and evening should be 1, 0 and 1 respectively
+    assert(actual_morning_dose == 4.0);
+    assert(actual_noon_dose == 4.0);
+    assert(actual_evening_dose == 0.0);
+}
+
+void test_convert(){
+    double dose;
+    char from_unit[10];
+    char to_unit[10];
+
+
+    dose = 100;
+    strcpy(from_unit,"mg");
+    strcpy(to_unit,"mcg");
+    dose = convert(dose,from_unit,to_unit);
+    assert(dose ==(100*1000));
+
+    dose = 5000;
+    strcpy(from_unit,"mcg");
+    strcpy(to_unit,"mg");
+    dose = convert(dose,from_unit,to_unit);
+    assert(dose ==(5000.0/1000));
+
+    dose = 150;
+    strcpy(from_unit,"mcg");
+    strcpy(to_unit,"mg/ml");
+    dose = convert(dose,from_unit,to_unit);
+    assert(dose ==(150.0/1000.0));
+}
+
+
+// Infusion tests
+void test_dose(){
+    double resident_weight, dose_prescribed;
+
+    resident_weight = 100;
+    dose_prescribed = 1000;
+    assert(dose(resident_weight,&dose_prescribed) == 100000);
+
+    resident_weight = 75;
+    dose_prescribed = 250;
+    assert(dose(resident_weight,&dose_prescribed) == 75*250);
+}
+
+void test_amount_of_stock_solution(){
+    double stock_solution_dose, stock_solution_strength;
+
+    stock_solution_dose = 1000;
+    stock_solution_strength = 100;
+    assert(amount_of_stock_solution(stock_solution_dose,&stock_solution_strength) == 1000.0/100);
+
+    stock_solution_dose = 500;
+    stock_solution_strength = 300;
+    assert(amount_of_stock_solution(stock_solution_dose,&stock_solution_strength) == 500.0/300.0);
+}
+
+void test_amount_of_solution(){
+    double stock_solution_dose, strength_of_infusion;
+
+    stock_solution_dose = 1000;
+    strength_of_infusion = 100;
+    assert(amount_of_solution(stock_solution_dose,&strength_of_infusion) == 1000.0/100);
+
+    stock_solution_dose = 500;
+    strength_of_infusion = 300;
+    assert(amount_of_solution(stock_solution_dose,&strength_of_infusion) == 500.0/300.0);
+}
+
+void test_amount_of_infusion_liquid(){
+    double total_amount_solution, total_amount_stock;
+
+    total_amount_solution = 1000;
+    total_amount_stock = 100;
+    assert(amount_of_infusion_liquid(total_amount_solution,total_amount_stock) == 1000.0-100);
+
+    total_amount_solution = 500;
+    total_amount_stock = 300;
+    assert(amount_of_infusion_liquid(total_amount_solution,total_amount_stock) == 500.0-300.0);
+}
+
+void test_speed_of_infusion(){
+    double total_amount_solution, hours;
+
+    total_amount_solution = 1000;
+    hours = 5;
+    assert(speed_of_infusion(total_amount_solution,&hours) == (1000.0/5)/CONVERT_FACTOR);
+
+    total_amount_solution = 200;
+    hours = 8;
+    assert(speed_of_infusion(total_amount_solution,&hours) == (200.0/8)/CONVERT_FACTOR);
+}
