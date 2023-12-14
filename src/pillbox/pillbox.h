@@ -23,6 +23,8 @@ void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dos
                             double actual_weekly_dose, double number_of_days, resident_medications medications[],
                             medicine_database medicine_details[], int i);
 
+void showcased_unit (char strength_type[], medicine_database medicine_details[], int i);
+
 void fill_day (double actual_morning_dose, double actual_noon_dose, double actual_evening_dose,
                box_place pill_box[][COLUMNS], int j);
 

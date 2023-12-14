@@ -15,28 +15,14 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
 
     for (int i = 0; i < medications_count; i++) {
 
-        if (strcmp(medicine_details[i].unit_of_strength, "mg") == 0 ||
-            strcmp(medicine_details[i].unit_of_strength, "mcg") == 0 ||
-            strcmp(medicine_details[i].unit_of_strength, "g") == 0) {
-            strcpy(strength_type, "pill");
-        } else {
-            char *token = strtok(medicine_details[i].unit_of_strength, "/"); // Split the string by "/"
-            char *last_part = NULL;
-
-            while (token != NULL) {
-                last_part = token; // Keep updating to get the last part after each split
-                token = strtok(NULL, "/"); // Move to the next token
-            }
-            strcpy(strength_type, last_part);
-            // Now last_part contains the last segment after "/"
-        }
-
         check_medicine(medications, medicine_details, i);
 
         int number_of_days = medication_days(medications[i]);
 
         double actual_weekly_dose = convert(medications[i].total_weekly_dose, medications[i].medication_unit,
                                             medicine_details[i].unit_of_strength);
+
+        showcased_unit(strength_type, medicine_details, i);
 
         calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
                               actual_weekly_dose, number_of_days, medications,
@@ -107,6 +93,24 @@ void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dos
     *actual_evening_dose =
             ((actual_weekly_dose / number_of_days) * medications[i].evening_dose) / medicine_details[i].strength;
 
+}
+
+void showcased_unit (char strength_type[], medicine_database medicine_details[], int i) {
+    if (strcmp(medicine_details[i].unit_of_strength, "mg") == 0 ||
+        strcmp(medicine_details[i].unit_of_strength, "mcg") == 0 ||
+        strcmp(medicine_details[i].unit_of_strength, "g") == 0) {
+        strcpy(strength_type, "pill");
+    } else {
+        char *token = strtok(medicine_details[i].unit_of_strength, "/"); // Split the string by "/"
+        char *last_part = NULL;
+
+        while (token != NULL) {
+            last_part = token; // Keep updating to get the last part after each split
+            token = strtok(NULL, "/"); // Move to the next token
+        }
+        strcpy(strength_type, last_part);
+        // Now last_part contains the last segment after "/"
+    }
 }
 
 void fill_day (double actual_morning_dose, double actual_noon_dose, double actual_evening_dose,
