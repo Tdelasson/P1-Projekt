@@ -4,26 +4,22 @@
 #include <string.h>
 
 void dispensing(resident_medications medications[], medicine_database medicine_details[], int medications_count) {
-    box_place pill_box[ROWS][COLUMNS] = {{none,    monday, tuesday, wednesday, thursday, friday, saturday, sunday},
-                                         {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
-                                         {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
-                                         {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
+    box_place pill_box[ROWS][COLUMNS] =
+             {{none,    monday, tuesday, wednesday, thursday, friday, saturday, sunday},
+              {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
+              {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
+              {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
 
     double actual_morning_dose, actual_noon_dose, actual_evening_dose;
-
     char strength_type[5];
 
     for (int i = 0; i < medications_count; i++) {
-
         check_medicine(medications, medicine_details, i);
-
-        int number_of_days = medication_days(medications[i]);
 
         double actual_weekly_dose = convert(medications[i].total_weekly_dose, medications[i].medication_unit,
                                             medicine_details[i].unit_of_strength);
 
-        showcased_unit(strength_type, medicine_details, i);
-
+        int number_of_days = medication_days(medications[i]);
         calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
                               actual_weekly_dose, number_of_days, medications,
                               medicine_details, i);
@@ -33,6 +29,8 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
                 fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
             }
         }
+
+        showcased_unit(strength_type, medicine_details, i);
 
         print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
         clear_pill_box(pill_box);
@@ -53,6 +51,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
     }
     printf("There's no more medication to dispense to this resident\n");
 }
+
 
 void check_medicine(resident_medications medications[], medicine_database medicine_details[], int i) {
 
@@ -190,25 +189,25 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
 void print_box_place(box_place c, double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]){
     switch (c) {
         case monday:
-            printf("%-15s", " monday");
+            printf("%-15s", " Monday");
             break;
         case tuesday:
-            printf("%-14s", "tuesday");
+            printf("%-14s", "Tuesday");
             break;
         case wednesday:
-            printf("%-14s", "wednesday");
+            printf("%-14s", "Wednesday");
             break;
         case thursday:
-            printf("%-14s", "thursday");
+            printf("%-14s", "Thursday");
             break;
         case friday:
-            printf("%-14s", "friday");
+            printf("%-14s", "Friday");
             break;
         case saturday:
-            printf("%-14s", "saturday");
+            printf("%-14s", "Saturday");
             break;
         case sunday:
-            printf("%-14s", "sunday");
+            printf("%-14s", "Sunday");
             break;
         case morning:
             printf("morn");
