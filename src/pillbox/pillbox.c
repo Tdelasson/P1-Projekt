@@ -11,7 +11,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
 
     double actual_morning_dose, actual_noon_dose, actual_evening_dose;
 
-    char strength_type[10];
+    char strength_type[5];
 
     for (int i = 0; i < medications_count; i++) {
 
@@ -35,40 +35,21 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
 
         int number_of_days = medication_days(medications[i]);
 
-        if (strcmp(medications[i].medication_unit, medicine_details[i].unit_of_strength) == 0) {
-            double actual_weekly_dose = medications[i].total_weekly_dose;
+        double actual_weekly_dose = convert(medications[i].total_weekly_dose, medications[i].medication_unit,
+                                            medicine_details[i].unit_of_strength);
 
-            calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
-                                  actual_weekly_dose, number_of_days, medications,
-                                  medicine_details, i);
+        calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
+                              actual_weekly_dose, number_of_days, medications,
+                              medicine_details, i);
 
-            for (int j = 0; j < 7; j++) {
-                if (medications[i].weekdays[j] == 1) {
-
-                    fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
-                }
+        for (int j = 0; j < 7; j++) {
+            if (medications[i].weekdays[j] == 1) {
+                fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
             }
-
-            print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
-            clear_pill_box(pill_box);
-
-        } else {
-            double actual_weekly_dose = convert(medications[i].total_weekly_dose, medications[i].medication_unit,
-                                                medicine_details[i].unit_of_strength);
-
-            calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
-                                  actual_weekly_dose, number_of_days, medications,
-                                  medicine_details, i);
-
-            for (int j = 0; j < 7; j++) {
-                if (medications[i].weekdays[j] == 1) {
-                    fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
-                }
-            }
-
-            print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
-            clear_pill_box(pill_box);
         }
+
+        print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
+        clear_pill_box(pill_box);
 
         char d;
         printf("\n");
@@ -120,11 +101,11 @@ void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dos
                              double actual_weekly_dose, double number_of_days, resident_medications medications[],
                              medicine_database medicine_details[], int i){
     *actual_morning_dose =
-            actual_weekly_dose / number_of_days * medications[i].morning_dose / medicine_details[i].strength;
+            ((actual_weekly_dose / number_of_days) * medications[i].morning_dose) / medicine_details[i].strength;
     *actual_noon_dose =
-            actual_weekly_dose / number_of_days * medications[i].afternoon_dose / medicine_details[i].strength;
+            ((actual_weekly_dose / number_of_days) * medications[i].afternoon_dose) / medicine_details[i].strength;
     *actual_evening_dose =
-            actual_weekly_dose / number_of_days * medications[i].evening_dose / medicine_details[i].strength;
+            ((actual_weekly_dose / number_of_days) * medications[i].evening_dose) / medicine_details[i].strength;
 
 }
 
@@ -198,8 +179,8 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
             return result;
         }
     }
-    printf("Invalid conversion!\n");
-    return -1; // Invalid conversion
+    double result = dose;
+    return result;
 }
 
 void print_box_place(box_place c, double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]){
