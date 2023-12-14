@@ -23,11 +23,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
                               actual_weekly_dose, number_of_days, medications,
                               medicine_details, i);
 
-        for (int j = 0; j < 7; j++) {
-            if (medications[i].weekdays[j] == 1) {
-                fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
-            }
-        }
+        fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, medications[i]);
 
         showcased_unit(strength_type, medicine_details, i);
 
@@ -40,13 +36,10 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
         printf("New medication? Write Y or N\n->");
         scanf("%s", &d);
 
-        if (d == 'y' || d == 'Y') {
-            printf("\n");
-            continue;
-        } else if (d == 'n' || d == 'N')
+        if (d == 'n' || d == 'N')
             break;
         else
-            printf("Invalid input\n\n");
+            continue;
     }
     printf("There's no more medication to dispense to this resident\n");
 }
@@ -112,8 +105,10 @@ void showcased_unit (char strength_type[], medicine_database medicine_details[],
 }
 
 void fill_day (double actual_morning_dose, double actual_noon_dose, double actual_evening_dose,
-               box_place pill_box[][COLUMNS], int j) {
+               box_place pill_box[][COLUMNS], resident_medications medications) {
 
+    for (int j = 0; j < 7; j++) {
+        if (medications.weekdays[j] == 1) {
             if (actual_morning_dose > 0) {
                 pill_box[1][j + 1] = actual_morning;
             } else {
@@ -129,7 +124,8 @@ void fill_day (double actual_morning_dose, double actual_noon_dose, double actua
             } else {
                 pill_box[3][j + 1] = empty;
             }
-
+        }
+    }
 }
 
 void print_box(box_place pill_box[][COLUMNS], double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]) {
