@@ -11,6 +11,7 @@ void test_get_medication_details();
 
 // Pillbox tests
 void test_calculate_actual_dose();
+void test_showcased_unit();
 void test_convert();
 
 // Infusion tests

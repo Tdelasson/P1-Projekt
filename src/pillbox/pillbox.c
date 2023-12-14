@@ -10,7 +10,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
 
     double actual_morning_dose, actual_noon_dose, actual_evening_dose;
-    char strength_type[5];
+    char strength_type[MAX_TYPE_LGT];
 
     for (int i = 0; i < medications_count; i++) {
         check_medicine(medications, medicine_details, i);

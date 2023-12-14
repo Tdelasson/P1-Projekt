@@ -12,6 +12,7 @@ int main(void){
 
     // Pillbox tests
     test_calculate_actual_dose();
+    test_showcased_unit();
     test_convert();
 
     // Infusion tests
@@ -287,6 +288,20 @@ void test_calculate_actual_dose() {
     assert(actual_morning_dose == 4.0);
     assert(actual_noon_dose == 4.0);
     assert(actual_evening_dose == 0.0);
+}
+
+void test_showcased_unit(){
+    char strength_type[10];
+    medicine_database medicine_details[MAX_MEDICATIONS];
+    int i = 0;
+
+    strcpy(medicine_details[0].unit_of_strength,"mg");
+    showcased_unit (strength_type, medicine_details, i);
+    assert(strcmp(strength_type,"pill") == 0);
+
+    strcpy(medicine_details[0].unit_of_strength,"mg/ml");
+    showcased_unit (strength_type, medicine_details, i);
+    assert(strcmp(strength_type,"ml") == 0);
 }
 
 void test_convert(){

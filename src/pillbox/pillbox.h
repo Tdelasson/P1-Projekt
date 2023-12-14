@@ -1,10 +1,7 @@
 #include "../infusion/infusion.h"
 
-#ifndef DATABASE_DB_PILLBOX_H
-#define DATABASE_DB_PILLBOX_H
 
-#endif //DATABASE_DB_PILLBOX_H
-
+#define MAX_TYPE_LGT 5
 #define ROWS 4
 #define COLUMNS 8
 
