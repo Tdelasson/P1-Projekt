@@ -31,7 +31,7 @@ int main(void) {
 
 
                 //check for medication conflicts
-                char conflict;
+                char conflict = ' ';
                 while (get_resident_medication_conflict(medicine_details, number_of_medications) == true
                        && conflict != 'y') {
                     fprintf(stderr, "Medication conflict detected\n");
