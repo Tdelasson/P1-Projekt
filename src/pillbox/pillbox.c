@@ -4,11 +4,10 @@
 #include <string.h>
 
 void dispensing(resident_medications medications[], medicine_database medicine_details[], int medications_count) {
-    box_place pill_box[ROWS][COLUMNS] =
-             {{none,    monday, tuesday, wednesday, thursday, friday, saturday, sunday},
-              {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
-              {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
-              {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
+    box_place pill_box[ROWS][COLUMNS] = {{none,    monday, tuesday, wednesday, thursday, friday, saturday, sunday},
+                                         {morning, empty,  empty,   empty,     empty,    empty,  empty,    empty},
+                                         {noon,    empty,  empty,   empty,     empty,    empty,  empty,    empty},
+                                         {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
 
     double actual_morning_dose, actual_noon_dose, actual_evening_dose;
     char strength_type[5];
