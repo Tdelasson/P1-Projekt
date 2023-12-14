@@ -10,106 +10,106 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
 
     double actual_morning_dose, actual_noon_dose, actual_evening_dose;
-
-    char strength_type[10];
+    char strength_type[5];
 
     for (int i = 0; i < medications_count; i++) {
-        if (strcmp(medications[i].medication_unit, medicine_details[i].unit_of_strength) == 0) {
-            double actual_weekly_dose = medications[i].total_weekly_dose;
+        check_medicine(medications, medicine_details, i);
 
-            int number_of_days = medication_days(medications[i]);
+        double actual_weekly_dose = convert(medications[i].total_weekly_dose, medications[i].medication_unit,
+                                            medicine_details[i].unit_of_strength);
 
-            calculate_actual_dose (&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
-            actual_weekly_dose, number_of_days, medications,
-                    medicine_details, i);
+        int number_of_days = medication_days(medications[i]);
+        calculate_actual_dose(&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
+                              actual_weekly_dose, number_of_days, medications,
+                              medicine_details, i);
 
-            for (int j = 0; j < 7; j++) {
-                if (medications[i].weekdays[j] == 1) {
-
-                    fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
-                }
+        for (int j = 0; j < 7; j++) {
+            if (medications[i].weekdays[j] == 1) {
+                fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
             }
-
-            if (strcmp(medicine_details[i].unit_of_strength, "mg") == 0 ||
-                strcmp(medicine_details[i].unit_of_strength, "mcg") == 0 ||
-                strcmp(medicine_details[i].unit_of_strength, "g") == 0) {
-                strcpy(strength_type, "pill");
-            } else {
-                strcpy(strength_type, medicine_details[i].unit_of_strength);
-            }
-
-            print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
-            clear_pill_box(pill_box);
-
-        } else {
-
-            double actual_weekly_dose = convert(medications[i].total_weekly_dose, medications[i].medication_unit,
-                                                medicine_details[i].unit_of_strength);
-            int number_of_days = medication_days(medications[i]);
-
-            calculate_actual_dose (&actual_morning_dose, &actual_noon_dose, &actual_evening_dose,
-                                   actual_weekly_dose, number_of_days, medications,
-                                   medicine_details, i);
-
-            for (int j = 0; j < 7; j++) {
-                if (medications[i].weekdays[j] == 1) {
-
-                    fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
-                }
-            }
-
-            strcpy(strength_type, medicine_details[i].unit_of_strength);
-
-            if (strcmp(medicine_details[i].unit_of_strength, "mg") == 0 ||
-                strcmp(medicine_details[i].unit_of_strength, "mcg") == 0 ||
-                strcmp(medicine_details[i].unit_of_strength, "g") == 0) {
-                strcpy(strength_type, "pill");
-            }else {
-                char *token = strtok(strength_type, "/"); // Split the string by "/"
-                char *last_part = NULL;
-
-                while (token != NULL) {
-                    last_part = token; // Keep updating to get the last part after each split
-                    token = strtok(NULL, "/"); // Move to the next token
-                }
-                if (last_part != NULL) {
-                    strcpy(strength_type, last_part);
-                    // Now last_part contains the last segment after "/"
-                } else {
-                    printf("No delimiter found!\n");
-                    // Handle the case where there's no "/" in the string
-                }
-            }
-
-            print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
-            clear_pill_box(pill_box);
         }
 
+        showcased_unit(strength_type, medicine_details, i);
+
+        print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
+        clear_pill_box(pill_box);
+
+        char d;
         printf("\n");
-        char y;
-        printf("new medication? y/n\n->");
-        scanf("%s", &y);
-        if (y == 'y') {
+
+        printf("New medication? Write Y or N\n->");
+        scanf("%s", &d);
+
+        if (d == 'y' || d == 'Y') {
             printf("\n");
             continue;
-        } else {
+        } else if (d == 'n' || d == 'N')
             break;
+        else
+            printf("Invalid input\n\n");
+    }
+    printf("There's no more medication to dispense to this resident\n");
+}
+
+
+void check_medicine(resident_medications medications[], medicine_database medicine_details[], int i) {
+
+    int bar_code;
+    printf("Enter the bar code for %s\n->", medicine_details[i].name);
+    scanf("%d", &bar_code);
+
+    while (1) {
+        if (medications[i].medication == bar_code) {
+            printf("\n%s\n", medicine_details[i].name);
+            break;
+        } else {
+            printf("Incorrect bar code\n\n");
+            printf("Enter the bar code for %s\n->", medicine_details[i].name);
+            scanf("%d", &bar_code);
         }
     }
+}
+
+int medication_days (resident_medications medications) {
+    int days = 0;
+
+    for (int j = 0; j < 7; j++) {
+        if (medications.weekdays[j] == 1) {
+            days++;
+        }
+    }
+    return days;
 }
 
 void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dose, double* actual_evening_dose,
                              double actual_weekly_dose, double number_of_days, resident_medications medications[],
                              medicine_database medicine_details[], int i){
     *actual_morning_dose =
-            actual_weekly_dose / number_of_days * medications[i].morning_dose / medicine_details[i].strength;
+            ((actual_weekly_dose / number_of_days) * medications[i].morning_dose) / medicine_details[i].strength;
     *actual_noon_dose =
-            actual_weekly_dose / number_of_days * medications[i].afternoon_dose / medicine_details[i].strength;
+            ((actual_weekly_dose / number_of_days) * medications[i].afternoon_dose) / medicine_details[i].strength;
     *actual_evening_dose =
-            actual_weekly_dose / number_of_days * medications[i].evening_dose / medicine_details[i].strength;
+            ((actual_weekly_dose / number_of_days) * medications[i].evening_dose) / medicine_details[i].strength;
 
 }
 
+void showcased_unit (char strength_type[], medicine_database medicine_details[], int i) {
+    if (strcmp(medicine_details[i].unit_of_strength, "mg") == 0 ||
+        strcmp(medicine_details[i].unit_of_strength, "mcg") == 0 ||
+        strcmp(medicine_details[i].unit_of_strength, "g") == 0) {
+        strcpy(strength_type, "pill");
+    } else {
+        char *token = strtok(medicine_details[i].unit_of_strength, "/"); // Split the string by "/"
+        char *last_part = NULL;
+
+        while (token != NULL) {
+            last_part = token; // Keep updating to get the last part after each split
+            token = strtok(NULL, "/"); // Move to the next token
+        }
+        strcpy(strength_type, last_part);
+        // Now last_part contains the last segment after "/"
+    }
+}
 
 void fill_day (double actual_morning_dose, double actual_noon_dose, double actual_evening_dose,
                box_place pill_box[][COLUMNS], int j) {
@@ -132,61 +132,6 @@ void fill_day (double actual_morning_dose, double actual_noon_dose, double actua
 
 }
 
-
-void print_box_place(box_place c, double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]){
-    switch (c) {
-        case monday:
-            printf("%-15s", " monday");
-            break;
-        case tuesday:
-            printf("%-14s", "tuesday");
-            break;
-        case wednesday:
-            printf("%-14s", "wednesday");
-            break;
-        case thursday:
-            printf("%-14s", "thursday");
-            break;
-        case friday:
-            printf("%-14s", "friday");
-            break;
-        case saturday:
-            printf("%-14s", "saturday");
-            break;
-        case sunday:
-            printf("%-14s", "sunday");
-            break;
-        case morning:
-            printf("morn");
-            break;
-        case noon:
-            printf("noon");
-            break;
-        case evening:
-            printf("even");
-            break;
-        case empty:
-            printf("%-14s", "_____");
-            break;
-        case none:
-            printf("   ");
-            break;
-        case actual_morning:
-            printf("%-9.4lf %-4s", actual_morning_dose, strength_type);
-            break;
-        case actual_noon:
-            printf("%-9.4lf %-4s", actual_noon_dose, strength_type);
-            break;
-        case actual_evening:
-            printf("%-9.4lf %-4s", actual_evening_dose, strength_type);
-            break;
-        default:
-            printf("invalid");
-            exit(-1);
-    }
-}
-
-
 void print_box(box_place pill_box[][COLUMNS], double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]) {
     for (int x = 0; x < ROWS; x++) {
         for (int y = 0; y < COLUMNS; y++) {
@@ -195,17 +140,6 @@ void print_box(box_place pill_box[][COLUMNS], double actual_morning_dose, double
         }
         printf("\n");
     }
-}
-
-int medication_days (resident_medications medications) {
-    int days = 0;
-
-    for (int j = 0; j < 7; j++) {
-        if (medications.weekdays[j] == 1) {
-            days++;
-        }
-    }
-    return days;
 }
 
 void clear_pill_box(box_place pill_box[][COLUMNS]) {
@@ -247,7 +181,59 @@ double convert(double dose, const char *from_unit, const char *to_unit) {
             return result;
         }
     }
+    double result = dose;
+    return result;
+}
 
-    printf("Invalid conversion!\n");
-    return -1; // Invalid conversion
+void print_box_place(box_place c, double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]){
+    switch (c) {
+        case monday:
+            printf("%-15s", " Monday");
+            break;
+        case tuesday:
+            printf("%-14s", "Tuesday");
+            break;
+        case wednesday:
+            printf("%-14s", "Wednesday");
+            break;
+        case thursday:
+            printf("%-14s", "Thursday");
+            break;
+        case friday:
+            printf("%-14s", "Friday");
+            break;
+        case saturday:
+            printf("%-14s", "Saturday");
+            break;
+        case sunday:
+            printf("%-14s", "Sunday");
+            break;
+        case morning:
+            printf("morn");
+            break;
+        case noon:
+            printf("noon");
+            break;
+        case evening:
+            printf("even");
+            break;
+        case empty:
+            printf("%-14s", "_____");
+            break;
+        case none:
+            printf("   ");
+            break;
+        case actual_morning:
+            printf("%-9.4lf %-4s", actual_morning_dose, strength_type);
+            break;
+        case actual_noon:
+            printf("%-9.4lf %-4s", actual_noon_dose, strength_type);
+            break;
+        case actual_evening:
+            printf("%-9.4lf %-4s", actual_evening_dose, strength_type);
+            break;
+        default:
+            printf("invalid");
+            exit(-1);
+    }
 }
