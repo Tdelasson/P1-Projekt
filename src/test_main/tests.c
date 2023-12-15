@@ -176,7 +176,6 @@ void test_get_resident_record_medicine(){
 
 void test_get_resident_medication_conflict(){
     medicine_database medicine_details[3];
-    int number_of_medications = 3;
 
     //tests if get_resident_medication_conflict returns true if there is a conflict
     strcpy(medicine_details[0].name,"Warfarin");
@@ -336,7 +335,7 @@ void test_dose(){
 
     resident_weight = 100;
     dose_prescribed = 1000;
-    assert(dose(resident_weight,&dose_prescribed) == 100000);
+    assert(dose(resident_weight,&dose_prescribed) == 100*1000);
 
     resident_weight = 75;
     dose_prescribed = 250;

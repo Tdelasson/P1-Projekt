@@ -1,4 +1,4 @@
-40001,Aspirin,Ibuprofen,Amoxicillin,Celecoxib,Prednisone,Clopidogrel,
+40001,Aspirin,Ibuprofen,Amoxicillin,Celecoxib,Prednisone,Clopidogrel
 40002,Levothyroxine,Furosemide,Warfarin,Hydrochlorothiazide,Amlodipine,Fluticasone
 40003,Citalopram,Amphetamine,Loratadine,Levothyroxine,Fluoxetine,Ranitidine, Methylphenidate
 40004,Amlodipine,Levothyroxine,Warfarin, Atorvastatin,Carvedilol,Lisinopril,Metoprolol
