@@ -1,10 +1,7 @@
 #include "../database/database_interaction.h"
 
-#ifndef DATABASE_DB_PILLBOX_H
-#define DATABASE_DB_PILLBOX_H
 
-#endif //DATABASE_DB_PILLBOX_H
-
+#define MAX_TYPE_LGT 5
 #define ROWS 4
 #define COLUMNS 8
 #define WEEKDAYS 7
@@ -26,7 +23,7 @@ void calculate_actual_dose (double* actual_morning_dose, double* actual_noon_dos
 void showcased_unit (char strength_type[], medicine_database medicine_details[], int i);
 
 void fill_day (double actual_morning_dose, double actual_noon_dose, double actual_evening_dose,
-               box_place pill_box[][COLUMNS], int j);
+               box_place pill_box[][COLUMNS], resident_medications medications);
 
 void print_box(box_place pill_box[][COLUMNS], double actual_morning_dose, double actual_noon_dose,
                double actual_evening_dose, char strength_type[]);

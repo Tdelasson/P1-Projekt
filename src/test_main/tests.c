@@ -12,6 +12,7 @@ int main(void){
 
     // Pillbox tests
     test_calculate_actual_dose();
+    test_showcased_unit();
     test_convert();
 
     // Infusion tests
@@ -175,7 +176,6 @@ void test_get_resident_record_medicine(){
 
 void test_get_resident_medication_conflict(){
     medicine_database medicine_details[3];
-    int number_of_medications = 3;
 
     //tests if get_resident_medication_conflict returns true if there is a conflict
     strcpy(medicine_details[0].name,"Warfarin");
@@ -289,6 +289,20 @@ void test_calculate_actual_dose() {
     assert(actual_evening_dose == 0.0);
 }
 
+void test_showcased_unit(){
+    char strength_type[10];
+    medicine_database medicine_details[MAX_MEDICATIONS];
+    int i = 0;
+
+    strcpy(medicine_details[0].unit_of_strength,"mg");
+    showcased_unit (strength_type, medicine_details, i);
+    assert(strcmp(strength_type,"pill") == 0);
+
+    strcpy(medicine_details[0].unit_of_strength,"mg/ml");
+    showcased_unit (strength_type, medicine_details, i);
+    assert(strcmp(strength_type,"ml") == 0);
+}
+
 void test_convert(){
     double dose;
     char from_unit[10];
@@ -321,7 +335,7 @@ void test_dose(){
 
     resident_weight = 100;
     dose_prescribed = 1000;
-    assert(dose(resident_weight,&dose_prescribed) == 100000);
+    assert(dose(resident_weight,&dose_prescribed) == 100*1000);
 
     resident_weight = 75;
     dose_prescribed = 250;

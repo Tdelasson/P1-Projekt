@@ -94,7 +94,9 @@ resident_record get_resident_record() {
 
 unsigned long int scan_resident_number(){
     unsigned long int social_security_number;
-    printf("Enter resident CPR number\n->");
+
+    printf("Enter resident social security number:\n->");
+
 
     // Check if the input is a valid integer
     if (scanf("%lu", &social_security_number) != 1) {
@@ -360,7 +362,7 @@ void get_medication_details(medicine_database medicine_details[],
 
         // Check if the social_security_number is not found for the current resident medication
         if (!medicine_id_key_found) {
-            fprintf(stderr,"Id key for medicine %d not found in the database.\n",
+            fprintf(stderr,"Id key for medicine %d not found in medicine_database.txt.\n",
                     medications[i].medication);
             fclose(medicine_database_file);  // Close the file before exiting
             exit(EXIT_FAILURE);

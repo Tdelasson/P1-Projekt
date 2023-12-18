@@ -10,7 +10,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
                                          {evening, empty,  empty,   empty,     empty,    empty,  empty,    empty}};
 
     double actual_morning_dose, actual_noon_dose, actual_evening_dose;
-    char strength_type[5];
+    char strength_type[MAX_TYPE_LGT];
 
     for (int i = 0; i < medications_count; i++) {
         check_medicine(medications, medicine_details, i);
@@ -29,6 +29,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
             }
         }
 
+
         showcased_unit(strength_type, medicine_details, i);
 
         print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
@@ -40,13 +41,10 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
         printf("New medication? (y/n)\n->");
         scanf("%s", &d);
 
-        if (d == 'y' || d == 'Y') {
-            printf("\n");
-            continue;
-        } else if (d == 'n' || d == 'N')
+        if (d == 'n' || d == 'N')
             break;
         else
-            printf("Invalid input\n\n");
+            continue;
     }
     printf("There's no more medication to dispense to this resident\n");
 }
@@ -148,8 +146,10 @@ void showcased_unit (char strength_type[], medicine_database medicine_details[],
 }
 
 void fill_day (double actual_morning_dose, double actual_noon_dose, double actual_evening_dose,
-               box_place pill_box[][COLUMNS], int j) {
+               box_place pill_box[][COLUMNS], resident_medications medications) {
 
+    for (int j = 0; j < 7; j++) {
+        if (medications.weekdays[j] == 1) {
             if (actual_morning_dose > 0) {
                 pill_box[1][j + 1] = actual_morning;
             } else {
@@ -165,7 +165,8 @@ void fill_day (double actual_morning_dose, double actual_noon_dose, double actua
             } else {
                 pill_box[3][j + 1] = empty;
             }
-
+        }
+    }
 }
 
 void print_box(box_place pill_box[][COLUMNS], double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]) {
