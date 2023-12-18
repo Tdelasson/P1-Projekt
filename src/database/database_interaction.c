@@ -95,7 +95,7 @@ resident_record get_resident_record() {
 
 unsigned long int scan_resident_number(){
     unsigned long int social_security_number;
-    printf("Enter resident CPR number:");
+    printf("Enter resident social security number:\n->");
 
     // Check if the input is a valid integer
     if (scanf("%lu", &social_security_number) != 1) {

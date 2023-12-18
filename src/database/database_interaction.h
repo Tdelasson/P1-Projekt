@@ -78,7 +78,6 @@ void print_resident_record(resident_record resident);
 
 // Scans and prints the resident medication information from resident_record_medicine.txt
 int get_resident_record_medicine(resident_medications medications[], int resident_id_key);
-void print_resident_medication(resident_medications medications[], int medications_count);
 
 // Checks for conflicts in medications for the resident
 bool get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications);
