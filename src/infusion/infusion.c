@@ -36,25 +36,25 @@ void infusion(resident_record resident){
 
     //calculate drops pr. min.
     drops_pr_min = speed_of_infusion(total_amount_solution, &time_in_hours);
-    printf("speed of infusion %0.3lf dr/min\n", drops_pr_min);
+    printf("Speed of infusion %0.3lf dr/min\n\n", drops_pr_min);
 }
 
 void scan_information(double* stock_solution_strength, double* dose_prescribed,
                       double* strength_of_solution, double* time_in_hours){
     //get the strength of stock solution
-    printf("Enter the strength of the stock solution: \n>");
+    printf("Enter the strength of the stock solution: \n->");
     scanf("%lf", stock_solution_strength);
 
     //get prescribed dose in mg/kg
-    printf("Enter the prescribed dose in mg/kg: \n>");
+    printf("Enter the prescribed dose in mg/kg: \n->");
     scanf("%lf", dose_prescribed);
 
     //get the wanted strength of solution after the stock solution is diluted using infusion liquid
-    printf("Enter the wanted strength of the solution in mg/ml: \n>");
+    printf("Enter the wanted strength of the solution in mg/ml: \n->");
     scanf("%lf", strength_of_solution);
 
     //get the number of hours the infusion should last
-    printf("Enter number of hours the infusion should last: \n>");
+    printf("Enter number of hours the infusion should last: \n->");
     scanf("%lf", time_in_hours);
 }
 
@@ -62,7 +62,7 @@ void is_percent(double* stock_solution_strength){
     //checks if the strength of the stock solution is in %
     char unit;
     do {
-        printf("Is the strength in percent? write Y or N \n>");
+        printf("Is the strength in percent? (y/n) \n->");
         scanf(" %c", &unit);
         if (unit == 'Y' || unit == 'y') {
             *stock_solution_strength = *stock_solution_strength * CONVERSION_TO_MGML;

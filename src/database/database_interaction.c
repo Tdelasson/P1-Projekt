@@ -7,7 +7,7 @@
 // Functions for staff verification. Checks if the staff id is in the database nursing_home_staff.txt
 int scan_staff_number(void) {
     int staff_id;
-    printf("Enter staff ID: ");
+    printf("Enter staff ID\n->");
 
     // Check if the input is a valid integer
     if (scanf("%d", &staff_id) != 1) {
@@ -62,7 +62,6 @@ int verify_staff(void) {
 }
 
 
-
 // Functions to retrieve resident information from resident_record.txt and display it
 resident_record get_resident_record() {
     resident_record resident;
@@ -95,7 +94,9 @@ resident_record get_resident_record() {
 
 unsigned long int scan_resident_number(){
     unsigned long int social_security_number;
+
     printf("Enter resident social security number:\n->");
+
 
     // Check if the input is a valid integer
     if (scanf("%lu", &social_security_number) != 1) {
@@ -235,8 +236,6 @@ void print_resident_medication(resident_medications medications[], int medicatio
 
     }
 }
-
-
 
 bool get_resident_medication_conflict(medicine_database medicine_details[], int number_of_medications) {
     FILE *resident_record_conflict_file = fopen("../database_textfiles/medicine_conflicts.txt", "r");
@@ -390,7 +389,7 @@ void print_medicine_detail_info(medicine_database medicine_details[], int number
 char program_restart() {
     char restart_program;
     while(1) {
-        printf("Next resident? (y/n)\n");
+        printf("Next resident? (y/n)\n->");
         scanf(" %c", &restart_program);
 
         if (restart_program == 'y' || restart_program == 'n') {
