@@ -13,7 +13,7 @@ int main(void) {
 
         char choice;
         while (1) {
-            printf("Write D for dispensing and I for infusion\n");
+            printf("Write D for dispensing and I for infusion\n->");
             scanf(" %c", &choice);
             printf("\n");
             while (getchar() != '\n');

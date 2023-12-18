@@ -23,7 +23,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
                               actual_weekly_dose, number_of_days, medications,
                               medicine_details, i);
 
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < WEEKDAYS; j++) {
             if (medications[i].weekdays[j] == 1) {
                 fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
             }
@@ -37,7 +37,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
         char d;
         printf("\n");
 
-        printf("New medication? Write Y or N\n->");
+        printf("New medication? (y/n)\n->");
         scanf("%s", &d);
 
         if (d == 'y' || d == 'Y') {
@@ -70,10 +70,46 @@ void check_medicine(resident_medications medications[], medicine_database medici
     }
 }
 
+double convert(double dose, const char *from_unit, const char *to_unit) {
+    struct Conversion {
+        const char *unit_pair;
+        double multiplier;
+    };
+
+    struct Conversion conversions[] = {
+            {"mcg->mg/ml", 0.001 }, {"mg->g/l", 0.001 },
+            {"mg->mcg/ml", 1000}, {"g->mg/ml", 1000},
+            {"mg->mg/ml", 1}, {"g->g/ml", 1},
+            {"mcg->mcg/ml", 1}, {"mcg->mg", 0.001},
+            {"mg->mcg", 1000}, {"g->mg", 1000},
+            {"mg->g", 0.001}
+            // Add more conversions as needed
+    };
+
+    for (int i = 0; i < sizeof(conversions) / sizeof(conversions[0]); ++i) {
+        // Create a temporary buffer to hold a copy of unit_pair
+        char temp_unit_pair[20]; // Adjust the size according to your maximum string length
+        strcpy(temp_unit_pair, conversions[i].unit_pair);
+
+        char *token = strtok(temp_unit_pair, "->");
+        char *from = token;
+        token = strtok(NULL, "->");
+        char *to = token;
+
+        if ((strcmp(from, from_unit) == 0) && (strcmp(to, to_unit) == 0)) {
+            double result = dose * conversions[i].multiplier;
+            return result;
+        }
+    }
+    double result = dose;
+    return result;
+}
+
+
 int medication_days (resident_medications medications) {
     int days = 0;
 
-    for (int j = 0; j < 7; j++) {
+    for (int j = 0; j < WEEKDAYS; j++) {
         if (medications.weekdays[j] == 1) {
             days++;
         }
@@ -148,41 +184,6 @@ void clear_pill_box(box_place pill_box[][COLUMNS]) {
             pill_box[x][y] = empty;
         }
     }
-}
-
-double convert(double dose, const char *from_unit, const char *to_unit) {
-    struct Conversion {
-        const char *unit_pair;
-        double multiplier;
-    };
-
-    struct Conversion conversions[] = {
-            {"mcg->mg/ml", 0.001 }, {"mg->g/l", 0.001 },
-            {"mg->mcg/ml", 1000}, {"g->mg/ml", 1000},
-            {"mg->mg/ml", 1}, {"g->g/ml", 1},
-            {"mcg->mcg/ml", 1}, {"mcg->mg", 0.001},
-            {"mg->mcg", 1000}, {"g->mg", 1000},
-            {"mg->g", 0.001}
-            // Add more conversions as needed
-    };
-
-    for (int i = 0; i < sizeof(conversions) / sizeof(conversions[0]); ++i) {
-        // Create a temporary buffer to hold a copy of unit_pair
-        char temp_unit_pair[20]; // Adjust the size according to your maximum string length
-        strcpy(temp_unit_pair, conversions[i].unit_pair);
-
-        char *token = strtok(temp_unit_pair, "->");
-        char *from = token;
-        token = strtok(NULL, "->");
-        char *to = token;
-
-        if ((strcmp(from, from_unit) == 0) && (strcmp(to, to_unit) == 0)) {
-            double result = dose * conversions[i].multiplier;
-            return result;
-        }
-    }
-    double result = dose;
-    return result;
 }
 
 void print_box_place(box_place c, double actual_morning_dose, double actual_noon_dose, double actual_evening_dose, char strength_type[]){

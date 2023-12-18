@@ -1,4 +1,4 @@
-#include "../infusion/infusion.h"
+#include "../database/database_interaction.h"
 
 #ifndef DATABASE_DB_PILLBOX_H
 #define DATABASE_DB_PILLBOX_H
@@ -7,7 +7,7 @@
 
 #define ROWS 4
 #define COLUMNS 8
-
+#define WEEKDAYS 7
 
 typedef enum box_place {none, monday, tuesday, wednesday, thursday, friday, saturday, sunday,
     morning, noon, evening,
