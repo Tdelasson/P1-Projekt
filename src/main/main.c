@@ -1,5 +1,5 @@
 #include "main.h"
-#include "../pillbox/pillbox.h"
+
 
 int main(void) {
     verify_staff();
@@ -30,15 +30,16 @@ int main(void) {
 
 
                 //check for medication conflicts
-                char conflict = ' ';
-                while (get_resident_medication_conflict(medicine_details, number_of_medications) == true
-                       && conflict != 'y') {
-                    fprintf(stderr, "Medication conflict detected\n");
-                    printf("Would you like to continue? (y/n)\n");
-                    scanf(" %c", &conflict);
+                char conflict = 'n';
+                while (conflict != 'y') {
+                    if (get_resident_medication_conflict(medicine_details, number_of_medications) == true) {
+                        fprintf(stderr, "Medication conflict detected\n");
+                        printf("Would you like to continue? (y/n)\n");
+                        scanf(" %c", &conflict);
 
-                    if (conflict == 'n') {
-                        return 0;
+                        if (conflict == 'n') {
+                            return 0;
+                        }
                     }
                 }
 

@@ -25,7 +25,7 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
 
         for (int j = 0; j < WEEKDAYS; j++) {
             if (medications[i].weekdays[j] == 1) {
-                fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, j);
+                fill_day(actual_morning_dose, actual_noon_dose, actual_evening_dose, pill_box, medications[j]);
             }
         }
 
