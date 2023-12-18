@@ -16,7 +16,6 @@ int main(void) {
             printf("Write D for dispensing and I for infusion\n");
             scanf(" %c", &choice);
             printf("\n");
-            while (getchar() != '\n');
             if (choice == 'D' || choice == 'd') {
 
 
@@ -36,7 +35,7 @@ int main(void) {
                        && conflict != 'y') {
                     fprintf(stderr, "Medication conflict detected\n");
                     printf("Would you like to continue? (y/n)\n");
-                    scanf("%c", &conflict);
+                    scanf(" %c", &conflict);
 
                     if (conflict == 'n') {
                         return 0;
