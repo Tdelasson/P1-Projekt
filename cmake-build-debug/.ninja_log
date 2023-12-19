@@ -80,3 +80,8 @@
 226	441	7246114021874531	src/main/main.exe	c62ede7b217ccce2
 8	224	7246114562965887	src/main/CMakeFiles/main.dir/main.c.obj	181f457a43be36e5
 225	468	7246114565329224	src/main/main.exe	c62ede7b217ccce2
+12	127	7246852515466348	src/infusion/CMakeFiles/Calculator.dir/infusion.c.obj	c6d4225b34a295fe
+6	151	7246852515709935	src/database/CMakeFiles/database_interaction.dir/database_interaction.c.obj	51ffae485738c232
+151	245	7246852516646812	src/database/libdatabase_interaction.a	bdbd97f550a665b1
+245	325	7246852517447503	src/infusion/libCalculator.a	46314e91146d39ba
+325	573	7246852519892568	src/main/main.exe	c62ede7b217ccce2
