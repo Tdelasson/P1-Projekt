@@ -31,9 +31,9 @@ int verify_staff(void) {
     }
 
     staff_record staff;
-    bool validStaffFound = false;
+    bool valid_staff_found = false;
 
-    while (!validStaffFound) {
+    while (!valid_staff_found) {
         int staff_id = -1;
 
         rewind(nursing_home_file);
@@ -46,12 +46,12 @@ int verify_staff(void) {
             if (staff.id_key == staff_id) {
                 printf("\nStaff checked in\n");
                 printf("Name: %s %s\n\n", staff.first_name, staff.surname);
-                validStaffFound = true;
+                valid_staff_found = true;
                 break;  // Exit the inner loop
             }
         }
 
-        if (!validStaffFound) {
+        if (!valid_staff_found) {
             printf("Invalid staff ID. Try again.\n\n");
         }
     }

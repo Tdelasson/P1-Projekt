@@ -42,7 +42,7 @@ void infusion(resident_record resident){
 void scan_information(double* stock_solution_strength, double* dose_prescribed,
                       double* strength_of_solution, double* time_in_hours){
     //get the strength of stock solution
-    printf("Enter the strength of the stock solution: \n->");
+    printf("Enter the strength of the stock solution either in mg/ml or %%(w/v): \n->");
     scanf("%lf", stock_solution_strength);
 
     //get prescribed dose in mg/kg
