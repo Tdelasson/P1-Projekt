@@ -35,16 +35,22 @@ void dispensing(resident_medications medications[], medicine_database medicine_d
         print_box(pill_box, actual_morning_dose, actual_noon_dose, actual_evening_dose, strength_type);
         clear_pill_box(pill_box);
 
-        char d;
+        char d = ' ';
         printf("\n");
 
-        printf("New medication? (y/n)\n->");
-        scanf("%s", &d);
+        while(d != 'y' && d != 'Y' && d != 'n' && d != 'N' && i < medications_count-1){
 
-        if (d == 'n' || d == 'N')
+            printf("New medication? (y/n)\n->");
+            scanf("%s", &d);
+
+             if(d != 'y' && d != 'Y' && d != 'n' && d != 'N'){
+                printf("Invalid input\n");
+            }
+        }
+
+        if (d == 'n' || d == 'N') {
             break;
-        else
-            continue;
+        }
     }
     printf("There's no more medication to dispense to this resident\n");
 }
@@ -62,8 +68,9 @@ void check_medicine(resident_medications medications[], medicine_database medici
             break;
         } else {
             printf("Incorrect bar code\n\n");
+            bar_code = 0;
             printf("Enter the bar code for %s\n->", medicine_details[i].name);
-            scanf("%d", &bar_code);
+            scanf(" %d", &bar_code);
         }
     }
 }

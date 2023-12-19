@@ -152,11 +152,11 @@ int get_resident_record_medicine(resident_medications medications[], int residen
         return -1;
     }
 
-    int patientId, medicalId;
+    int patient_id, medical_id;
     int medications_count = 0;
 
-    while (fscanf(file, "%d,%d,", &medicalId, &patientId) == 2) {
-        if (patientId == resident_id_key) {
+    while (fscanf(file, "%d,%d,", &medical_id, &patient_id) == 2) {
+        if (patient_id == resident_id_key) {
             while (medications_count < MAX_MEDICATIONS &&
                    fscanf(file, " %d, %lf, %[^,],%d,%d,%d,%d,%d,%d,%d,%lf,%lf,%lf,",
                           &medications[medications_count].medication,
