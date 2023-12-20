@@ -30,16 +30,14 @@ int main(void) {
 
 
                 //check for medication conflicts
-                char conflict = 'n';
-                while (conflict != 'y') {
-                    if (get_resident_medication_conflict(medicine_details, number_of_medications) == true) {
-                        fprintf(stderr, "Medication conflict detected\n");
-                        printf("Would you like to continue? (y/n)\n");
-                        scanf(" %c", &conflict);
+                if (get_resident_medication_conflict(medicine_details, number_of_medications) == true) {
+                    fprintf(stderr, "Medication conflict detected\n");
+                    printf("Would you like to continue? (y/n)\n");
+                    char conflict = 'n';
+                    scanf(" %c", &conflict);
 
-                        if (conflict == 'n') {
-                            return 0;
-                        }
+                    if (conflict == 'n') {
+                        return 0;
                     }
                 }
 
