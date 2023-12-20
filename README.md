@@ -15,3 +15,11 @@ This is done most easily by going into the src folder in path finder and opening
 You need to change your i dea.max.intellisense.filesize=10000 
 Is done by (in clion) going to help -> edit custom properties -> paste: idea.max.intellisense.filesize=10000 
 
+## How to run the program
+1. Run the program in your IDE of choice
+2. Program will ask for "staff ID"
+3. Open nursing_home_staff.txt under the folder database_textfiles
+4. Find the staff ID you want to log in as
+5. The program will now ask for a social security number
+5. Then open the file resident_record.txt
+6. Choose a social security number which is the final number in each line
